@@ -19,3 +19,12 @@ npm run build
 ```
 npm run lint
 ```
+
+
+### Serve the world
+
+also Run API server with
+
+```
+json-server db.json
+```
