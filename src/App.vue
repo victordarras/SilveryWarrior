@@ -7,18 +7,18 @@
     <template v-else>
 
       <section class="Player">
-        <h3>{{ Player.name }}</h3>
-        <div class="lifeBar" :style="lifeCss(Player.life)">
-          <strong>{{ Player.life }}</strong> /100
+        <h3>{{ currentPlayer.name }}</h3>
+        <div class="lifeBar" :style="lifeCss(currentPlayer.life)">
+          <strong>{{ currentPlayer.life }}</strong> /100
         </div>
         <hr>
-        <br><strong>{{ Player.atk }}</strong> - <em>Attack</em>
-        <br><strong>{{ Player.def }}</strong> - <em>Defense</em>
-        <br><strong>{{ Player.spe }}</strong> - <em>Special</em>
+        <br><strong>{{ currentPlayer.atk }}</strong> - <em>Attack</em>
+        <br><strong>{{ currentPlayer.def }}</strong> - <em>Defense</em>
+        <br><strong>{{ currentPlayer.spe }}</strong> - <em>Special</em>
       </section>
       <Table
         :cells="cells"
-        :Player="Player"
+        :Player="currentPlayer"
         @movePlayer="movePlayer"
       />
 
@@ -34,7 +34,7 @@
       </div>
       <Place
         :cell="currentCell"
-        @attack="attackEnemy"
+        @attack="fight"
       />
 
     </template>
@@ -105,7 +105,7 @@ export default {
     return {
       isLoading: false,
       size: 3,
-      Player: {},
+      currentPlayer: {},
       logs: [],
       cells: [[]],
       players: []
@@ -116,27 +116,27 @@ export default {
       return `background-image: linear-gradient(to right, darkred, darkred ${l-.01}%, grey ${l}%, grey )`
     },
     drinkPopo(health) {
-      this.Player.life = Math.min(this.Player.life + health, 100);
+      this.currentPlayer.life = Math.min(this.currentPlayer.life + health, 100);
     },
     spawnMob() {
       this.currentCell.enemies.push(newEnemy())
     },
     movePlayer(x, y) {
-      this.Player.x = x;
-      this.Player.y = y;
+      this.currentPlayer.x = x;
+      this.currentPlayer.y = y;
       this.logs.unshift(`Vous vous déplacez en [${x}-${y}] (${this.currentCell.kind})`);
       this.currentCell.enemies.forEach(this.attackPlayerBy)
     },
     attackPlayerBy(enemy) {
-      const damage = (enemy.atk + roll(6) - this.Player.def + roll(6));
-      this.Player.life -= damage
+      const damage = (enemy.atk + roll(6) - this.currentPlayer.def + roll(6));
+      this.currentPlayer.life -= damage
       this.logs.unshift(`⚔ Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`);
     },
-    attackEnemy(enemy) {
-      const pDamage = (this.Player.atk + roll(6) - enemy.def + roll(6));
-      const eDamage = (enemy.atk + roll(6) - this.Player.def + roll(6));
+    fight(enemy, player = this.currentPlayer) {
+      const pDamage = (player.atk + roll(6) - enemy.def + roll(6));
+      const eDamage = (enemy.atk + roll(6) - player.def + roll(6));
       enemy.life -= pDamage;
-      this.Player.life -= eDamage;
+      player.life -= eDamage;
 
       if (enemy.life > 0) {
         this.logs.unshift(`⚔ Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !\n${enemy.name} vous inflige, ${eDamage} dégats !`);
@@ -144,7 +144,7 @@ export default {
       } else {
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1)
         this.logs.unshift(`💀 Vous achevez cet ${enemy.name} en lui infligeant ${pDamage} dégats !`);
-        // this.$fetch.patch('http://localhost:3000/currentPlayer', this.Player)
+        // this.$fetch.patch('http://localhost:3000/currentPlayer', player)
       }
 
       // if (this.currentCell.enemies.length === 0) {
@@ -170,32 +170,26 @@ export default {
   },
   computed: {
     currentCell() {
-      return this.cells.find(c => c.x === this.Player.x && c.y === this.Player.y);
+      return this.cells.find(c => c.x === this.currentPlayer.x && c.y === this.currentPlayer.y);
     }
   },
   async created () {
     this.isLoading = true;
 
-    this.Player = newPlayer();
-    // this.Player.name = prompt('Veuillez choisir un nom avant de commencer la partie…');
+    this.currentPlayer = newPlayer();
+    // this.currentPlayer.name = prompt('Veuillez choisir un nom avant de commencer la partie…');
     (async () => {
-      let Player = await this.$fetch.get('http://localhost:3000/currentPlayer')
-      if (Player.status != 200){
-          alert("Can't get the map")
-      }
-      this.Player = await Player.json();
+      let currentPlayer = await this.$fetch.get('http://localhost:3000/currentPlayer')
+      this.currentPlayer = await currentPlayer.json();
 
       let cells = await this.$fetch.get('http://localhost:3000/cells')
-      if (cells.status != 200){
-          alert("Can't get the map")
-      }
       this.cells = await cells.json();
       this.isLoading = false;
     })()
     return this.logs.unshift("Vôtre voyage commence ici.")
   },
   updated() {
-    this.$fetch.patch('http://localhost:3000/currentPlayer', this.Player)
+    this.$fetch.patch('http://localhost:3000/currentPlayer', this.currentPlayer)
   },
   components: {
     Table, Place
