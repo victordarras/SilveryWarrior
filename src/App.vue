@@ -21,21 +21,21 @@
         :Player="Player"
         @movePlayer="movePlayer"
       />
-      <Place
-        :cell="currentCell"
-        @attack="attackEnemy"
-      />
-      <div class="buttons">
-        <button @click="spawnMob">Create mob</button>
-        <button @click="drinkPopo(50)">Drink Potion (+50)</button>
-        <button @click="generateNewWorld()">Generate new World</button>
-      </div>
 
       <section class="logs">
         <ul>
           <li v-for="(log, i) in logs" :key="i"><code>{{ log }}</code></li>
         </ul>
       </section>
+      <div class="buttons">
+        <button @click="spawnMob">Create mob</button>
+        <button @click="drinkPopo(50)">Drink Potion (+50)</button>
+        <button @click="generateNewWorld()">Generate new World</button>
+      </div>
+      <Place
+        :cell="currentCell"
+        @attack="attackEnemy"
+      />
 
     </template>
 
@@ -139,7 +139,7 @@ export default {
       this.Player.life -= eDamage;
 
       if (enemy.life > 0) {
-        this.logs.unshift(`⚔ Vous attaquez cet ${enemy.name} et lui infligez ${pDamage} dégats !`);
+        this.logs.unshift(`⚔ Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !\n${enemy.name} vous inflige, ${eDamage} dégats !`);
         // this.$fetch.patch(`http://localhost:3000/cells/${this.Player.x}/${this.Player.y}/enemies?uid=${enemy.uid}`, enemy)
       } else {
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1)

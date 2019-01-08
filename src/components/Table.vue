@@ -5,7 +5,8 @@
       <template v-for="row in cells">
         <div
           :class="cellClass(cell)"
-          v-for="cell in row"
+          v-for="(cell, i) in row"
+          :key="i"
         >
           <div v-if="isReachable(cell.x, cell.y)" @click="moveTo(cell.x, cell.y)"></div>
         </div>
@@ -25,11 +26,11 @@ export default {
   props: {
     Player: {
       type: Object,
-      default: {}
+      default: () => ({})
     },
     cells: {
       type: Array,
-      default: []
+      default: () => ([])
     }
   },
   methods: {
@@ -94,12 +95,15 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  .cell.forest {color: green}
+  .cell.forest {color: darkgreen}
   .cell.forest:before {content: "🌳";}
-  .cell.hill {color: lightgreen}
+  .cell.hill {color: forestgreen}
   .cell.hill:before {content: "🏔";}
   .cell.plain {color: gold}
-  .cell.city {color: darkred}
+  .cell.plain:nth-child(3n + 1) {
+    color: goldenrod
+  }
+  .cell.city {color: saddlebrown}
   .cell.city:before {content: "🏛";}
 
   .player, .reachable {

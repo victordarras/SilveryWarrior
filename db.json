@@ -1,12 +1,12 @@
 {
   "currentPlayer": {
     "name": "Joe",
-    "life": 72,
+    "life": 68,
     "atk": 14,
     "def": 4,
     "spe": 2,
     "x": 3,
-    "y": 5
+    "y": 4
   },
   "users": [],
   "cities": [],

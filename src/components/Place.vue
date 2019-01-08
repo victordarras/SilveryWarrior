@@ -21,7 +21,7 @@ export default {
   props: {
     cell: {
       type: Object,
-      default: {}
+      default: () => ({})
     }
   },
   methods: {
