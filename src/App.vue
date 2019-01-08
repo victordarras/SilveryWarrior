@@ -82,7 +82,7 @@ function newPlayer() {
 function newEnemy() {
   return {
     name: "orc",
-    uid: newUID(),
+    id: newUID(),
     life: 100,
     atk: 4,
     def: 4,
@@ -140,7 +140,7 @@ export default {
 
       if (enemy.life > 0) {
         this.logs.unshift(`⚔ Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !\n${enemy.name} vous inflige, ${eDamage} dégats !`);
-        // this.$fetch.patch(`http://localhost:3000/cells/${this.Player.x}/${this.Player.y}/enemies?uid=${enemy.uid}`, enemy)
+        // this.$fetch.patch(`http://localhost:3000/cells/${this.currentCell.id}/enemies/${enemy.id}`, enemy)
       } else {
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1)
         this.logs.unshift(`💀 Vous achevez cet ${enemy.name} en lui infligeant ${pDamage} dégats !`);
@@ -170,7 +170,7 @@ export default {
   },
   computed: {
     currentCell() {
-      return this.cells[this.Player.x][this.Player.y];
+      return this.cells.find(c => c.x === this.Player.x && c.y === this.Player.y);
     }
   },
   async created () {
