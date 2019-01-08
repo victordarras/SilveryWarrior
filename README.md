@@ -26,5 +26,5 @@ npm run lint
 also Run API server with
 
 ```
-json-server db.json
+json-server data/db.json --watch
 ```

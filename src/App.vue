@@ -17,7 +17,7 @@
         <br><strong>{{ Player.spe }}</strong> - <em>Special</em>
       </section>
       <Table
-        :cells="displayedCells"
+        :cells="cells"
         :Player="Player"
         @movePlayer="movePlayer"
       />
@@ -160,11 +160,10 @@ export default {
     generateNewWorld() {
       let cells = []
       for (var x = 0; x < 10; x++) {
-        let row = []
+        // let row = []
         for (var y = 0; y < 10; y++) {
-          row.push(newCell(x, y))
+          cells.push(newCell(x, y))
         }
-        cells.push(row)
       }
       this.cells = cells;
     }
@@ -172,17 +171,6 @@ export default {
   computed: {
     currentCell() {
       return this.cells[this.Player.x][this.Player.y];
-    },
-    displayedCells() {
-      return Object.values(this.cells).map((row) => {
-        return Object.values(row).map((c) => {
-          return {
-            ...c,
-            player: this.cellPlayers(c.x, c.y),
-            enemy: this.cellEnemies(c.x, c.y)
-          }
-        })
-      })
     }
   },
   async created () {

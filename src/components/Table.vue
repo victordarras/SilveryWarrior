@@ -2,15 +2,15 @@
   <div class="game">
     <button @click="isometric = !isometric">3D</button>
     <div class="cells" :class="isometric ? 'iso' : ''">
-      <template v-for="row in cells">
+
         <div
+          v-for="cell in cells"
           :class="cellClass(cell)"
-          v-for="(cell, i) in row"
-          :key="i"
+          :key="cell.uid"
         >
           <div v-if="isReachable(cell.x, cell.y)" @click="moveTo(cell.x, cell.y)"></div>
         </div>
-      </template>
+
     </div>
   </div>
 </template>
@@ -75,7 +75,7 @@ export default {
     transform: perspective(2000px) rotateX(45deg) rotateZ(45deg) translate(50%, 51%);
   }
   .cell {
-    cursor: normal;
+    cursor: auto;
     position: relative;
     display: grid;
     background-color: currentColor;
