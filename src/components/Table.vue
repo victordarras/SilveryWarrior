@@ -1,10 +1,10 @@
 <template>
   <div class="game">
-    <button @click="isometric = !isometric">3D</button>
     <div class="cells" :class="isometric ? 'iso' : ''">
 
         <div
           v-for="cell in cells"
+          :title="cell.x + cell.y"
           :class="cellClass(cell)"
           :key="cell.uid"
         >
@@ -12,6 +12,7 @@
         </div>
 
     </div>
+    <button class="toggleIso" @click="isometric = !isometric">3D</button>
   </div>
 </template>
 
@@ -61,63 +62,63 @@ export default {
 
 <style scoped>
   .game {
-    background: rgba(0,0,0,0.2)
+    position: relative;
+    background: url(../assets/images/map.png);
+    background-size: cover;
   }
   .cells {
     display: grid;
-    grid-template-rows: repeat(10, 2rem);
-    grid-template-columns: repeat(10, 2rem);
-    grid-gap: 0.2rem;
+    height: 100%;
+    padding: 4vh 8vh 7.3vh 8.8vh;
+    grid-template-columns: repeat(32, 1fr);
+    grid-template-rows: repeat(21, 1fr);
+    width: 80vh;
+    height: 53vh;
+    opacity: 0.5;
     transition: all 0.3s ease-in-out;
-    transform: perspective(0) rotateX(0deg) rotateZ(0deg) translate(27%, 40%) scale(1.3);
   }
   .cells.iso {
-    transform: perspective(2000px) rotateX(45deg) rotateZ(45deg) translate(50%, 51%);
+    transform: perspective(3000px) scale(0.5) rotateX(45deg) rotateZ(45deg) translate3d(50%, 50%, 520px);
   }
   .cell {
     cursor: auto;
     position: relative;
     display: grid;
-    background-color: currentColor;
-    opacity: 0.8;
-    border-radius: 3px;
-    box-shadow: 2px 2px 0 rgba(0,0,0,0.5), 2px 2px 0 currentColor;
     transition: all 0.16s ease-in-out;
   }
-  .cell:hover {
-    opacity: 1;
-  }
-  .cell:before {
-    position: absolute;
-    font-size: 1.8em;
-    pointer-events: none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .cell.forest {color: darkgreen}
-  .cell.forest:before {content: "🌳";}
-  .cell.hill {color: forestgreen}
-  .cell.hill:before {content: "🏔";}
-  .cell.plain {color: gold}
-  .cell.plain:nth-child(3n + 1) {
-    color: goldenrod
-  }
-  .cell.city {color: saddlebrown}
-  .cell.city:before {content: "🏛";}
 
-  .player, .reachable {
-    opacity: 1;
-    border: 2px solid #fff;
+  .player:before {
+    content:'';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    pointer-events: none;
+    background: url('../assets/images/cursor.png') no-repeat top / contain;
   }
-  .cell.player:before {
-    content: '⚔';
+  .reachable:before {
+    content:'';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    pointer-events: none;
+    background: url('../assets/images/cursor.png') no-repeat top / contain;
   }
+
   .reachable {
     cursor: pointer;
+    transform: scale(0.75);
   }
   .reachable:hover {
     z-index: 1;
-    border: 5px solid #fff;
+    transform: scale(0.9);
+  }
+  .toggleIso {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 </style>

@@ -4,13 +4,12 @@
       v-if="cell.enemies && enemy.life > 0"
       @click="attack(enemy)"
       :key="enemy.uid"
-      :style="lifeCss(enemy.life)"
       :title="{enemy}"
       class="enemy"
     >
       <span style="font-size: 3rem">👾</span><br>
       <strong class="name">{{ enemy.name }}</strong><br>
-      <em class="life">{{ enemy.life }}/100</em>
+      <div :style="lifeCss(enemy.life)" class="life">{{ enemy.life }}/100</div>
     </li>
   </ul>
 </template>
@@ -26,7 +25,7 @@ export default {
   },
   methods: {
     lifeCss: function (l) {
-      return `background-image: linear-gradient(to right, darkgreen, darkgreen ${l-.01}%, grey ${l}%, grey )`
+      return `background-image: linear-gradient(to right, darkgreen, darkgreen ${l-.01}%, transparent ${l}%, transparent )`
     },
     attack: function(enemy) {
       this.$emit('attack', enemy)
@@ -46,7 +45,9 @@ export default {
     grid-template-rows: repeat(6, 1fr);
   }
   .enemy {
-    background-color: darkgreen;
+    height: 32vh;
+    width: 20vh;
+    background: url('../assets/images/card.png') no-repeat center / contain;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;

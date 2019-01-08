@@ -31,6 +31,8 @@
         <button @click="spawnMob">Create mob</button>
         <button @click="drinkPopo(50)">Drink Potion (+50)</button>
         <button @click="generateNewWorld()">Generate new World</button>
+        <button @click="changeName()">Change player name</button>
+        <button @click="savePlayerData()">Save player</button>
       </div>
       <Place
         :cell="currentCell"
@@ -45,10 +47,14 @@
 <script>
 import Table from './components/Table.vue'
 import Place from './components/Place.vue'
+
+
+const WORLD_SIZE = {x: 32, y: 21}
+
 function roll (sides) {
   return Math.floor(Math.random() * sides) + 1;
 }
-function biome() {
+function newBiome() {
   switch (roll(30)) {
     case 1:
       return "city";
@@ -90,15 +96,37 @@ function newEnemy() {
   }
 }
 function newCell(x, y) {
+  const
+    biome = newBiome(),
+    enemies = [];
+
+  if (biome !== "city") {
+    enemies.push(newEnemy())
+  }
+  if (biome === "forest") {
+    enemies.push(newEnemy())
+  }
+
   return {
     id: newUID(),
-    kind: biome(),
+    kind: biome,
     x: x,
     y: y,
-    enemies: [newEnemy()],
+    enemies: enemies,
     players: []
   }
 }
+
+function newWorld() {
+  let cells = []
+    for (var y = 0; y < WORLD_SIZE.y; y++) {
+  for (var x = 0; x < WORLD_SIZE.x; x++) {
+      cells.push(newCell(x, y))
+    }
+  }
+  return cells
+}
+
 export default {
   name: 'app',
   data: () => {
@@ -112,8 +140,17 @@ export default {
     }
   },
   methods: {
+    log(message, kind) {
+      this.logs.unshift(message);
+    },
     lifeCss: function (l) {
       return `background-image: linear-gradient(to right, darkred, darkred ${l-.01}%, grey ${l}%, grey )`
+    },
+    savePlayerData() {
+      this.$fetch.patch('http://localhost:3000/currentPlayer', this.currentPlayer)
+    },
+    changeName() {
+      this.currentPlayer.name = prompt('Veuillez choisir nouveau pseudo :');
     },
     drinkPopo(health) {
       this.currentPlayer.life = Math.min(this.currentPlayer.life + health, 100);
@@ -124,13 +161,13 @@ export default {
     movePlayer(x, y) {
       this.currentPlayer.x = x;
       this.currentPlayer.y = y;
-      this.logs.unshift(`Vous vous déplacez en [${x}-${y}] (${this.currentCell.kind})`);
+      this.log(`Vous vous déplacez en [${x}-${y}] (${this.currentCell.kind})`);
       this.currentCell.enemies.forEach(this.attackPlayerBy)
     },
     attackPlayerBy(enemy) {
       const damage = (enemy.atk + roll(6) - this.currentPlayer.def + roll(6));
       this.currentPlayer.life -= damage
-      this.logs.unshift(`⚔ Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`);
+      this.log(`⚔ Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`);
     },
     fight(enemy, player = this.currentPlayer) {
       const pDamage = (player.atk + roll(6) - enemy.def + roll(6));
@@ -139,17 +176,17 @@ export default {
       player.life -= eDamage;
 
       if (enemy.life > 0) {
-        this.logs.unshift(`⚔ Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !\n${enemy.name} vous inflige, ${eDamage} dégats !`);
+        this.log(`⚔ Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !\n${enemy.name} vous inflige, ${eDamage} dégats !`);
         // this.$fetch.patch(`http://localhost:3000/cells/${this.currentCell.id}/enemies/${enemy.id}`, enemy)
       } else {
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1)
-        this.logs.unshift(`💀 Vous achevez cet ${enemy.name} en lui infligeant ${pDamage} dégats !`);
+        this.log(`💀 Vous achevez cet ${enemy.name} en lui infligeant ${pDamage} dégats !`);
         // this.$fetch.patch('http://localhost:3000/currentPlayer', player)
       }
 
-      // if (this.currentCell.enemies.length === 0) {
-      //   this.currentCell.enemies.push(newEnemy());
-      // }
+      if (this.currentCell.enemies.length === 0) {
+        this.currentCell.enemies.push(newEnemy());
+      }
     },
     cellPlayers(x, y) {
       return this.players.find(p => p.x == x && p.y == y );
@@ -158,14 +195,7 @@ export default {
       return this.currentCell.enemies;
     },
     generateNewWorld() {
-      let cells = []
-      for (var x = 0; x < 10; x++) {
-        // let row = []
-        for (var y = 0; y < 10; y++) {
-          cells.push(newCell(x, y))
-        }
-      }
-      this.cells = cells;
+      this.cells = newWorld();
     }
   },
   computed: {
@@ -176,8 +206,6 @@ export default {
   async created () {
     this.isLoading = true;
 
-    this.currentPlayer = newPlayer();
-    // this.currentPlayer.name = prompt('Veuillez choisir un nom avant de commencer la partie…');
     (async () => {
       let currentPlayer = await this.$fetch.get('http://localhost:3000/currentPlayer')
       this.currentPlayer = await currentPlayer.json();
@@ -186,10 +214,10 @@ export default {
       this.cells = await cells.json();
       this.isLoading = false;
     })()
-    return this.logs.unshift("Vôtre voyage commence ici.")
+    this.currentPlayer = this.currentPlayer ? this.currentPlayer : newPlayer();
+    return this.log("Votre voyage commence ici.")
   },
   updated() {
-    this.$fetch.patch('http://localhost:3000/currentPlayer', this.currentPlayer)
   },
   components: {
     Table, Place
@@ -198,27 +226,16 @@ export default {
 </script>
 
 <style>
-body {
-  margin: 0;
-  box-sizing: border-box;
-  background: radial-gradient(#000, #555);
-  color: #eee;
-}
-ul {
-  list-style: none
-}
-
-*,*:after,*:before{box-sizing: inherit;}
 #app {
   font-family: 'Lora',serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
-  max-height: 99vh;
+  height: 99vh;
   max-width: 100vw;
   display: grid;
-  grid-template-columns: 15% 60% 25%;
-  grid-template-rows: 80vh 1fr;
+  grid-template-columns: 220px 80vh 1fr;
+  grid-template-rows: 53vh 1fr;
   padding: 10px;
   grid-gap: 10px;
 }
