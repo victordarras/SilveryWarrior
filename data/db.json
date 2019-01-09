@@ -1345,7 +1345,17 @@
       "kind": "city",
       "x": 6,
       "y": 5,
-      "enemies": [],
+      "enemies": [
+        {
+          "id": "353922653",
+          "name": "Légume furieux",
+          "life": 20,
+          "atk": 2,
+          "def": 2,
+          "spe": 2,
+          "currentLife": 20
+        }
+      ],
       "players": []
     },
     {

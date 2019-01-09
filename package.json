@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "json-server": "^0.14.2",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
     "vue": "^2.5.17",
     "vue-fetch": "^1.1.2"
   },

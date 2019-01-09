@@ -39,10 +39,10 @@
 </template>
 
 <script>
-import Profile from './components/Profile.vue'
-import Table from './components/Table.vue'
-import Place from './components/Place.vue'
-import Logger from './components/Logger.vue'
+import Profile from './Profile.vue'
+import Table from './Table.vue'
+import Place from './Place.vue'
+import Logger from './Logger.vue'
 
 const CELL_KINDS = [
   'unreachable',
@@ -212,43 +212,5 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Lora',serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
-  width: 100%;
-  height: 100vh;
-  display: grid;
-  /*padding: 10px;*/
-  grid-gap: 10px;
-  grid-template-columns: 300px 80vh 1fr;
-  grid-template-rows: 53vh 1fr 1fr;
-  grid-template-areas:
-    "profile table buttons"
-    "profile place logs"
-    "profile place logs";
-}
-
-.buttons {
-  grid-template-area: buttons;
-}
-.buttons button {
-  display: inline-block;
-  vertical-align: top;
-  -webkit-appearance: none;
-  border: 2px solid #222;
-  margin: 5px;
-  transform: skew(5deg);
-}
-.buttons button:hover {
-  border-bottom-width: 3px;
-  border-top-width: 1px;
-  transform: skew(3deg);
-}
-.buttons button:active {
-  border-top-width: 3px;
-  border-bottom-width: 1px;
-}
-</style>
+<style lang="scss" src="../assets/style.scss"></style>
+<style lang="scss" src="../assets/app.scss" scoped></style>
