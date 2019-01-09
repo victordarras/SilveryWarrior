@@ -12,23 +12,20 @@
         :Player="currentPlayer"
         @movePlayer="movePlayer"
       />
-
-      <section class="logs">
-        <ul>
-          <li v-for="(log, i) in logs" :key="i"><code>{{ log }}</code></li>
-        </ul>
-      </section>
+      <Logger :logs="logs" />
       <Place
         :cell="currentCell"
         @attack="fight"
       />
-    <div class="buttons">
-      <button @click="spawnMob()">Create mob</button>
-      <button @click="generateNewWorld()">Generate new World</button>
-      <button @click="changeName()">Change player name</button>
-      <button @click="savePlayerData()">Save player</button>
-      <button @click="drinkPopo(50)">Drink popo</button>
-    </div>
+
+      <!-- Development helpers -->
+      <div class="buttons">
+        <button @click="generateNewWorld()">Generate new World</button>
+        <button @click="changeName()">Change player name</button>
+        <button @click="spawnMob()">Create mob</button>
+        <button @click="savePlayerData()">Save player</button>
+        <button @click="drinkPopo(50)">Drink popo</button>
+      </div>
 
     </template>
 
@@ -39,6 +36,7 @@
 import Profile from './components/Profile.vue'
 import Table from './components/Table.vue'
 import Place from './components/Place.vue'
+import Logger from './components/Logger.vue'
 
 
 const WORLD_SIZE = {x: 32, y: 21}
@@ -209,7 +207,7 @@ export default {
   updated() {
   },
   components: {
-    Table, Place, Profile
+    Table, Place, Profile, Logger
   }
 }
 </script>
@@ -246,9 +244,4 @@ export default {
   border-top-width: 3px;
   border-bottom-width: 1px;
 }
-
-.logs li:first-child {  opacity: 1}
-.logs li:nth-child(2) { opacity: 0.7}
-.logs li:nth-child(3) { opacity: 0.6}
-.logs li {  opacity: 0.5}
 </style>
