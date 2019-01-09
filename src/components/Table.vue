@@ -1,6 +1,6 @@
 <template>
   <div class="table">
-    <div class="cells" :class="isometric ? 'iso' : ''">
+    <div class="cells">
 
         <div
           v-for="cell in cells"
@@ -8,11 +8,10 @@
           :class="cellClass(cell)"
           :key="cell.uid"
         >
-          <div v-if="isReachable(cell.x, cell.y)" @click="moveTo(cell.x, cell.y)"></div>
+          <div v-if="isReachable(cell)" @click="moveTo(cell.x, cell.y)"></div>
         </div>
 
     </div>
-    <button class="toggleIso" @click="isometric = !isometric">3D</button>
   </div>
 </template>
 
@@ -20,9 +19,7 @@
 export default {
   name: 'Table',
   data() {
-    return {
-      isometric: false
-    }
+    return {}
   },
   props: {
     Player: {
@@ -35,8 +32,13 @@ export default {
     }
   },
   methods: {
-    isReachable(x, y) {
-      let p = this.Player;
+    isReachable(cell) {
+      if (cell.kind === "unreachable") {
+        return false
+      }
+      const x = cell.x;
+      const y = cell.y;
+      const p = this.Player;
       if (x === p.x && y === p.y) { return false }
       return (x === p.x && y <= (p.y + 1) && y >= (p.y - 1)) // top & bottom
           || (y === p.y && x <= (p.x + 1) && x >= (p.x - 1)) // left & right
@@ -46,12 +48,13 @@ export default {
     lifeCss: function (l) {
       return `background-image: linear-gradient(to right, tomato, tomato ${l-.01}%, white ${l}%, white )`
     },
-    cellClass: function(c) {
-      let klass = this.isReachable(c.x, c.y) ? " reachable" : "";
-      klass += this.Player.x === c.x && this.Player.y === c.y ? " player" : "";
-      klass += c.enemy && c.enemy.life > 0 ? " enemy" : "";
-      klass += ` ${c.kind}`;
-      return ` ${klass} cell`;
+    cellClass: function(cell) {
+      let klass = ["cell"]
+      klass.push(this.isReachable(cell) ? " reachable" : "");
+      klass.push(this.Player.x === cell.x && this.Player.y === cell.y ? " player" : "");
+      klass.push(cell.enemy && cell.enemy.life > 0 ? " enemy" : "");
+      klass.push(` ${cell.kind}`);
+      return klass.join(' ');
     },
     moveTo: function(x, y) {
       this.$emit('movePlayer', x, y)
@@ -78,9 +81,6 @@ export default {
     opacity: 0.5;
     transition: all 0.3s ease-in-out;
   }
-  .cells.iso {
-    transform: perspective(3000px) scale(0.5) rotateX(45deg) rotateZ(45deg) translate3d(50%, 50%, 520px);
-  }
   .cell {
     cursor: auto;
     position: relative;
@@ -97,6 +97,7 @@ export default {
     height: 120%;
     pointer-events: none;
     background: url('../assets/images/cursor.png') no-repeat top / contain;
+    mix-blend-mode: darken;
   }
   .reachable:before {
     content:'';
@@ -107,6 +108,7 @@ export default {
     height: 120%;
     pointer-events: none;
     background: url('../assets/images/cursor.png') no-repeat top / contain;
+    mix-blend-mode: darken;
   }
 
   .reachable {
@@ -121,5 +123,22 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
+  }
+  /*debug*/
+  .unreachable {
+    border: 1px solid red;
+  }
+
+  .forest {
+    background-color: rgba(0, 255, 0, 0.2);
+  }
+  .city {
+    background-color: rgba(0, 255, 255, 0.2);
+  }
+  .mountain {
+    border: 1px solid blue;
+  }
+  .hills {
+    background-color: rgba(155, 155, 0, 0.2);
   }
 </style>

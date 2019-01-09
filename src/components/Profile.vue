@@ -1,8 +1,8 @@
 <template>
   <section class="profile">
     <div class="profile-avatar">
-      <div class="lifeBar" :style="lifeCss(player.life)">
-        <span class="lifeBar-value"><strong>{{ player.life }}</strong> /100</span>
+      <div class="lifeBar" :style="lifeCss(player.currentLife, player.life)">
+        <span class="lifeBar-value"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
       </div>
     </div>
     <h3>{{ player.name }}</h3>
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'Place',
+  name: 'Profile',
   props: {
     player: {
       type: Object,
@@ -26,9 +26,10 @@ export default {
     }
   },
   methods: {
-    lifeCss: function (l) {
-      return `background-image: linear-gradient(to right, black, black ${l-.01}%, white ${l}%, white )`
-    }
+    lifeCss: function (value, max) {
+      const l = (value / max) * 100;
+      return `background-image: linear-gradient(to right, black, black ${l-.01}%, transparent ${l}%, transparent )`
+    },
   }
 }
 </script>

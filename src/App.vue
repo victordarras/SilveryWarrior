@@ -8,17 +8,28 @@
 
       <Profile :player="currentPlayer" />
       <Table
+        :cell="currentCell"
         :cells="cells"
         :Player="currentPlayer"
         @movePlayer="movePlayer"
       />
       <!-- Development helpers -->
       <div class="buttons">
-        <button @click="generateNewWorld()">Generate new World</button>
+        <!-- <button @click="setCellKind('unreachable')">UNREACHABLE</button>
+        <button @click="setCellKind('forest')">forest</button>
+        <button @click="setCellKind('city')">city</button>
+        <button @click="setCellKind('mountain')">mountain</button>
+        <button @click="setCellKind('hills')">hills</button>
+        <button @click="setCellKind('plain')">hills</button> -->
+        <button @click="createMob(0)">createMob(0)</button>
+        <button @click="createMob(1)">createMob(1)</button>
+        <button @click="createMob(2)">createMob(2)</button>
+        <button @click="clearCell">CLEAR</button>
+        <hr>
         <button @click="changeName()">Change player name</button>
-        <button @click="spawnMob()">Create mob</button>
         <button @click="savePlayerData()">Save player</button>
         <button @click="drinkPopo(50)">Drink popo</button>
+        <p v-for="key in Object.keys(currentCell)" :key="key">{{key}}: {{currentCell[key]}}</p>
       </div>
       <Place
         :cell="currentCell"
@@ -38,28 +49,34 @@ import Table from './components/Table.vue'
 import Place from './components/Place.vue'
 import Logger from './components/Logger.vue'
 
+const MOBS = [
+  {
+    "id": 0,
+    "name": "Légume furieux",
+    "life": 20,
+    "atk": 2,
+    "def": 2,
+    "spe": 2
+  },{
+    "id": 1,
+    "name": "Etagère en colère",
+    "life": 35,
+    "atk": 2,
+    "def": 5,
+    "spe": 0
+  },{
+    "id": 2,
+    "name": "Abatjour vénèr'",
+    "life": 50,
+    "atk": 4,
+    "def": 5,
+    "spe": 10
+  },
+];
 
-const WORLD_SIZE = {x: 32, y: 21}
 
 function roll (sides) {
   return Math.floor(Math.random() * sides) + 1;
-}
-function newBiome() {
-  switch (roll(30)) {
-    case 1:
-      return "city";
-    case 2:
-    case 3:
-    case 4:
-      return "hill"
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-      return "forest"
-    default:
-      return "plain";
-  }
 }
 function newUID() {
   return ('' + Math.random()).substr(2, 9)
@@ -75,46 +92,13 @@ function newPlayer() {
     y: 0
   }
 }
-function newEnemy() {
+function newEnemy(id) {
+  const mob = MOBS[id];
   return {
-    name: "orc",
+    ...mob,
     id: newUID(),
-    life: 100,
-    atk: 4,
-    def: 4,
-    spe: 1
+    currentLife: mob.life,
   }
-}
-function newCell(x, y) {
-  const
-    biome = newBiome(),
-    enemies = [];
-
-  if (biome !== "city") {
-    enemies.push(newEnemy())
-  }
-  if (biome === "forest") {
-    enemies.push(newEnemy())
-  }
-
-  return {
-    id: newUID(),
-    kind: biome,
-    x: x,
-    y: y,
-    enemies: enemies,
-    players: []
-  }
-}
-
-function newWorld() {
-  let cells = []
-    for (var y = 0; y < WORLD_SIZE.y; y++) {
-  for (var x = 0; x < WORLD_SIZE.x; x++) {
-      cells.push(newCell(x, y))
-    }
-  }
-  return cells
 }
 
 export default {
@@ -130,9 +114,22 @@ export default {
     }
   },
   methods: {
-    log(message/*, kind*/) {
-      this.logs.unshift(message);
+    // MAP EDITOR
+    createMob(id) {
+      this.currentCell.enemies.push(newEnemy(id));
+      this.$fetch.patch(`http://localhost:3000/cells/${this.currentCell.id}`, this.currentCell)
     },
+    clearCell() {
+      this.cells.forEach(c => {
+        c.enemies = []
+        // this.$fetch.patch(`http://localhost:3000/cells/${this.currentCell.id}`, this.currentCell)
+      });
+    },
+    setCellKind(kind) {
+      this.currentCell.kind = kind;
+      this.$fetch.patch(`http://localhost:3000/cells/${this.currentCell.id}`, this.currentCell)
+    },
+    // ADMIN
     savePlayerData() {
       this.$fetch.patch('http://localhost:3000/currentPlayer', this.currentPlayer)
     },
@@ -145,6 +142,10 @@ export default {
     spawnMob() {
       this.currentCell.enemies.push(newEnemy())
     },
+    // NON ADMIN
+    log(message/*, kind*/) {
+      this.logs.unshift(message);
+    },
     movePlayer(x, y) {
       this.currentPlayer.x = x;
       this.currentPlayer.y = y;
@@ -153,14 +154,14 @@ export default {
     },
     attackPlayerBy(enemy) {
       const damage = (enemy.atk + roll(6) - this.currentPlayer.def + roll(6));
-      this.currentPlayer.life -= damage
+      this.currentPlayer.currentLife -= damage
       this.log(`⚔ Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`);
     },
     fight(enemy, player = this.currentPlayer) {
       const pDamage = (player.atk + roll(6) - enemy.def + roll(6));
       const eDamage = (enemy.atk + roll(6) - player.def + roll(6));
-      enemy.life -= pDamage;
-      player.life -= eDamage;
+      enemy.currentLife -= pDamage;
+      player.currentLife -= eDamage;
 
       if (enemy.life > 0) {
         this.log(`⚔ Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !\n${enemy.name} vous inflige, ${eDamage} dégats !`);
@@ -180,9 +181,6 @@ export default {
     },
     cellEnemies() {
       return this.currentCell.enemies;
-    },
-    generateNewWorld() {
-      this.cells = newWorld();
     }
   },
   computed: {

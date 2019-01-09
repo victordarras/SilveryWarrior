@@ -8,10 +8,11 @@
         class="enemy"
       >
         <div class="enemy-picture">👾</div>
-        <div class="life"></div>
-        <div :style="lifeCss(enemy.life)">
-          <span class="name">{{ enemy.name }}</span><br>
-          <span class="life">{{ enemy.life }}/100</span>
+        <div class="life" :style="lifeCss(enemy.currentLife, enemy.life)">
+          <div class="value">
+            <span class="lifeValue">{{ enemy.name }}</span><br>
+            <span>{{ enemy.currentLife }}/{{ enemy.life }}</span>
+          </div>
         </div>
       </li>
     </ul>
@@ -28,7 +29,8 @@ export default {
     }
   },
   methods: {
-    lifeCss: function (l) {
+    lifeCss: function (value, max) {
+      const l = (value / max) * 100;
       return `background-image: linear-gradient(to right, black, black ${l-.01}%, transparent ${l}%, transparent )`
     },
     attack: function(enemy) {
@@ -45,10 +47,6 @@ export default {
     margin: 10px;
     padding: 0;
     grid-area: place;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(6, 1fr);
   }
 
   .place:before {
@@ -62,29 +60,46 @@ export default {
     background: url(../assets/images/horizontal_separator.png) repeat-x top left / contain;
     mix-blend-mode: darken;
   }
-
+  .enemies {
+    display: flex;
+    flex-flow: row wrap;
+  }
   .enemy {
     height: 250px;
     width: 172px;
+    margin: 0 1.5vh;
     display: grid;
-    grid-template-rows: 16vh 1fr 9vh;
+    grid-template-rows: 16vh 9vh;
     align-items: center;
     background: url('../assets/images/card.png') no-repeat center / contain;
-    padding: 1vh 2.5vh;
+    padding: 1.6vh 2.6vh 3vh 2vh;
     border-radius: 5px;
     cursor: pointer;
     z-index: 1;
     text-align: center;
+    transition: all 0.16s ease-in-out;
   }
   .enemy:hover {
-    box-shadow: inset 0 0 0 2px #fff;
+    transform: scale(1.05)
   }
+
+  .enemy:active {
+    transition: none;
+    transform: scale(0.95)
+  }
+
   .enemy-picture {
     font-size: 3rem;
   }
 
-  .name, .life {
-    mix-blend-mode: difference;
+  .life {
     color: #fff;
+    margin: 4px 8px 0px 4px;
+    border-radius: 2px;
   }
+  .lifeValue {
+    mix-blend-mode: difference;
+  }
+
+
 </style>
