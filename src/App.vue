@@ -120,10 +120,8 @@ export default {
       this.$fetch.patch(`http://localhost:3000/cells/${this.currentCell.id}`, this.currentCell)
     },
     clearCell() {
-      this.cells.forEach(c => {
-        c.enemies = []
-        // this.$fetch.patch(`http://localhost:3000/cells/${this.currentCell.id}`, this.currentCell)
-      });
+      this.currentCell.enemies = [];
+      this.$fetch.patch(`http://localhost:3000/cells/${this.currentCell.id}`, this.currentCell)
     },
     setCellKind(kind) {
       this.currentCell.kind = kind;
