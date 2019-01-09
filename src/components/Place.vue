@@ -4,12 +4,14 @@
       v-if="cell.enemies && enemy.life > 0"
       @click="attack(enemy)"
       :key="enemy.uid"
-      :title="{enemy}"
       class="enemy"
     >
-      <span style="font-size: 3rem">👾</span><br>
-      <strong class="name">{{ enemy.name }}</strong><br>
-      <div :style="lifeCss(enemy.life)" class="life">{{ enemy.life }}/100</div>
+      <div class="enemy-picture">👾</div>
+      <div class="life"></div>
+      <div :style="lifeCss(enemy.life)">
+        <strong class="name">{{ enemy.name }}</strong><br>
+        {{ enemy.life }}/100
+      </div>
     </li>
   </ul>
 </template>
@@ -25,7 +27,7 @@ export default {
   },
   methods: {
     lifeCss: function (l) {
-      return `background-image: linear-gradient(to right, darkgreen, darkgreen ${l-.01}%, transparent ${l}%, transparent )`
+      return `background-image: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2) ${l-.01}%, transparent ${l}%, transparent )`
     },
     attack: function(enemy) {
       this.$emit('attack', enemy)
@@ -45,10 +47,13 @@ export default {
     grid-template-rows: repeat(6, 1fr);
   }
   .enemy {
-    height: 32vh;
+    height: 29vh;
     width: 20vh;
+    display: grid;
+    grid-template-rows: 16vh 1fr 9vh;
+    align-items: center;
     background: url('../assets/images/card.png') no-repeat center / contain;
-    padding: 10px;
+    padding: 1vh 2.5vh;
     border-radius: 5px;
     cursor: pointer;
     z-index: 1;
@@ -56,5 +61,8 @@ export default {
   }
   .enemy:hover {
     box-shadow: inset 0 0 0 2px #fff;
+  }
+  .enemy-picture {
+    font-size: 3rem;
   }
 </style>

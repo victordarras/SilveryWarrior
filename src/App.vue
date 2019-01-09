@@ -6,16 +6,7 @@
 
     <template v-else>
 
-      <section class="Player">
-        <h3>{{ currentPlayer.name }}</h3>
-        <div class="lifeBar" :style="lifeCss(currentPlayer.life)">
-          <strong>{{ currentPlayer.life }}</strong> /100
-        </div>
-        <hr>
-        <br><strong>{{ currentPlayer.atk }}</strong> - <em>Attack</em>
-        <br><strong>{{ currentPlayer.def }}</strong> - <em>Defense</em>
-        <br><strong>{{ currentPlayer.spe }}</strong> - <em>Special</em>
-      </section>
+      <Profile :player="currentPlayer" />
       <Table
         :cells="cells"
         :Player="currentPlayer"
@@ -27,17 +18,17 @@
           <li v-for="(log, i) in logs" :key="i"><code>{{ log }}</code></li>
         </ul>
       </section>
-      <div class="buttons">
-        <button @click="spawnMob">Create mob</button>
-        <button @click="drinkPopo(50)">Drink Potion (+50)</button>
-        <button @click="generateNewWorld()">Generate new World</button>
-        <button @click="changeName()">Change player name</button>
-        <button @click="savePlayerData()">Save player</button>
-      </div>
       <Place
         :cell="currentCell"
         @attack="fight"
       />
+    <div class="buttons">
+      <button @click="spawnMob()">Create mob</button>
+      <button @click="generateNewWorld()">Generate new World</button>
+      <button @click="changeName()">Change player name</button>
+      <button @click="savePlayerData()">Save player</button>
+      <button @click="drinkPopo(50)">Drink popo</button>
+    </div>
 
     </template>
 
@@ -45,6 +36,7 @@
 </template>
 
 <script>
+import Profile from './components/Profile.vue'
 import Table from './components/Table.vue'
 import Place from './components/Place.vue'
 
@@ -143,9 +135,6 @@ export default {
     log(message, kind) {
       this.logs.unshift(message);
     },
-    lifeCss: function (l) {
-      return `background-image: linear-gradient(to right, darkred, darkred ${l-.01}%, grey ${l}%, grey )`
-    },
     savePlayerData() {
       this.$fetch.patch('http://localhost:3000/currentPlayer', this.currentPlayer)
     },
@@ -220,7 +209,7 @@ export default {
   updated() {
   },
   components: {
-    Table, Place
+    Table, Place, Profile
   }
 }
 </script>
@@ -240,11 +229,22 @@ export default {
   grid-gap: 10px;
 }
 
-.lifeBar {
-  margin: 10px 0;
-  border-radius: 5px;
-  color: #fff;
-  text-align: center;
+.buttons button {
+  display: inline-block;
+  vertical-align: top;
+  -webkit-appearance: none;
+  border: 2px solid #222;
+  margin: 5px;
+  transform: skew(5deg);
+}
+.buttons button:hover {
+  border-bottom-width: 3px;
+  border-top-width: 1px;
+  transform: skew(3deg);
+}
+.buttons button:active {
+  border-top-width: 3px;
+  border-bottom-width: 1px;
 }
 
 .logs li:first-child {  opacity: 1}
