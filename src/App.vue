@@ -15,12 +15,7 @@
       />
       <!-- Development helpers -->
       <div class="buttons">
-        <!-- <button @click="setCellKind('unreachable')">UNREACHABLE</button>
-        <button @click="setCellKind('forest')">forest</button>
-        <button @click="setCellKind('city')">city</button>
-        <button @click="setCellKind('mountain')">mountain</button>
-        <button @click="setCellKind('hills')">hills</button>
-        <button @click="setCellKind('plain')">hills</button> -->
+        <button @click="setCellKind()">Set Cell KIND</button>
         <button @click="createMob(0)">createMob(0)</button>
         <button @click="createMob(1)">createMob(1)</button>
         <button @click="createMob(2)">createMob(2)</button>
@@ -49,6 +44,14 @@ import Table from './components/Table.vue'
 import Place from './components/Place.vue'
 import Logger from './components/Logger.vue'
 
+const CELL_KINDS = [
+  'unreachable',
+  'forest',
+  'city',
+  'mountain',
+  'hills',
+  'plain',
+]
 const MOBS = [
   {
     "id": 0,
@@ -123,7 +126,8 @@ export default {
       this.currentCell.enemies = [];
       this.$fetch.patch(`http://localhost:3000/cells/${this.currentCell.id}`, this.currentCell)
     },
-    setCellKind(kind) {
+    setCellKind() {
+      const kind = prompt(CELL_KINDS)
       this.currentCell.kind = kind;
       this.$fetch.patch(`http://localhost:3000/cells/${this.currentCell.id}`, this.currentCell)
     },
