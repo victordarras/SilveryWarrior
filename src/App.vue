@@ -12,12 +12,6 @@
         :Player="currentPlayer"
         @movePlayer="movePlayer"
       />
-      <Logger :logs="logs" />
-      <Place
-        :cell="currentCell"
-        @attack="fight"
-      />
-
       <!-- Development helpers -->
       <div class="buttons">
         <button @click="generateNewWorld()">Generate new World</button>
@@ -26,6 +20,12 @@
         <button @click="savePlayerData()">Save player</button>
         <button @click="drinkPopo(50)">Drink popo</button>
       </div>
+      <Place
+        :cell="currentCell"
+        @attack="fight"
+      />
+      <Logger :logs="logs" />
+
 
     </template>
 
@@ -130,7 +130,7 @@ export default {
     }
   },
   methods: {
-    log(message, kind) {
+    log(message/*, kind*/) {
       this.logs.unshift(message);
     },
     savePlayerData() {
@@ -218,15 +218,22 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
-  height: 99vh;
-  max-width: 100vw;
+  width: 100%;
+  height: 100vh;
   display: grid;
-  grid-template-columns: 220px 80vh 1fr;
-  grid-template-rows: 53vh 1fr;
-  padding: 10px;
+  /*padding: 10px;*/
   grid-gap: 10px;
+  grid-template-columns: 300px 80vh 1fr;
+  grid-template-rows: 53vh 1fr 1fr;
+  grid-template-areas:
+    "profile table buttons"
+    "profile place logs"
+    "profile place logs";
 }
 
+.buttons {
+  grid-template-area: buttons;
+}
 .buttons button {
   display: inline-block;
   vertical-align: top;

@@ -19,6 +19,9 @@ export default {
 </script>
 
 <style scoped>
+.logs {
+  grid-area: logs;
+}
 .logs li:first-child {  opacity: 1}
 .logs li:nth-child(2) { opacity: 0.7}
 .logs li:nth-child(3) { opacity: 0.6}

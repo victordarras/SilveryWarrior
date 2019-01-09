@@ -1,5 +1,5 @@
 <template>
-  <div class="game">
+  <div class="table">
     <div class="cells" :class="isometric ? 'iso' : ''">
 
         <div
@@ -61,10 +61,11 @@ export default {
 </script>
 
 <style scoped>
-  .game {
+  .table {
     position: relative;
     background: url(../assets/images/map.png);
     background-size: cover;
+    grid-area: table;
   }
   .cells {
     display: grid;

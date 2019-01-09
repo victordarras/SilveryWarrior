@@ -2,7 +2,7 @@
   <section class="profile">
     <div class="profile-avatar">
       <div class="lifeBar" :style="lifeCss(player.life)">
-        <strong>{{ player.life }}</strong> /100
+        <span class="lifeBar-value"><strong>{{ player.life }}</strong> /100</span>
       </div>
     </div>
     <h3>{{ player.name }}</h3>
@@ -35,7 +35,20 @@ export default {
 
 <style scoped>
 .profile {
-  grid-row: span 2;
+  padding: 20px 40px;
+  position: relative;
+  grid-area: profile;
+}
+
+.profile:before {
+  content:"";
+  position: absolute;
+  /*33*585*/
+  width: 33px;
+  height: 100%;
+  top: 0;
+  right: -15px;
+  background: url(../assets/images/vertical_separator.png) repeat-y top right / contain;
 }
 
 .profile-menu {
@@ -66,9 +79,16 @@ export default {
   top: 150px;
   left: 35px;
   right: 53px;
-  height: 15px;
-  border-radius: 15px;
+  height: 14px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lifeBar-value {
+  mix-blend-mode: difference;
   color: #fff;
-  text-align: center;
+  font-size: 0.875em;
+  vertical-align: top;
 }
 </style>
