@@ -1,6 +1,6 @@
 .table {
   position: relative;
-  background: url(../assets/images/map.png);
+  background: url(../assets/images/map_empty.png);
   background-size: cover;
   grid-area: table;
   cursor: url('../assets/images/cursor_2.png'), auto;
@@ -8,49 +8,57 @@
 .cells {
   display: grid;
   height: 100%;
-  padding: 4vh 8vh 7.3vh 8.8vh;
+
+  padding: 5% 10.5% 9.1% 11%;
   grid-template-columns: repeat(32, 1fr);
   grid-template-rows: repeat(21, 1fr);
-  width: 80vh;
-  height: 53vh;
-  // opacity: 0.5;
+  width: 100%;
+  height: 100%;
 }
 .cell {
   position: relative;
   display: grid;
-  transition: all 0.16s ease-in-out;
 }
-.player, .reachable {
+.player {
   // mix-blend-mode: darken;
 }
 .player:before {
-  // content:'';
-  position: absolute;
-  top: -10%;
-  left: -10%;
-  width: 120%;
-  height: 120%;
-  z-index: 1;
-  pointer-events: none;
-  background: url('../assets/images/cursor.png') no-repeat top / contain;
-}
-.reachable:before {
   content:'';
   position: absolute;
   top: -10%;
   left: -10%;
   width: 120%;
   height: 120%;
+  z-index: 1;
   pointer-events: none;
   background: url('../assets/images/cursor.png') no-repeat top / contain;
+  mix-blend-mode: darken;
+}
+.reachable {
+  transform: translateZ(1px);
+  transition: all 0.16s ease-in-out;
+  animation: appear 0.16s;
 }
 
-.reachable {
-  transform: scale(0.75);
+@keyframes appear {
+  from {transform: scale(0);opacity: 0;}
+  to   {transform: scale(1);opacity: 1;}
 }
+.reachable:before {
+  content:'';
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  pointer-events: none;
+  background: url('../assets/images/cursor.png') no-repeat top / contain;
+  mix-blend-mode: darken;
+}
+
 .reachable:hover {
   z-index: 1;
-  transform: scale(1);
+  transform: scale(1.1);
 }
 .toggleIso {
   position: absolute;
@@ -62,15 +70,33 @@
 //   background: rgba(0,0,0,0.2)
 // }
 
-// .forest {
-//   background-color: rgba(0, 255, 0, 0.2);
-// }
-// .city {
-//   background-color: rgba(0, 255, 255, 0.2);
-// }
-// .mountain {
-//   border: 1px solid blue;
-// }
-// .hills {
-//   background-color: rgba(155, 155, 0, 0.2);
-// }
+.cell {
+  background-size: 1000% auto;
+  mix-blend-mode: darken;
+}
+.forest {
+  background-image: url('../assets/images/map_sprite.png');
+  background-repeat: no-repeat;
+  background-position: 0 11%;
+  &:nth-child(2n) {background-position: 0 23%;}
+  &:nth-child(3n) {background-position: 0 33%;}
+  &:nth-child(5n) {background-position: 0 44%;}
+  &:nth-child(7n) {background-position: 0 55%;}
+}
+.city {
+  background-image: url('../assets/images/map_sprite.png');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+.mountain {
+  background-image: url('../assets/images/map_sprite.png');
+  background-repeat: no-repeat;
+  background-position: 23% 55%;
+  &:nth-child(2n) {background-position: 23% 33%;}
+  &:nth-child(3n) {background-position: 23% 44%;}
+}
+.hills {
+  background-image: url('../assets/images/map_sprite.png');
+  background-repeat: no-repeat;
+  background-position: 22% 33%;
+}

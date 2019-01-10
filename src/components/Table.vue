@@ -4,7 +4,6 @@
 
         <div
           v-for="cell in cells"
-          :title="cell.x + cell.y"
           :class="cellClass(cell)"
           :key="cell.uid"
         >

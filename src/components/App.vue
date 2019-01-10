@@ -1,15 +1,27 @@
 <template>
   <div id="app">
     <template v-if="isLoading">
-      <h1>Chargement…</h1>
+      <h1>L</h1>
+      <h1>O</h1>
+      <h1>A</h1>
+      <h1>D</h1>
     </template>
-
-    <template v-else-if="currentPlayer.currentLife <= 0">
-      <h1>YOU DEAD</h1>
-      <button @click="revive()">Drink popo</button>
-    </template>
-
-    <template v-else>
+    <template v-else-if="currentPlayer.currentLife > 0">
+      <!-- Development helpers -->
+      <div class="buttons">
+        <h5>Admin</h5>
+        <h6>Cell</h6>
+        <button @click="setCellKind()">Set Cell KIND</button>
+        <button @click="clearCell">CLEAR</button>
+        <h6>Mob</h6>
+        <button @click="createMob(0)">createMob(0)</button>
+        <button @click="createMob(1)">createMob(1)</button>
+        <button @click="createMob(2)">createMob(2)</button>
+        <h6>Player</h6>
+        <button @click="changeName()">Change player name</button>
+        <button @click="savePlayerData()">Save player</button>
+        <button @click="drinkPopo(50)">Drink popo</button>
+      </div>
 
       <Profile :player="currentPlayer" />
       <Table
@@ -18,27 +30,17 @@
         :Player="currentPlayer"
         @movePlayer="movePlayer"
       />
-      <!-- Development helpers -->
-      <div class="buttons">
-        <button @click="setCellKind()">Set Cell KIND</button>
-        <button @click="createMob(0)">createMob(0)</button>
-        <button @click="createMob(1)">createMob(1)</button>
-        <button @click="createMob(2)">createMob(2)</button>
-        <button @click="clearCell">CLEAR</button>
-        <hr>
-        <button @click="changeName()">Change player name</button>
-        <button @click="savePlayerData()">Save player</button>
-        <button @click="drinkPopo(50)">Drink popo</button>
 
-        <p>{{currentCell}}</p>
-      </div>
-      <Place
-        :cell="currentCell"
-        @attack="fight"
-      />
+      <City v-if="currentCell.kind === 'city'" :cell="currentCell"/>
+
+      <Place :cell="currentCell" @attack="fight" />
+
       <Logger :logs="logs" />
 
-
+    </template>
+    <template v-else>
+      <h1>YOU DEAD</h1>
+      <button @click="revive()">Drink popo</button>
     </template>
 
   </div>
@@ -49,6 +51,7 @@ import Profile from './Profile.vue'
 import Table from './Table.vue'
 import Place from './Place.vue'
 import Logger from './Logger.vue'
+import City from './City.vue'
 
 const CELL_KINDS = [
   'unreachable',
@@ -141,14 +144,20 @@ export default {
     clearCell() {
       this.currentCell.enemies = [];
       this.updateCell()
+      //
+      // uncomment to clear the entire map
+      // this.cells.forEach(cell => {
+      //   cell.enemies = [];
+      //   this.updateCell(cell)
+      // })
     },
     setCellKind() {
       const kind = prompt(CELL_KINDS)
       this.currentCell.kind = kind;
       this.updateCell()
     },
-    updateCell() {
-      this.$fetch.patch(`http://localhost:3000/cells/${this.currentCell.id}`, this.currentCell)
+    updateCell(cell = this.currentCell) {
+      this.$fetch.patch(`http://localhost:3000/cells/${cell.id}`, cell)
         .then("DONE updateCell");
     },
     // ADMIN
@@ -168,8 +177,8 @@ export default {
       this.currentCell.enemies.push(newEnemy())
     },
     // NON ADMIN
-    log(message/*, kind*/) {
-      this.logs.push({content: message, id: this.logs.length});
+    log(message, kind = "normal") {
+      this.logs.push({kind: kind,content: message, id: this.logs.length});
     },
     revive() {
       this.currentPlayer.exp = Math.round(this.currentPlayer.exp *= 0.875);
@@ -186,7 +195,7 @@ export default {
     attackPlayerBy(enemy) {
       const damage = (enemy.atk + roll(6) - this.currentPlayer.def + roll(6));
       this.currentPlayer.currentLife -= damage
-      this.log(`⚔ Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`);
+      this.log(`⚔ Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`, 'warning');
     },
     fight(enemy, player = this.currentPlayer) {
       const pDamage = (player.atk + roll(6) - enemy.def + roll(6));
@@ -196,25 +205,22 @@ export default {
         enemy.currentLife -= pDamage;
         player.currentLife -= eDamage;
         this.log(`⚔ Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !`);
-        this.log(`⚔ ${enemy.name} vous inflige, ${eDamage} dégats !`);
+        this.log(`⚔ ${enemy.name} vous inflige, ${eDamage} dégats !`, 'warning');
       } else  {
         player.currentLife -= eDamage;
         enemy.currentLife -= pDamage;
-        this.log(`⚔ ${enemy.name} vous inflige, ${eDamage} dégats !`);
+        this.log(`⚔ ${enemy.name} vous inflige ${eDamage} dégats !`, 'warning');
         this.log(`⚔ Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !`);
       }
 
       if (player.currentLife <= 0) {
-        this.log(`☠ Vous avez été brutalement abbatu par ${enemy.name} en lui infligeant ${pDamage} dégats !`);
+        this.log(`☠ Vous avez été brutalement abbatu par ${enemy.name} en lui infligeant ${pDamage} dégats !`, 'alert');
       }
       if (enemy.currentLife <= 0) {
         this.currentPlayer.exp += enemy.exp;
         this.currentPlayer.kills += 1;
-        this.log(`💀 Vous achevez ${enemy.name} en lui infligeant ${pDamage} dégats !`);
-        const mobdisappear = setTimeout( () => {
-          this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
-          clearTimeout(mobdisappear);
-        }, 1000)
+        this.log(`💀 Vous achevez ${enemy.name} en lui infligeant ${pDamage} dégats !`, 'success');
+        this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
         //
       }
       if (this.currentCell.enemies.length === 0) {
@@ -249,7 +255,7 @@ export default {
     return this.log("🎲 Votre voyage commence ici.")
   },
   components: {
-    Table, Place, Profile, Logger
+    Table, Place, Profile, Logger, City
   }
 }
 </script>

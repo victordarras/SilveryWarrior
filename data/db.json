@@ -2,17 +2,17 @@
   "currentPlayer": {
     "name": "Joe",
     "level": 1,
-    "currentLife": 78,
+    "currentLife": 79,
     "life": 100,
     "atk": 14,
     "def": 4,
     "spe": 2,
-    "x": 13,
-    "y": 6,
-    "exp": 540,
+    "x": 5,
+    "y": 14,
+    "exp": 544,
     "deathCount": 0,
-    "kills": 133,
-    "death": 13
+    "kills": 156,
+    "death": 16
   },
   "users": [],
   "cities": [],
@@ -1347,66 +1347,10 @@
     },
     {
       "id": "519969819",
-      "kind": "city",
+      "kind": "forest",
       "x": 6,
       "y": 5,
-      "enemies": [
-        {
-          "id": "550331215",
-          "name": "Canard boiteux",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "currentLife": -14
-        },
-        {
-          "id": "409869297",
-          "name": "Canard boiteux",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "currentLife": 20
-        },
-        {
-          "id": "433818166",
-          "name": "Poussin malin",
-          "picture": "🐣",
-          "life": 35,
-          "atk": 2,
-          "def": 5,
-          "spe": 0,
-          "exp": 10,
-          "currentLife": 35
-        },
-        {
-          "id": "567384362",
-          "name": "Poussin malin",
-          "picture": "🐣",
-          "life": 35,
-          "atk": 2,
-          "def": 5,
-          "spe": 0,
-          "exp": 10,
-          "currentLife": -9
-        },
-        {
-          "id": "271418088",
-          "name": "Poulpe fou",
-          "picture": "🦑",
-          "life": 50,
-          "atk": 4,
-          "def": 5,
-          "spe": 10,
-          "exp": 10,
-          "currentLife": -14
-        }
-      ],
+      "enemies": [],
       "players": []
     },
     {
@@ -2534,41 +2478,7 @@
       "kind": "plain",
       "x": 19,
       "y": 9,
-      "enemies": [
-        {
-          "id": "412153595",
-          "name": "Canard boiteux",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "currentLife": 20
-        },
-        {
-          "id": "883878694",
-          "name": "Canard boiteux",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "currentLife": 20
-        },
-        {
-          "id": "319406014",
-          "name": "Canard boiteux",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "currentLife": 20
-        }
-      ],
+      "enemies": [],
       "players": []
     },
     {
@@ -2965,7 +2875,7 @@
     },
     {
       "id": "712538200",
-      "kind": "plain",
+      "kind": "forest",
       "x": 5,
       "y": 11,
       "enemies": [],
@@ -3229,7 +3139,7 @@
     },
     {
       "id": "950335999",
-      "kind": "plain",
+      "kind": "forest",
       "x": 6,
       "y": 12,
       "enemies": [],
@@ -4368,30 +4278,7 @@
       "kind": "plain",
       "x": 20,
       "y": 16,
-      "enemies": [
-        {
-          "id": "211825790",
-          "name": "Canard boiteux",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "currentLife": 20
-        },
-        {
-          "id": "468018062",
-          "name": "Canard boiteux",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "currentLife": 20
-        }
-      ],
+      "enemies": [],
       "players": []
     },
     {

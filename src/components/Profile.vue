@@ -17,7 +17,6 @@
       <div class="profile-drink"></div>
     </div>
     <div class="profile-quest"></div>
-    <pre v-for="key in Object.keys(player)" :key="key"><strong>{{key}}</strong>: {{player[key]}}</pre>
   </section>
 </template>
 

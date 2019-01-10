@@ -2,7 +2,12 @@
   <section class="logs">
 
     <transition-group tag="ul" name="listAppear">
-      <li class="log" v-for="log in reverseLogs" :key="log.id">{{ log.content }}</li>
+      <li
+        class="log"
+        v-for="log in reverseLogs"
+        :class="log.kind"
+        :key="log.id"
+      >{{ log.content }}</li>
     </transition-group>
 
   </section>
@@ -25,12 +30,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .logs {
   grid-area: logs;
-  font-size: 21px;
+  z-index: 1;
+  font-size: 18px;
+  max-height: 100%;
+  overflow: auto;
 }
 .log {
-  margin: 0 0 0.25em 1rem ;
+  margin: 0 0 0.25em 1rem;
+  &:nth-child(n + 7) {
+    opacity: 0.5;
+  }
+  &.alert {color: darkorange;}
+  &.warning {color: darkred;}
+  &.success {color: darkgreen;}
 }
 </style>
