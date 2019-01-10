@@ -9,10 +9,11 @@
     position: absolute;
     /*930x23*/
     height: 23px;
-    top: -31px;
+    top: -20px;
     right: -10px;
     left: -15px;
     background: url(../assets/images/horizontal_separator.png) repeat-x top left / contain;
+    transform: rotateX(180deg);
     mix-blend-mode: darken;
   }
 }
@@ -21,6 +22,7 @@
   flex-flow: row wrap;
 }
 .enemy {
+  position: relative;
   height: 250px;
   width: 172px;
   margin: 0 1.5vh;
@@ -47,7 +49,16 @@
   font-size: 0.75em;
 }
 .enemy-picture {
-  font-size: 3rem;
+  font-size: 5rem;
+}
+.enemy-life {
+  position: absolute;
+  right: 0%;
+  bottom: 35%;
+  width: 54px;
+  height: 54px;
+  mix-blend-mode: darken;
+  transform: rotate(-90deg) rotateX(180deg);
 }
 
 .life {

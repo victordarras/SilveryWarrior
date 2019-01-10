@@ -5,7 +5,11 @@
         <span class="lifeBar-value"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
       </div>
     </div>
-    <h3>{{ player.name }}</h3>
+    <h3>{{ player.name }}({{ player.level }})</h3>
+    <p>
+      {{ player.exp }} experience points<br>
+      {{ player.kills }} mob killed
+    </p>
     <div class="profile-menu">
       <div class="profile-money"></div>
       <div class="profile-settings"></div>
@@ -13,6 +17,7 @@
       <div class="profile-drink"></div>
     </div>
     <div class="profile-quest"></div>
+    <pre v-for="key in Object.keys(player)" :key="key"><strong>{{key}}</strong>: {{player[key]}}</pre>
   </section>
 </template>
 

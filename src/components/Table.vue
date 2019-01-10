@@ -49,7 +49,7 @@ export default {
       let klass = ["cell"]
       klass.push(this.isReachable(cell) ? " reachable" : "");
       klass.push(this.Player.x === cell.x && this.Player.y === cell.y ? " player" : "");
-      klass.push(cell.enemy && cell.enemy.life > 0 ? " enemy" : "");
+      klass.push(cell.enemies.length ? " enemy" : "");
       klass.push(` ${cell.kind}`);
       return klass.join(' ');
     },

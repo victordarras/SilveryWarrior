@@ -3,6 +3,7 @@
   background: url(../assets/images/map.png);
   background-size: cover;
   grid-area: table;
+  cursor: url('../assets/images/cursor_2.png'), auto;
 }
 .cells {
   display: grid;
@@ -12,26 +13,26 @@
   grid-template-rows: repeat(21, 1fr);
   width: 80vh;
   height: 53vh;
-  opacity: 0.5;
-  transition: all 0.3s ease-in-out;
+  // opacity: 0.5;
 }
 .cell {
-  cursor: auto;
   position: relative;
   display: grid;
   transition: all 0.16s ease-in-out;
 }
-
+.player, .reachable {
+  // mix-blend-mode: darken;
+}
 .player:before {
-  content:'';
+  // content:'';
   position: absolute;
   top: -10%;
   left: -10%;
   width: 120%;
   height: 120%;
+  z-index: 1;
   pointer-events: none;
   background: url('../assets/images/cursor.png') no-repeat top / contain;
-  mix-blend-mode: darken;
 }
 .reachable:before {
   content:'';
@@ -42,16 +43,14 @@
   height: 120%;
   pointer-events: none;
   background: url('../assets/images/cursor.png') no-repeat top / contain;
-  mix-blend-mode: darken;
 }
 
 .reachable {
-  cursor: pointer;
   transform: scale(0.75);
 }
 .reachable:hover {
   z-index: 1;
-  transform: scale(0.9);
+  transform: scale(1);
 }
 .toggleIso {
   position: absolute;
@@ -59,19 +58,19 @@
   right: 0;
 }
 /*debug*/
-.unreachable {
-  background: rgba(0,0,0,0.2)
-}
+// .unreachable {
+//   background: rgba(0,0,0,0.2)
+// }
 
-.forest {
-  background-color: rgba(0, 255, 0, 0.2);
-}
-.city {
-  background-color: rgba(0, 255, 255, 0.2);
-}
-.mountain {
-  border: 1px solid blue;
-}
-.hills {
-  background-color: rgba(155, 155, 0, 0.2);
-}
+// .forest {
+//   background-color: rgba(0, 255, 0, 0.2);
+// }
+// .city {
+//   background-color: rgba(0, 255, 255, 0.2);
+// }
+// .mountain {
+//   border: 1px solid blue;
+// }
+// .hills {
+//   background-color: rgba(155, 155, 0, 0.2);
+// }

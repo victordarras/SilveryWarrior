@@ -1,8 +1,10 @@
 <template>
   <section class="logs">
-    <ul>
-      <li v-for="(log, i) in logs" :key="i"><code>{{ log }}</code></li>
-    </ul>
+
+    <transition-group tag="ul" name="listAppear">
+      <li class="log" v-for="log in reverseLogs" :key="log.id">{{ log.content }}</li>
+    </transition-group>
+
   </section>
 </template>
 
@@ -14,6 +16,11 @@ export default {
       type: Array,
       default: () => ([])
     }
+  },
+  computed: {
+    reverseLogs() {
+      return this.logs.slice().reverse();
+    }
   }
 }
 </script>
@@ -21,9 +28,9 @@ export default {
 <style scoped>
 .logs {
   grid-area: logs;
+  font-size: 21px;
 }
-.logs li:first-child {  opacity: 1}
-.logs li:nth-child(2) { opacity: 0.7}
-.logs li:nth-child(3) { opacity: 0.6}
-.logs li {  opacity: 0.5}
+.log {
+  margin: 0 0 0.25em 1rem ;
+}
 </style>

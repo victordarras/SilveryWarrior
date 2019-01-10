@@ -12,3 +12,22 @@ ul {
 }
 
 *,*:after,*:before{box-sizing: inherit;}
+
+
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.listAppear-enter-active {
+  transition: all .3s ease;
+}
+.listAppear-leave-active {
+  transition: all .2s ease;
+}
+.listAppear-enter, .listAppear-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform-origin: left;
+  transform: scale(0.97);
+  opacity: 0;
+}
+.listAppear-leave-to {
+  transform: translateY(-10%);
+}
