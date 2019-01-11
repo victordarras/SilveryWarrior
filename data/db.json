@@ -2,17 +2,17 @@
   "currentPlayer": {
     "name": "Joe",
     "level": 1,
-    "currentLife": 91,
+    "currentLife": 66,
     "life": 100,
     "atk": 14,
     "def": 4,
     "spe": 2,
-    "x": 6,
-    "y": 12,
-    "exp": 365,
+    "x": 5,
+    "y": 14,
+    "exp": 382,
     "deathCount": 0,
-    "kills": 168,
-    "death": 21
+    "kills": 175,
+    "death": 22
   },
   "users": [],
   "cities": [],
@@ -91,7 +91,7 @@
     },
     {
       "id": "676188348",
-      "kind": "plain",
+      "kind": "city",
       "x": 9,
       "y": 0,
       "enemies": [],
@@ -355,7 +355,7 @@
     },
     {
       "id": "881804274",
-      "kind": "city",
+      "kind": "hills",
       "x": 10,
       "y": 1,
       "enemies": [],
@@ -2491,7 +2491,7 @@
     },
     {
       "id": "420371261",
-      "kind": "plain",
+      "kind": "hills",
       "x": 21,
       "y": 9,
       "enemies": [],
@@ -2739,7 +2739,7 @@
     },
     {
       "id": "444518706",
-      "kind": "plain",
+      "kind": "hills",
       "x": 20,
       "y": 10,
       "enemies": [],
@@ -3179,32 +3179,7 @@
       "kind": "forest",
       "x": 6,
       "y": 12,
-      "enemies": [
-        {
-          "name": "Araignée veuve",
-          "id": "775158804",
-          "picture": "🦆",
-          "life": 200,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "currentLife": 200,
-          "originId": "733617524"
-        },
-        {
-          "name": "Araignée veuve",
-          "id": "144864350",
-          "picture": "🦆",
-          "life": 200,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "currentLife": 200,
-          "originId": "733617524"
-        }
-      ],
+      "enemies": [],
       "players": []
     },
     {

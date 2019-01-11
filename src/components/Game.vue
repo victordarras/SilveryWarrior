@@ -15,6 +15,7 @@
       <Place
         :cell="currentCell"
         @attack="fight"
+        @sleep="addLife(currentPlayer.life)"
       />
     </template>
 
@@ -24,17 +25,6 @@
     </section>
 
     <Logger :logs="logs" />
-    <!-- Development helpers -->
-    <div class="buttons">
-      <button @click="isAdmin = !isAdmin">Toggle Admin</button>
-      <template v-if="isAdmin">
-        <h5>Admin</h5>
-        <h6>Player</h6>
-        <button @click="changeName()">Change player name</button>
-        <button @click="savePlayerData()">Save player</button>
-        <button @click="drinkPopo(50)">Drink popo</button>
-      </template>
-    </div>
   </section>
 </template>
 
@@ -43,70 +33,14 @@ import Profile from './Profile.vue'
 import Map from './Map.vue'
 import Place from './Place.vue'
 import Logger from './Logger.vue'
+import { roll, newUID } from '../helpers.js'
 
-const MOBS = [
-  {
-    "id": 0,
-    "name": "Canard boiteux",
-    "picture": "🦆",
-    "life": 20,
-    "atk": 2,
-    "def": 2,
-    "spe": 2,
-    "exp": 10
-  },{
-    "id": 1,
-    "name": "Poussin malin",
-    "picture": "🐣",
-    "life": 35,
-    "atk": 2,
-    "def": 5,
-    "spe": 0,
-    "exp": 10
-  },{
-    "id": 2,
-    "name": "Poulpe fou",
-    "picture": "🦑",
-    "life": 50,
-    "atk": 4,
-    "def": 5,
-    "spe": 10,
-    "exp": 10
-  },
-];
-
-
-function roll (sides) {
-  return Math.floor(Math.random() * sides) + 1;
-}
-function newUID() {
-  return ('' + Math.random()).substr(2, 9)
-}
-// function newPlayer() {
-//   return {
-//     name: "Œ",
-//     level: 1,
-//     life: 100,
-//     currentLife: 100,
-//     atk: 14,
-//     def: 4,
-//     spe: 2,
-//     x: 0,
-//     y: 0,
-//     exp: 0,
-//     death: 0,
-//     kills: 0
-//   }
+// function roll(sides) {
+//   return Math.floor(Math.random() * sides) + 1;
 // }
-function newEnemy(id = 0) {
-  const mob = MOBS[id];
-  return {
-    ...mob,
-    id: newUID(),
-    currentLife: mob.life,
-  }
-}
-
+// function newUID() {
+//   return ('' + Math.random()).substr(2, 9)
+// }
 export default {
   name: 'app',
   data: () => {
@@ -160,31 +94,31 @@ export default {
     attackPlayerBy(enemy) {
       const damage = (enemy.atk + roll(6) - this.currentPlayer.def + roll(6));
       this.currentPlayer.currentLife -= damage
-      this.log(`⚔ Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`, 'warning');
+      this.log(`Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`, 'warning');
     },
     fight(enemy, player = this.currentPlayer) {
-      const pDamage = (player.atk + roll(6) - enemy.def + roll(6));
-      const eDamage = (enemy.atk + roll(6) - player.def + roll(6));
+      const pDamage = (player.atk + roll(6) - enemy.def  + roll(6));
+      const eDamage = (enemy.atk  + roll(6) - player.def + roll(6));
 
       if (player.spe >= enemy.spe) {
         enemy.currentLife -= pDamage;
         player.currentLife -= eDamage;
-        this.log(`⚔ Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !`);
-        this.log(`⚔ ${enemy.name} vous inflige, ${eDamage} dégats !`, 'warning');
+        this.log(`Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !`);
+        this.log(`${enemy.name} vous inflige ${eDamage} dégats !`, 'warning');
       } else  {
         player.currentLife -= eDamage;
         enemy.currentLife -= pDamage;
-        this.log(`⚔ ${enemy.name} vous inflige ${eDamage} dégats !`, 'warning');
-        this.log(`⚔ Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !`);
+        this.log(`${enemy.name} vous inflige ${eDamage} dégats !`, 'warning');
+        this.log(`Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !`);
       }
 
       if (player.currentLife <= 0) {
-        this.log(`☠ Vous avez été brutalement abbatu par ${enemy.name} en lui infligeant ${pDamage} dégats !`, 'alert');
+        this.log(`Vous avez été brutalement abbatu par ${enemy.name}`, 'alert');
       }
       if (enemy.currentLife <= 0) {
         this.currentPlayer.exp += enemy.exp;
         this.currentPlayer.kills += 1;
-        this.log(`💀 Vous achevez ${enemy.name} en lui infligeant ${pDamage} dégats !`, 'success');
+        this.log(`Vous achevez ${enemy.name} en lui infligeant ${pDamage} dégats ! (+${enemy.exp}xp)`, 'success');
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
         //
       }
@@ -218,7 +152,7 @@ export default {
       this.isLoading = false;
     })()
 
-    return this.log("🎲 Votre voyage commence ici.")
+    return this.log("Bonjour, votre aventure commence ici.");
   },
   components: {
     Map, Place, Profile, Logger

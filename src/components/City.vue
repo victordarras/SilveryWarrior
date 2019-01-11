@@ -1,6 +1,6 @@
 <template>
   <div class="city">
-
+    <button @click="sleep">Dormir à l'auberge (Vie max. gratuit)</button>
   </div>
 </template>
 
@@ -11,6 +11,11 @@ export default {
     cell: {
       type: Object,
       default: () => ({})
+    }
+  },
+  methods: {
+    sleep() {
+      this.$emit('sleep');
     }
   }
 }

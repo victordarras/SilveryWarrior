@@ -1,7 +1,7 @@
 <template>
   <div class="place">
 
-      <City v-if="cell.kind === 'city'" :cell="cell"/>
+      <City v-if="cell.kind === 'city'" :cell="cell" @sleep="sleep"/>
 
       <transition-group tag="ul" name="listAppear" class="enemies" v-if="cell.enemies">
         <li
@@ -50,6 +50,9 @@ export default {
     },
     attack: function(enemy) {
       this.$emit('attack', enemy)
+    },
+    sleep: function() {
+      this.$emit('sleep')
     }
   },
   components: {
