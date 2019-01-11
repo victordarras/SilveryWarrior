@@ -1,0 +1,26 @@
+{
+  "mobs": [
+    {"name": "Grenouille maudite"},
+    {"name": "Buisson animé"},
+    {"name": "Babouin excité"},
+    {"name": "Blaireau enragé"},
+    {"name": "Chauve-souris sanguinaire"},
+    {"name": "Chat fouin"},
+    {"name": "Crabe vicieux"},
+    {"name": "Rat crâneur"},
+    {"name": "Main tremblante"},
+    {"name": "Corbeau blanc"},
+    {"name": "Scarabée géant"},
+    {"name": "Chèvre sénile"},
+    {"name": "Homonculus"},
+    {"name": "Hyène fétide"},
+    {"name": "Chacal banal"},
+    {"name": "Lézard affuté"},
+    {"name": "Champignon éveillé"},
+    {"name": "Poulpe sec"},
+    {"name": "Chouette déçue"},
+    {"name": "Scorpion rampant"},
+    {"name": "Araignée veuve"}
+  ]
+}
+// Inspiration: https://donjon.bin.sh/5e/monsters/

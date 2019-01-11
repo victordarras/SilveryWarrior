@@ -9,18 +9,21 @@
     <template v-else-if="currentPlayer.currentLife > 0">
       <!-- Development helpers -->
       <div class="buttons">
-        <h5>Admin</h5>
-        <h6>Cell</h6>
-        <button @click="setCellKind()">Set Cell KIND</button>
-        <button @click="clearCell">CLEAR</button>
-        <h6>Mob</h6>
-        <button @click="createMob(0)">createMob(0)</button>
-        <button @click="createMob(1)">createMob(1)</button>
-        <button @click="createMob(2)">createMob(2)</button>
-        <h6>Player</h6>
-        <button @click="changeName()">Change player name</button>
-        <button @click="savePlayerData()">Save player</button>
-        <button @click="drinkPopo(50)">Drink popo</button>
+        <button @click="isAdmin = !isAdmin">Toggle Admin</button>
+        <template v-if="isAdmin">
+          <h5>Admin</h5>
+          <h6>Cell</h6>
+          <button @click="setCellKind()">Set Cell KIND</button>
+          <button @click="clearCell">CLEAR</button>
+          <h6>Mob</h6>
+          <button @click="createMob(0)">createMob(0)</button>
+          <button @click="createMob(1)">createMob(1)</button>
+          <button @click="createMob(2)">createMob(2)</button>
+          <h6>Player</h6>
+          <button @click="changeName()">Change player name</button>
+          <button @click="savePlayerData()">Save player</button>
+          <button @click="drinkPopo(50)">Drink popo</button>
+        </template>
       </div>
 
       <Profile :player="currentPlayer" />
@@ -128,6 +131,7 @@ export default {
   name: 'app',
   data: () => {
     return {
+      isAdmin: false,
       isLoading: false,
       currentPlayer: {},
       logs: [],
