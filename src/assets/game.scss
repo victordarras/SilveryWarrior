@@ -1,0 +1,21 @@
+#app {
+  $map-ratio: 1.5168;
+  $map-width: 900px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  padding: 10px;
+  grid-gap: 10px;
+  grid-template-columns: 300px $map-width 1fr;
+  grid-template-rows: $map-width/$map-ratio 1fr;
+  grid-template-areas:
+    "profile table logs"
+    "profile place buttons";
+}
+
+.buttons {
+  grid-template-area: buttons;
+}
