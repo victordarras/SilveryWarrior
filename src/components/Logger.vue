@@ -43,8 +43,8 @@ export default {
   &:nth-child(n + 7) {
     opacity: 0.5;
   }
-  &.alert {color: darkorange;}
-  &.warning {color: darkred;}
+  &.warning {color: darkorange;}
+  &.alert {color: darkred;}
   &.success {color: darkgreen;}
 }
 </style>

@@ -11,10 +11,10 @@
       {{ player.kills }} mob killed
     </p>
     <div class="profile-menu">
-      <div class="profile-money"></div>
-      <div class="profile-settings"></div>
-      <div class="profile-inventory"></div>
-      <div class="profile-drink"></div>
+      <a class="profile-money"></a>
+      <a class="profile-settings"></a>
+      <a class="profile-inventory"></a>
+      <a @click="drinkPotion()" class="profile-drink"></a>
     </div>
     <div class="profile-quest"></div>
   </section>
@@ -30,7 +30,10 @@ export default {
     }
   },
   methods: {
-    lifeCss: (value, max) => {
+    drinkPotion() {
+      this.$emit('drinkPotion');
+    },
+    lifeCss (value, max) {
       const l = (value / max) * 100;
       return `background-image: linear-gradient(to right, black, black ${l-.01}%, #fff ${l}%, #fff )`
     }

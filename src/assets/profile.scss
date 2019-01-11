@@ -26,6 +26,15 @@
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   cursor: pointer;
+  transition: all 0.16s ease-in-out;
+  & > a {
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+  }
 }
 
 .profile-quest {

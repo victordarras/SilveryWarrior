@@ -7,34 +7,32 @@
       @selectCell="selectCell"
     />
     <template v-if="currentCell">
-      <h2>{{ currentCell.id }} [{{ currentCell.x }};{{ currentCell.y }}]</h2>
-      <p>{{ currentCell.kind }}</p>
+      <h2>Cell {{ currentCell.id }} [{{ currentCell.x }};{{ currentCell.y }}]</h2>
+      <p>Type: {{ currentCell.kind }}</p>
+
+
+      <form @submit="updateCell(currentCell)">
+        <select v-model="currentCell.kind">
+          <option :value="kind" v-for="kind in cellKinds">{{ kind }}</option>
+        </select>
+        <button type="submit">Change cell type</button>
+      </form>
+
+      <form @submit="addMob()">
+        <select v-model="selectedMob">
+          <option :value="mob" v-for="mob in mobs">{{ mob.name }}</option>
+        </select>
+        <button type="submit">Add Mob</button>
+      </form>
+
       <div v-if="currentCell.enemies" class="enemy-list">
         <p v-for="enemy in currentCell.enemies">
-          {{ enemy.name }} <button @click="deleteMob(enemy)">🗑</button>
+          <pre>{{ enemy }} <button @click="deleteMob(enemy)">🗑</button></pre>
         </p>
         <p v-if="!currentCell.enemies.length">Aucun enemi</p>
       </div>
 
-      <form @submit="updateCell(currentCell)">
-        <div>
-          <label for="">Cell type:</label>
-          <select v-model="currentCell.kind">
-            <option :value="kind" v-for="kind in cellKinds">{{ kind }}</option>
-          </select>
-        </div>
-        <button type="submit">SAVE</button>
-      </form>
-
-      <form @submit="addMob()">
-        <label for="">Choose mob:</label>
-        <select v-model="selectedMob">
-          <option :value="mob" v-for="mob in mobs">{{ mob.name }}</option>
-        </select>
-        <button type="submit">SAVE</button>
-      </form>
-
-      <pre><code>{{currentCell}}</code></pre>
+      <!-- <pre><code>{{currentCell}}</code></pre> -->
     </template>
   </section>
 </template>
@@ -75,6 +73,7 @@ export default {
       this.currentCell.enemies.push({
         ...this.selectedMob,
         currentLife: this.selectedMob.life,
+        originId: this.selectedMob.id,
         id: newUID()
       })
       this.updateCell()
@@ -109,6 +108,13 @@ export default {
     padding: 0 2em;
   }
   .map {
-    float: left
+    float: left;
+    margin-right: 2rem;
+  }
+  form {
+    display: block;
+    margin-bottom: 0.5em;
+    border: 1px solid #eee;
+    padding: 0.5em;
   }
 </style>

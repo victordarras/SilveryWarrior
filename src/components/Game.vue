@@ -25,7 +25,10 @@
         </template>
       </div>
 
-      <Profile :player="currentPlayer" />
+      <Profile
+        :player="currentPlayer"
+        @drinkPotion="addLife"
+      />
       <Map
         :currentCell="currentCell"
         :cells="cells"
@@ -155,7 +158,7 @@ export default {
     changeName() {
       this.currentPlayer.name = prompt('Veuillez choisir nouveau pseudo :');
     },
-    drinkPopo(health) {
+    addLife(health = 50) {
       if (this.currentPlayer.currentLife < this.currentPlayer.life) {
         this.currentPlayer.currentLife = Math.min(this.currentPlayer.currentLife + health, 100);
       }

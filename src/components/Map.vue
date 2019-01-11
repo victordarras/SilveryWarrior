@@ -7,7 +7,9 @@
           :class="cellClass(cell)"
           :key="cell.uid"
         >
-          <div v-if="isReachable(cell)" @click="selectCell(cell)"></div>
+          <div v-if="isReachable(cell)" @click="selectCell(cell)">
+            <span v-if="isAdmin && cell.enemies.length">{{ cell.enemies.length }}</span>
+          </div>
         </div>
 
     </div>
