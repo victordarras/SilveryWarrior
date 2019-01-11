@@ -2,17 +2,17 @@
   "currentPlayer": {
     "name": "Joe",
     "level": 1,
-    "currentLife": 70,
+    "currentLife": 91,
     "life": 100,
     "atk": 14,
     "def": 4,
     "spe": 2,
-    "x": 5,
-    "y": 11,
-    "exp": 435,
+    "x": 6,
+    "y": 12,
+    "exp": 365,
     "deathCount": 0,
-    "kills": 164,
-    "death": 19
+    "kills": 168,
+    "death": 21
   },
   "users": [],
   "cities": [],
@@ -2880,27 +2880,39 @@
       "y": 11,
       "enemies": [
         {
-          "name": "Buisson animé",
-          "id": "535100180",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "currentLife": 20,
-          "originId": "395421478"
-        },
-        {
           "name": "Araignée veuve",
-          "id": "693868096",
+          "id": "267016932",
           "picture": "🦆",
           "life": 200,
           "atk": 2,
           "def": 2,
           "spe": 2,
           "exp": 10,
-          "currentLife": 17,
+          "currentLife": 45,
+          "originId": "733617524"
+        },
+        {
+          "name": "Araignée veuve",
+          "id": "932143749",
+          "picture": "🦆",
+          "life": 200,
+          "atk": 2,
+          "def": 2,
+          "spe": 2,
+          "exp": 10,
+          "currentLife": 161,
+          "originId": "733617524"
+        },
+        {
+          "name": "Araignée veuve",
+          "id": "969310203",
+          "picture": "🦆",
+          "life": 200,
+          "atk": 2,
+          "def": 2,
+          "spe": 2,
+          "exp": 10,
+          "currentLife": 182,
           "originId": "733617524"
         }
       ],
@@ -3167,7 +3179,32 @@
       "kind": "forest",
       "x": 6,
       "y": 12,
-      "enemies": [],
+      "enemies": [
+        {
+          "name": "Araignée veuve",
+          "id": "775158804",
+          "picture": "🦆",
+          "life": 200,
+          "atk": 2,
+          "def": 2,
+          "spe": 2,
+          "exp": 10,
+          "currentLife": 200,
+          "originId": "733617524"
+        },
+        {
+          "name": "Araignée veuve",
+          "id": "144864350",
+          "picture": "🦆",
+          "life": 200,
+          "atk": 2,
+          "def": 2,
+          "spe": 2,
+          "exp": 10,
+          "currentLife": 200,
+          "originId": "733617524"
+        }
+      ],
       "players": []
     },
     {
@@ -5423,7 +5460,7 @@
     {
       "name": "Grenouille maudite",
       "id": "097986442",
-      "picture": "🦆",
+      "picture": "🐸",
       "life": 20,
       "atk": 2,
       "def": 2,

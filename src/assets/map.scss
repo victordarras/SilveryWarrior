@@ -60,16 +60,7 @@ $map-width: 900px;
   background: url('../assets/images/cursor.png') no-repeat top / contain;
   mix-blend-mode: darken;
 }
-.reachable {
-  transform: translateZ(1px);
-  transition: all 0.16s ease-in-out;
-  animation: appear 0.16s;
-}
 
-@keyframes appear {
-  from {transform: scale(0);opacity: 0;}
-  to   {transform: scale(1);opacity: 1;}
-}
 .reachable:before {
   content:'';
   position: absolute;
@@ -80,21 +71,17 @@ $map-width: 900px;
   pointer-events: none;
   background: url('../assets/images/cursor.png') no-repeat top / contain;
   mix-blend-mode: darken;
+  animation: appear 0.16s;
+}
+@keyframes appear {
+  from {transform: scale(0);opacity: 0;}
+  to   {transform: scale(1);opacity: 1;}
 }
 
 .reachable:hover {
   z-index: 1;
   transform: scale(1.1);
 }
-.toggleIso {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-/*debug*/
-// .unreachable {
-//   background: rgba(0,0,0,0.2)
-// }
 
 .cell {
   background-size: 1000% auto;

@@ -2,14 +2,19 @@
   <section class="MobEditor">
     <h1>Mob Editor</h1>
     <ul class="mob-list">
-      <li v-for="mob in mobs" :key="mob.name" @click="currentMob = mob" :class="mob===currentMob?'current':''">
+      <li
+        v-for="mob in mobs"
+        :key="mob.name"
+        @click="currentMob = mob"
+        :class="mob === currentMob ? 'current' : ''"
+      >
         {{ mob.name }}
       </li>
     </ul>
-    <form @submit="updateMob()">
-      <h2>{{ currentMob.name }}</h2>({{ currentMob.uid }})
+    <form @submit="updateMob()" :style="isLoading ? 'opacity:0.5;' : ''">
+      <h2>{{ currentMob.name }}</h2>({{ currentMob.id }})
       <hr>
-      <div v-for="key in Object.keys(currentMob)" v-if="key !== 'uid'">
+      <div v-for="key in Object.keys(currentMob)" v-if="key !== 'id'">
         <label :for="key">{{ key }}:</label>
         <input type="text" v-model="currentMob[key]">
       </div>
@@ -28,7 +33,7 @@ export default {
   name: 'MobEditor',
   data: () => {
     return {
-      isLoading: false,
+      isLoading: true,
       mobs: [],
       currentMob: {}
     }
@@ -43,13 +48,15 @@ export default {
     //   })
     // },
     updateMob() {
-      this.$fetch.post('http://localhost:3000/mobs/' + mob.uid, mob)
+      this.isLoading = true;
+      (async () => {
+        await this.$fetch.patch('http://localhost:3000/mobs/' + this.currentMob.id, this.currentMob)
+        this.isLoading = false;
+      })()
     }
   },
   created () {
-
     this.isLoading = true;
-
     (async () => {
       let mobs = await this.$fetch.get('http://localhost:3000/mobs')
       this.mobs = await mobs.json();

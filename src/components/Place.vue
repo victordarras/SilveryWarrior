@@ -47,8 +47,6 @@ export default {
     lifeCss: function (value, max) {
       const l = (value / max) * 100;
       return `${l} ${100 - l}`;
-      // return `background-image: linear-gradient(to right, black, black ${l-.01}%, #fff ${l}%, #fff )`
-      // return `background-image: conic-gradient(black, black ${l-.01}%, #fff ${l}%, #fff )`
     },
     attack: function(enemy) {
       this.$emit('attack', enemy)

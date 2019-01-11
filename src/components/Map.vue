@@ -77,7 +77,6 @@ export default {
   },
   created () {
     this.isLoading = true;
-
     (async () => {
       let cells = await this.$fetch.get('http://localhost:3000/cells')
       this.cells = await cells.json();

@@ -1,28 +1,10 @@
 <template>
-  <div id="app">
-    <template v-if="isLoading">
-      <h1>L</h1>
-      <h1>O</h1>
-      <h1>A</h1>
-      <h1>D</h1>
-    </template>
-    <template v-else-if="currentPlayer.currentLife > 0">
-      <!-- Development helpers -->
-      <div class="buttons">
-        <button @click="isAdmin = !isAdmin">Toggle Admin</button>
-        <template v-if="isAdmin">
-          <h5>Admin</h5>
-          <h6>Player</h6>
-          <button @click="changeName()">Change player name</button>
-          <button @click="savePlayerData()">Save player</button>
-          <button @click="drinkPopo(50)">Drink popo</button>
-        </template>
-      </div>
-
-      <Profile
-        :player="currentPlayer"
-        @drinkPotion="addLife"
-      />
+  <section id="app">
+    <Profile
+      :player="currentPlayer"
+      @drinkPotion="addLife"
+    />
+    <template v-if="currentPlayer.currentLife > 0">
       <Map
         :currentCell="currentCell"
         :cells="cells"
@@ -30,17 +12,30 @@
         @selectCell="movePlayer"
       />
 
-      <Place :cell="currentCell" @attack="fight" />
-
-      <Logger :logs="logs" />
-
-    </template>
-    <template v-else>
-      <h1>YOU DEAD</h1>
-      <button @click="revive()">Drink popo</button>
+      <Place
+        :cell="currentCell"
+        @attack="fight"
+      />
     </template>
 
-  </div>
+    <section v-else>
+      <h1>YOU ARE DEAD</h1>
+      <button @click="revive()">Revive (XP x 0.875)</button>
+    </section>
+
+    <Logger :logs="logs" />
+    <!-- Development helpers -->
+    <div class="buttons">
+      <button @click="isAdmin = !isAdmin">Toggle Admin</button>
+      <template v-if="isAdmin">
+        <h5>Admin</h5>
+        <h6>Player</h6>
+        <button @click="changeName()">Change player name</button>
+        <button @click="savePlayerData()">Save player</button>
+        <button @click="drinkPopo(50)">Drink popo</button>
+      </template>
+    </div>
+  </section>
 </template>
 
 <script>
