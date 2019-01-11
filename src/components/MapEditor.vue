@@ -26,11 +26,12 @@
       </form>
 
       <div v-if="currentCell.enemies" class="enemy-list">
+        <button @click="clearCell">CLEAR</button>
         <p v-for="enemy in currentCell.enemies">
           <pre>{{ enemy }} <button @click="deleteMob(enemy)">🗑</button></pre>
         </p>
-        <p v-if="!currentCell.enemies.length">Aucun enemi</p>
       </div>
+      <p v-else>Aucun enemi</p>
 
       <!-- <pre><code>{{currentCell}}</code></pre> -->
     </template>
@@ -64,6 +65,15 @@ export default {
   methods: {
     selectCell(cell) {
       this.currentCell = cell;
+    },
+    clearCell() {
+      this.currentCell.enemies = [];
+      this.updateCell()
+      // Uncomment to clear the entire map
+      // this.cells.forEach(cell => {
+      //   cell.enemies = [];
+      //   this.updateCell(cell)
+      // })
     },
     deleteMob(enemy) {
       this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1)

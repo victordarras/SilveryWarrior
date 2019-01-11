@@ -34,7 +34,7 @@ export default {
 .logs {
   grid-area: logs;
   z-index: 1;
-  font-size: 18px;
+  font-size: 16px;
   max-height: 100%;
   overflow: auto;
 }

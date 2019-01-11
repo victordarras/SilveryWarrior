@@ -12,12 +12,6 @@
         <button @click="isAdmin = !isAdmin">Toggle Admin</button>
         <template v-if="isAdmin">
           <h5>Admin</h5>
-          <h6>Cell</h6>
-          <button @click="clearCell">CLEAR</button>
-          <h6>Mob</h6>
-          <button @click="createMob(0)">createMob(0)</button>
-          <button @click="createMob(1)">createMob(1)</button>
-          <button @click="createMob(2)">createMob(2)</button>
           <h6>Player</h6>
           <button @click="changeName()">Change player name</button>
           <button @click="savePlayerData()">Save player</button>
@@ -131,21 +125,6 @@ export default {
     }
   },
   methods: {
-    // MAP EDITOR
-    createMob(id) {
-      this.currentCell.enemies.push(newEnemy(id));
-      this.updateCell()
-    },
-    clearCell() {
-      this.currentCell.enemies = [];
-      this.updateCell()
-      //
-      // uncomment to clear the entire map
-      // this.cells.forEach(cell => {
-      //   cell.enemies = [];
-      //   this.updateCell(cell)
-      // })
-    },
     updateCell(cell = this.currentCell) {
       this.$fetch.patch(`http://localhost:3000/cells/${cell.id}`, cell)
         .then("DONE updateCell");
