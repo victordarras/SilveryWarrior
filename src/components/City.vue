@@ -1,6 +1,5 @@
 <template>
   <div class="city">
-    hoy
 
   </div>
 </template>

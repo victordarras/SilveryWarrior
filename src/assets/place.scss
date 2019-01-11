@@ -2,7 +2,6 @@
   position: relative;
   list-style: none;
   margin: 10px;
-  padding: 1vh 0 ;
   grid-area: place;
   &:before {
     content:"";
@@ -13,9 +12,11 @@
     right: -10px;
     left: -15px;
     background: url(../assets/images/horizontal_separator.png) repeat-x top left / contain;
+    transform: rotateX(180deg);
   }
 }
 .enemies {
+  margin-top: 4vh;
   display: flex;
   flex-flow: row wrap;
 }
@@ -23,13 +24,13 @@
   position: relative;
   height: 180px;
   width: 124px;
+  padding: 28px 21px 19px 13px;
   margin: 0 .25vh 1vh;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: space-between;
   background: url('../assets/images/card.png') no-repeat center / contain;
-  padding: 2.6% 4.5% 5% 3%;
   border-radius: 5px;
   cursor: pointer;
   line-height: 1;

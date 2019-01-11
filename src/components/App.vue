@@ -34,8 +34,6 @@
         @movePlayer="movePlayer"
       />
 
-      <City v-if="currentCell.kind === 'city'" :cell="currentCell"/>
-
       <Place :cell="currentCell" @attack="fight" />
 
       <Logger :logs="logs" />
@@ -54,7 +52,6 @@ import Profile from './Profile.vue'
 import Table from './Table.vue'
 import Place from './Place.vue'
 import Logger from './Logger.vue'
-import City from './City.vue'
 
 const CELL_KINDS = [
   'unreachable',
@@ -227,9 +224,10 @@ export default {
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
         //
       }
-      if (this.currentCell.enemies.length === 0) {
-        this.currentCell.enemies.push(newEnemy());
-      }
+      // if (this.currentCell.enemies.length === 0) {
+      //   this.currentCell.enemies.push(newEnemy());
+      // }
+
       this.savePlayerData()
       // TODO : update enemies, not the Cell
       this.updateCell()
@@ -259,7 +257,7 @@ export default {
     return this.log("🎲 Votre voyage commence ici.")
   },
   components: {
-    Table, Place, Profile, Logger, City
+    Table, Place, Profile, Logger
   }
 }
 </script>

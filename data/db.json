@@ -2,16 +2,16 @@
   "currentPlayer": {
     "name": "Joe",
     "level": 1,
-    "currentLife": 79,
+    "currentLife": 50,
     "life": 100,
     "atk": 14,
     "def": 4,
     "spe": 2,
     "x": 5,
     "y": 14,
-    "exp": 544,
+    "exp": 614,
     "deathCount": 0,
-    "kills": 156,
+    "kills": 163,
     "death": 16
   },
   "users": [],
@@ -3646,7 +3646,74 @@
       "kind": "city",
       "x": 5,
       "y": 14,
-      "enemies": [],
+      "enemies": [
+        {
+          "id": "371372933",
+          "name": "Poulpe fou",
+          "picture": "🦑",
+          "life": 50,
+          "atk": 4,
+          "def": 5,
+          "spe": 10,
+          "exp": 10,
+          "currentLife": 50
+        },
+        {
+          "id": "807711186",
+          "name": "Poussin malin",
+          "picture": "🐣",
+          "life": 35,
+          "atk": 2,
+          "def": 5,
+          "spe": 0,
+          "exp": 10,
+          "currentLife": 35
+        },
+        {
+          "id": "145173872",
+          "name": "Canard boiteux",
+          "picture": "🦆",
+          "life": 20,
+          "atk": 2,
+          "def": 2,
+          "spe": 2,
+          "exp": 10,
+          "currentLife": 20
+        },
+        {
+          "id": "031929837",
+          "name": "Poussin malin",
+          "picture": "🐣",
+          "life": 35,
+          "atk": 2,
+          "def": 5,
+          "spe": 0,
+          "exp": 10,
+          "currentLife": 35
+        },
+        {
+          "id": "531229456",
+          "name": "Poulpe fou",
+          "picture": "🦑",
+          "life": 50,
+          "atk": 4,
+          "def": 5,
+          "spe": 10,
+          "exp": 10,
+          "currentLife": 50
+        },
+        {
+          "id": "562553539",
+          "name": "Canard boiteux",
+          "picture": "🦆",
+          "life": 20,
+          "atk": 2,
+          "def": 2,
+          "spe": 2,
+          "exp": 10,
+          "currentLife": 20
+        }
+      ],
       "players": []
     },
     {

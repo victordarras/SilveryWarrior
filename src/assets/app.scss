@@ -3,7 +3,7 @@
 
 #app {
   $map-ratio: 1.5168;
-  $map-width: 40vw;
+  $map-width: 900px;
   font-family: 'Merriweather', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14,11 +14,10 @@
   padding: 10px;
   grid-gap: 10px;
   grid-template-columns: 300px $map-width 1fr;
-  grid-template-rows: $map-width/$map-ratio 16vh 1fr;
+  grid-template-rows: $map-width/$map-ratio 1fr;
   grid-template-areas:
     "profile table logs"
-    "profile city logs"
-    "profile place  buttons";
+    "profile place buttons";
 }
 
 .buttons {

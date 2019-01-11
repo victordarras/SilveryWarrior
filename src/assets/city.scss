@@ -1,19 +1,26 @@
 .city {
   position: relative;
   padding: 0;
-  min-height: 14vh;
-  grid-area: city;
-  background: url(../assets/images/city.png) repeat-x top center / cover;
+  min-height: 16vh;
+  background: url(../assets/images/city.png) no-repeat top center / contain;
   margin-bottom: 1vh;
   &:before {
     content:"";
     position: absolute;
+    width: 15px;
+    top: -10px;
+    bottom: 0;
+    left: -30px;
+    background: #fff;
+  }
+  &:after {
+    content:"";
+    position: absolute;
     /*930x23*/
     height: 23px;
-    top: -10px;
+    bottom: -10px;
     right: -10px;
     left: -15px;
     background: url(../assets/images/horizontal_separator.png) repeat-x top left / contain;
-    transform: rotateX(180deg);
   }
 }

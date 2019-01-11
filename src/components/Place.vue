@@ -1,6 +1,8 @@
 <template>
   <div class="place">
 
+      <City v-if="cell.kind === 'city'" :cell="cell"/>
+
       <transition-group tag="ul" name="listAppear" class="enemies" v-if="cell.enemies">
         <li
           v-for="enemy in cell.enemies"
@@ -29,6 +31,9 @@
 </template>
 
 <script>
+
+import City from './City.vue'
+
 export default {
   name: 'Place',
   props: {
@@ -47,6 +52,9 @@ export default {
     attack: function(enemy) {
       this.$emit('attack', enemy)
     }
+  },
+  components: {
+    City
   }
 }
 </script>
