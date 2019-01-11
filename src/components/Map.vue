@@ -1,13 +1,13 @@
 <template>
-  <div class="table">
-    <div class="cells">
+  <div class="map">
+    <div class="cells" v-if="!isLoading">
 
         <div
           v-for="cell in cells"
           :class="cellClass(cell)"
           :key="cell.uid"
         >
-          <div v-if="isReachable(cell)" @click="moveTo(cell.x, cell.y)"></div>
+          <div v-if="isReachable(cell)" @click="selectCell(cell)"></div>
         </div>
 
     </div>
@@ -16,24 +16,36 @@
 
 <script>
 export default {
-  name: 'Table',
+  name: 'Map',
   data() {
-    return {}
+    return {
+      isLoading: false,
+      cells: {
+        type: Array,
+        default: () => ([])
+      }
+    }
   },
   props: {
-    Player: {
+    currentCell: {
       type: Object,
       default: () => ({})
     },
-    cells: {
-      type: Array,
-      default: () => ([])
+    Player: {
+      type: Object,
+      default: () => ({})
     }
   },
   methods: {
+    isCurrentCell(cell) {
+      return this.currentCell.x === cell.x && this.currentCell.y === cell.y;
+    },
     isReachable(cell) {
+      if (this.isAdmin) {
+        return true;
+      }
       if (cell.kind === "unreachable") {
-        return false
+        return false;
       }
       const x = cell.x;
       const y = cell.y;
@@ -47,16 +59,30 @@ export default {
     cellClass: function(cell) {
       let klass = ["cell"]
       klass.push(this.isReachable(cell) ? " reachable" : "");
-      klass.push(this.Player.x === cell.x && this.Player.y === cell.y ? " player" : "");
+      klass.push(this.isCurrentCell(cell) ? " current" : "");
       klass.push(cell.enemies.length ? " enemy" : "");
       klass.push(` ${cell.kind}`);
       return klass.join(' ');
     },
-    moveTo: function(x, y) {
-      this.$emit('movePlayer', x, y)
+    selectCell: function(cell) {
+      this.$emit('selectCell', cell)
     }
+  },
+  computed: {
+    isAdmin() {
+      return this.$route.path === "/map-editor";
+    }
+  },
+  created () {
+    this.isLoading = true;
+
+    (async () => {
+      let cells = await this.$fetch.get('http://localhost:3000/cells')
+      this.cells = await cells.json();
+      this.isLoading = false;
+    })()
   }
 }
 </script>
 
-<style lang="scss" src="../assets/table.scss" scoped></style>
+<style lang="scss" src="../assets/map.scss" scoped></style>

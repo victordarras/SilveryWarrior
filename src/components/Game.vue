@@ -13,7 +13,6 @@
         <template v-if="isAdmin">
           <h5>Admin</h5>
           <h6>Cell</h6>
-          <button @click="setCellKind()">Set Cell KIND</button>
           <button @click="clearCell">CLEAR</button>
           <h6>Mob</h6>
           <button @click="createMob(0)">createMob(0)</button>
@@ -27,11 +26,11 @@
       </div>
 
       <Profile :player="currentPlayer" />
-      <Table
-        :cell="currentCell"
+      <Map
+        :currentCell="currentCell"
         :cells="cells"
         :Player="currentPlayer"
-        @movePlayer="movePlayer"
+        @selectCell="movePlayer"
       />
 
       <Place :cell="currentCell" @attack="fight" />
@@ -49,18 +48,10 @@
 
 <script>
 import Profile from './Profile.vue'
-import Table from './Table.vue'
+import Map from './Map.vue'
 import Place from './Place.vue'
 import Logger from './Logger.vue'
 
-const CELL_KINDS = [
-  'unreachable',
-  'forest',
-  'city',
-  'mountain',
-  'hills',
-  'plain',
-]
 const MOBS = [
   {
     "id": 0,
@@ -152,11 +143,6 @@ export default {
       //   this.updateCell(cell)
       // })
     },
-    setCellKind() {
-      const kind = prompt(CELL_KINDS)
-      this.currentCell.kind = kind;
-      this.updateCell()
-    },
     updateCell(cell = this.currentCell) {
       this.$fetch.patch(`http://localhost:3000/cells/${cell.id}`, cell)
         .then("DONE updateCell");
@@ -187,11 +173,12 @@ export default {
       this.currentPlayer.currentLife = this.currentPlayer.life;
       this.savePlayerData();
     },
-    movePlayer(x, y) {
-      this.currentPlayer.x = x;
-      this.currentPlayer.y = y;
+    movePlayer(cell) {
+      this.currentPlayer.x = cell.x;
+      this.currentPlayer.y = cell.y;
       this.currentCell.enemies.forEach(this.attackPlayerBy);
-      this.log(`Vous vous déplacez en [${x}-${y}] (${this.currentCell.kind})`);
+      this.savePlayerData();
+      this.log(`Vous vous déplacez en [${cell.x}-${cell.y}] (${this.currentCell.kind})`);
     },
     attackPlayerBy(enemy) {
       const damage = (enemy.atk + roll(6) - this.currentPlayer.def + roll(6));
@@ -257,7 +244,7 @@ export default {
     return this.log("🎲 Votre voyage commence ici.")
   },
   components: {
-    Table, Place, Profile, Logger
+    Map, Place, Profile, Logger
   }
 }
 </script>

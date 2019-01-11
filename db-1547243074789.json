@@ -2,17 +2,17 @@
   "currentPlayer": {
     "name": "Joe",
     "level": 1,
-    "currentLife": 96,
+    "currentLife": 57,
     "life": 100,
     "atk": 14,
     "def": 4,
     "spe": 2,
     "x": 5,
-    "y": 12,
-    "exp": 417,
+    "y": 14,
+    "exp": 544,
     "deathCount": 0,
     "kills": 156,
-    "death": 18
+    "death": 16
   },
   "users": [],
   "cities": [],
@@ -3646,7 +3646,52 @@
       "kind": "city",
       "x": 5,
       "y": 14,
-      "enemies": [],
+      "enemies": [
+        {
+          "id": "769869346",
+          "name": "Canard boiteux",
+          "picture": "🦆",
+          "life": 20,
+          "atk": 2,
+          "def": 2,
+          "spe": 2,
+          "exp": 10,
+          "currentLife": 20
+        },
+        {
+          "id": "717119417",
+          "name": "Canard boiteux",
+          "picture": "🦆",
+          "life": 20,
+          "atk": 2,
+          "def": 2,
+          "spe": 2,
+          "exp": 10,
+          "currentLife": 20
+        },
+        {
+          "id": "871162376",
+          "name": "Poussin malin",
+          "picture": "🐣",
+          "life": 35,
+          "atk": 2,
+          "def": 5,
+          "spe": 0,
+          "exp": 10,
+          "currentLife": 35
+        },
+        {
+          "id": "022456100",
+          "name": "Poussin malin",
+          "picture": "🐣",
+          "life": 35,
+          "atk": 2,
+          "def": 5,
+          "spe": 0,
+          "exp": 10,
+          "currentLife": 35
+        }
+      ],
       "players": []
     },
     {
@@ -3763,7 +3808,7 @@
     },
     {
       "id": "560256441",
-      "kind": "forest",
+      "kind": "plain",
       "x": 20,
       "y": 14,
       "enemies": [],
@@ -4011,7 +4056,7 @@
     },
     {
       "id": "727017626",
-      "kind": "forest",
+      "kind": "plain",
       "x": 19,
       "y": 15,
       "enemies": [],
@@ -4027,7 +4072,7 @@
     },
     {
       "id": "656318473",
-      "kind": "forest",
+      "kind": "plain",
       "x": 21,
       "y": 15,
       "enemies": [],
@@ -4275,7 +4320,7 @@
     },
     {
       "id": "358491997",
-      "kind": "forest",
+      "kind": "plain",
       "x": 20,
       "y": 16,
       "enemies": [],
@@ -5397,7 +5442,7 @@
   "mobs": [
     {
       "name": "Grenouille maudite",
-      "id": "097986442",
+      "uid": "097986442",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5407,7 +5452,7 @@
     },
     {
       "name": "Buisson animé",
-      "id": "395421478",
+      "uid": "395421478",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5417,7 +5462,7 @@
     },
     {
       "name": "Babouin excité",
-      "id": "728386732",
+      "uid": "728386732",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5427,7 +5472,7 @@
     },
     {
       "name": "Blaireau enragé",
-      "id": "729671167",
+      "uid": "729671167",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5437,7 +5482,7 @@
     },
     {
       "name": "Chauve-souris sanguinaire",
-      "id": "664642651",
+      "uid": "664642651",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5447,7 +5492,7 @@
     },
     {
       "name": "Chat fouin",
-      "id": "472877194",
+      "uid": "472877194",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5457,7 +5502,7 @@
     },
     {
       "name": "Crabe vicieux",
-      "id": "339403453",
+      "uid": "339403453",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5467,7 +5512,7 @@
     },
     {
       "name": "Rat crâneur",
-      "id": "000364087",
+      "uid": "000364087",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5477,7 +5522,7 @@
     },
     {
       "name": "Main tremblante",
-      "id": "953903512",
+      "uid": "953903512",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5487,7 +5532,7 @@
     },
     {
       "name": "Corbeau blanc",
-      "id": "099732271",
+      "uid": "099732271",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5497,7 +5542,7 @@
     },
     {
       "name": "Scarabée géant",
-      "id": "441621257",
+      "uid": "441621257",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5507,7 +5552,7 @@
     },
     {
       "name": "Chèvre sénile",
-      "id": "126072202",
+      "uid": "126072202",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5517,7 +5562,7 @@
     },
     {
       "name": "Homonculus",
-      "id": "666789172",
+      "uid": "666789172",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5527,7 +5572,7 @@
     },
     {
       "name": "Hyène fétide",
-      "id": "191891400",
+      "uid": "191891400",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5537,7 +5582,7 @@
     },
     {
       "name": "Chacal banal",
-      "id": "029207779",
+      "uid": "029207779",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5547,7 +5592,7 @@
     },
     {
       "name": "Lézard affuté",
-      "id": "129127870",
+      "uid": "129127870",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5557,7 +5602,7 @@
     },
     {
       "name": "Champignon éveillé",
-      "id": "386410029",
+      "uid": "386410029",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5567,7 +5612,7 @@
     },
     {
       "name": "Poulpe sec",
-      "id": "929806671",
+      "uid": "929806671",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5577,7 +5622,7 @@
     },
     {
       "name": "Chouette déçue",
-      "id": "001251643",
+      "uid": "001251643",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5587,7 +5632,7 @@
     },
     {
       "name": "Scorpion rampant",
-      "id": "428329648",
+      "uid": "428329648",
       "picture": "🦆",
       "life": 20,
       "atk": 2,
@@ -5597,7 +5642,7 @@
     },
     {
       "name": "Araignée veuve",
-      "id": "733617524",
+      "uid": "733617524",
       "picture": "🦆",
       "life": 20,
       "atk": 2,

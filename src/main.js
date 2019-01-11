@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import App from './components/App.vue'
 import Game from './components/Game.vue'
 import MobEditor from './components/MobEditor.vue'
+import MapEditor from './components/MapEditor.vue'
 
 Vue.config.productionTip = false
 
@@ -17,6 +18,9 @@ const routes = [
   }, {
     path: '/mob-editor',
     component: MobEditor
+  }, {
+    path: '/map-editor',
+    component: MapEditor
   }
 ]
 const router = new VueRouter({routes})

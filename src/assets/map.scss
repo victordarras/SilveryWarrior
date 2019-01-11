@@ -1,14 +1,40 @@
-.table {
+$map-ratio: 1.5168;
+$map-width: 900px;
+.map {
   position: relative;
   background: url(../assets/images/map_empty.png);
   background-size: cover;
   grid-area: table;
   cursor: url('../assets/images/cursor_2.png'), auto;
 }
+
+.mapEditor {
+  .map{
+    width: $map-width;
+    height: $map-width/$map-ratio;
+  }
+  .cell {
+    transition: none;
+    mix-blend-mode: darken;
+    &:before {
+      display: none;
+    }
+  }
+  .current {
+    border: 3px solid black;
+  }
+  .plain {background: gold;}
+  .forest {background: forestgreen;}
+  .city {background: darkblue}
+  .mountain {background: darkslategrey}
+  .hills {background: darkgreen;}
+  .unreachable {background: dimgrey;}
+}
+
+
 .cells {
   display: grid;
   height: 100%;
-
   padding: 5% 10.5% 9.1% 11%;
   grid-template-columns: repeat(32, 1fr);
   grid-template-rows: repeat(21, 1fr);
@@ -19,10 +45,10 @@
   position: relative;
   display: grid;
 }
-.player {
+.current {
   // mix-blend-mode: darken;
 }
-.player:before {
+.current:before {
   content:'';
   position: absolute;
   top: -10%;

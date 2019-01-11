@@ -2,7 +2,8 @@
   <main>
     <nav>
       <router-link to="/game">GAME</router-link>
-      <router-link to="/mob-editor">MOB EDITOR</router-link>
+      <router-link to="/mob-editor">MOBS</router-link>
+      <router-link to="/map-editor">MAP EDITOR</router-link>
     </nav>
     <router-view></router-view>
   </main>
