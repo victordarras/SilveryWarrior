@@ -33,7 +33,7 @@ import Profile from './Profile.vue'
 import Map from './Map.vue'
 import Place from './Place.vue'
 import Logger from './Logger.vue'
-import { roll, newUID } from '../helpers.js'
+import { roll } from '../helpers.js'
 
 // function roll(sides) {
 //   return Math.floor(Math.random() * sides) + 1;
@@ -55,24 +55,16 @@ export default {
   },
   methods: {
     updateCell(cell = this.currentCell) {
-      this.$fetch.patch(`http://localhost:3000/cells/${cell.id}`, cell)
-        .then("DONE updateCell");
+      this.$fetch.patch(`http://localhost:3000/cells/${cell.id}`, cell);
     },
     // ADMIN
     savePlayerData() {
-      this.$fetch.patch('http://localhost:3000/currentPlayer', this.currentPlayer)
-        .then("DONE savePlayerData");
-    },
-    changeName() {
-      this.currentPlayer.name = prompt('Veuillez choisir nouveau pseudo :');
+      this.$fetch.patch('http://localhost:3000/currentPlayer', this.currentPlayer);
     },
     addLife(health = 50) {
       if (this.currentPlayer.currentLife < this.currentPlayer.life) {
         this.currentPlayer.currentLife = Math.min(this.currentPlayer.currentLife + health, 100);
       }
-    },
-    spawnMob() {
-      this.currentCell.enemies.push(newEnemy())
     },
     // NON ADMIN
     log(message, kind = "normal") {
@@ -94,7 +86,7 @@ export default {
     attackPlayerBy(enemy) {
       const damage = (enemy.atk + roll(6) - this.currentPlayer.def + roll(6));
       this.currentPlayer.currentLife -= damage
-      this.log(`Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`, 'warning');
+      this.log(`Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`, 'warning');
     },
     fight(enemy, player = this.currentPlayer) {
       const pDamage = (player.atk + roll(6) - enemy.def  + roll(6));
@@ -103,13 +95,13 @@ export default {
       if (player.spe >= enemy.spe) {
         enemy.currentLife -= pDamage;
         player.currentLife -= eDamage;
-        this.log(`Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !`);
-        this.log(`${enemy.name} vous inflige ${eDamage} dégats !`, 'warning');
+        this.log(`Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !`);
+        this.log(`${enemy.name} vous inflige ${eDamage} dégats !`, 'warning');
       } else  {
         player.currentLife -= eDamage;
         enemy.currentLife -= pDamage;
-        this.log(`${enemy.name} vous inflige ${eDamage} dégats !`, 'warning');
-        this.log(`Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !`);
+        this.log(`${enemy.name} vous inflige ${eDamage} dégats !`, 'warning');
+        this.log(`Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !`);
       }
 
       if (player.currentLife <= 0) {
@@ -118,7 +110,7 @@ export default {
       if (enemy.currentLife <= 0) {
         this.currentPlayer.exp += enemy.exp;
         this.currentPlayer.kills += 1;
-        this.log(`Vous achevez ${enemy.name} en lui infligeant ${pDamage} dégats ! (+${enemy.exp}xp)`, 'success');
+        this.log(`Vous achevez ${enemy.name} en lui infligeant ${pDamage} dégats ! (+${enemy.exp}xp)`, 'success');
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
         //
       }

@@ -13,21 +13,21 @@
 
       <form @submit="updateCell(currentCell)">
         <select v-model="currentCell.kind">
-          <option :value="kind" v-for="kind in cellKinds">{{ kind }}</option>
+          <option :value="kind" :key="kind" v-for="kind in cellKinds">{{ kind }}</option>
         </select>
         <button type="submit">Change cell type</button>
       </form>
 
       <form @submit="addMob()">
         <select v-model="selectedMob">
-          <option :value="mob" v-for="mob in mobs">{{ mob.name }}</option>
+          <option :value="mob" :key="mob.id" v-for="mob in mobs">{{ mob.name }}</option>
         </select>
         <button type="submit">Add Mob</button>
       </form>
 
       <div v-if="currentCell.enemies" class="enemy-list">
         <button @click="clearCell">CLEAR</button>
-        <p v-for="enemy in currentCell.enemies">
+        <p :key="enemy.id" v-for="enemy in currentCell.enemies">
           <pre>{{ enemy }} <button @click="deleteMob(enemy)">🗑</button></pre>
         </p>
       </div>

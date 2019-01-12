@@ -14,7 +14,7 @@
     <form @submit="updateMob()" :style="isLoading ? 'opacity:0.5;' : ''">
       <h2>{{ currentMob.name }}</h2>({{ currentMob.id }})
       <hr>
-      <div v-for="key in Object.keys(currentMob)" v-if="key !== 'id'">
+      <div v-for="key in Object.keys(currentMob)" :key="key" v-if="key !== 'id'">
         <label :for="key">{{ key }}:</label>
         <input type="text" v-model="currentMob[key]">
       </div>
@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import { newUID } from '../helpers.js'
 
 export default {
   name: 'MobEditor',
