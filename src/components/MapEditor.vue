@@ -40,10 +40,8 @@
 
 <script>
 import Map from './Map.vue'
+import { newUID } from '../helpers.js'
 
-function newUID() {
-  return ('' + Math.random()).substr(2, 9)
-}
 export default {
   name: 'MapEditor',
   data: () => {
