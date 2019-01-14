@@ -68,11 +68,10 @@ export default {
         this.currentPlayer.currentLife = Math.min(this.currentPlayer.currentLife + health, 100);
       }
     },
-    useItem(item) {
-      let Player = this.currentPlayer;
+    useItem(item, player = this.currentPlayer) {
       item.effects.forEach(effect => eval(effect));
-      this.currentPlayer.currentLife = Math.min(this.currentPlayer.currentLife, this.currentPlayer.life);
-      this.currentPlayer.items.splice(this.currentPlayer.items.indexOf(item), 1);
+      player.currentLife = Math.min(player.currentLife, player.life);
+      player.items.splice(player.items.indexOf(item), 1);
       this.savePlayerData();
     },
     addItem(item) {

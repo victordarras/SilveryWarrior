@@ -7,7 +7,10 @@
     <div class="building" v-if="storeActive">
       <h2>Magasin</h2>
       <ul>
-        <li v-for="item in items">{{ item.name }} <button @click="buyItem(item)">Acheter ({{ item.price }}💰)</button></li>
+        <li v-for="item in items" :key="item.id">
+          {{ item.name }}
+          <button @click="buyItem(item)">Acheter ({{ item.price }}💰)</button>
+        </li>
       </ul>
     </div>
   </div>

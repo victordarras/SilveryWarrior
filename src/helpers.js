@@ -11,4 +11,4 @@ export function groupBy (data, key) {
     (acc[cur[key]] = acc[cur[key]] || []).push(cur);
     return acc;
   }, {});
-};
+}

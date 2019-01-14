@@ -20,7 +20,7 @@
     <div class="profile-quest"></div>
 
     <div class="item">
-      <div class="item" v-for="items in stackedItems">
+      <div class="item" v-for="(items, i) in stackedItems" :key="i">
         <button @click="useItem(items[0])">Utiliser</button>
         {{ items.length }} {{ items[0].name }} {{items[0].effects}}
       </div>
