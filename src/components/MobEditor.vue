@@ -20,7 +20,7 @@
       </div>
     </form>
     <button class="button" @click="updateMob(currentMob)">Save mob</button>
-    <!-- <button @click="addStats(currentMob)">Add stats</button> -->
+    <button @click="addStats()">Add stats</button>
   </section>
 </template>
 
@@ -36,14 +36,14 @@ export default {
     }
   },
   methods: {
-    // addStats() {
-    //   this.mobs = this.mobs.map(mob => {
-    //     return {
-    //       ...mob,
-    //       "picture": "🦆"
-    //     }
-    //   })
-    // },
+    addStats() {
+      this.mobs = this.mobs.map(mob => {
+        return {
+          ...mob,
+          "money": 10
+        }
+      })
+    },
     updateMob() {
       this.isLoading = true;
       (async () => {

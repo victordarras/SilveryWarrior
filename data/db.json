@@ -2,17 +2,160 @@
   "currentPlayer": {
     "name": "Joe",
     "level": 1,
-    "currentLife": 72,
+    "currentLife": 100,
     "life": 100,
     "atk": 14,
     "def": 4,
     "spe": 2,
     "x": 5,
-    "y": 11,
-    "exp": 382,
+    "y": 14,
+    "exp": 442,
+    "money": 209,
     "deathCount": 0,
-    "kills": 175,
-    "death": 22
+    "kills": 181,
+    "death": 22,
+    "items": [
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Potion de vie",
+        "id": "123456789",
+        "picture": "🍺",
+        "price": 80,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 100"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      }
+    ]
   },
   "users": [],
   "cities": [],
@@ -2881,38 +3024,26 @@
       "enemies": [
         {
           "name": "Araignée veuve",
-          "id": "267016932",
+          "id": "386545513",
           "picture": "🦆",
           "life": 200,
           "atk": 2,
           "def": 2,
           "spe": 2,
           "exp": 10,
-          "currentLife": 45,
+          "currentLife": 62,
           "originId": "733617524"
         },
         {
           "name": "Araignée veuve",
-          "id": "932143749",
+          "id": "972287735",
           "picture": "🦆",
           "life": 200,
           "atk": 2,
           "def": 2,
           "spe": 2,
           "exp": 10,
-          "currentLife": 161,
-          "originId": "733617524"
-        },
-        {
-          "name": "Araignée veuve",
-          "id": "969310203",
-          "picture": "🦆",
-          "life": 200,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "currentLife": 182,
+          "currentLife": 68,
           "originId": "733617524"
         }
       ],
@@ -5641,6 +5772,28 @@
       "def": 2,
       "spe": 2,
       "exp": 10
+    }
+  ],
+  "items": [
+    {
+      "name": "Pot de miel",
+      "id": "987654321",
+      "picture": "🍯",
+      "price": 50,
+      "stackBy": 16,
+      "effects": [
+        "Player.currentLife += 50"
+      ]
+    },
+    {
+      "name": "Potion de vie",
+      "id": "123456789",
+      "picture": "🍺",
+      "price": 80,
+      "stackBy": 32,
+      "effects": [
+        "Player.currentLife += 100"
+      ]
     }
   ]
 }

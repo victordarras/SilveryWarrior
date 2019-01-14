@@ -3,6 +3,7 @@
     <Profile
       :player="currentPlayer"
       @drinkPotion="addLife"
+      @useItem="useItem"
     />
     <template v-if="currentPlayer.currentLife > 0">
       <Map
@@ -16,6 +17,7 @@
         :cell="currentCell"
         @attack="fight"
         @sleep="addLife(currentPlayer.life)"
+        @buyItem="addItem"
       />
     </template>
 
@@ -42,7 +44,7 @@ import { roll } from '../helpers.js'
 //   return ('' + Math.random()).substr(2, 9)
 // }
 export default {
-  name: 'app',
+  name: 'Game',
   data: () => {
     return {
       isAdmin: false,
@@ -65,6 +67,22 @@ export default {
       if (this.currentPlayer.currentLife < this.currentPlayer.life) {
         this.currentPlayer.currentLife = Math.min(this.currentPlayer.currentLife + health, 100);
       }
+    },
+    useItem(item) {
+      let Player = this.currentPlayer;
+      item.effects.forEach(effect => eval(effect));
+      this.currentPlayer.currentLife = Math.min(this.currentPlayer.currentLife, this.currentPlayer.life);
+      this.currentPlayer.items.splice(this.currentPlayer.items.indexOf(item), 1);
+      this.savePlayerData();
+    },
+    addItem(item) {
+      if (this.currentPlayer.money - item.price >= 0) { // can buy item
+        this.currentPlayer.money -= item.price;
+        this.currentPlayer.items.push(item);
+      } else {
+        this.logs("Vous n'avez pas assez d'argent", "alert")
+      }
+      this.savePlayerData();
     },
     // NON ADMIN
     log(message, kind = "normal") {

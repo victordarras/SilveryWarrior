@@ -7,6 +7,7 @@
     </div>
     <h3>{{ player.name }}({{ player.level }})</h3>
     <p>
+      {{ player.money }} 💰<br>
       {{ player.exp }} experience points<br>
       {{ player.kills }} mob killed
     </p>
@@ -17,10 +18,20 @@
       <a @click="drinkPotion()" class="profile-drink"></a>
     </div>
     <div class="profile-quest"></div>
+
+    <div class="item">
+      <div class="item" v-for="items in stackedItems">
+        <button @click="useItem(items[0])">Utiliser</button>
+        {{ items.length }} {{ items[0].name }} {{items[0].effects}}
+      </div>
+    </div>
+
   </section>
 </template>
 
 <script>
+import { groupBy } from "../helpers.js"
+
 export default {
   name: 'Profile',
   props: {
@@ -31,11 +42,19 @@ export default {
   },
   methods: {
     drinkPotion() {
-      this.$emit('drinkPotion');
+      return this.$emit('drinkPotion');
+    },
+    useItem(item) {
+      return this.$emit('useItem', item);
     },
     lifeCss (value, max) {
       const l = (value / max) * 100;
       return `background-image: linear-gradient(to right, black, black ${l-.01}%, #fff ${l}%, #fff )`
+    }
+  },
+  computed: {
+    stackedItems() {
+      return this.player.items ? groupBy(this.player.items, "name") : []
     }
   }
 }
