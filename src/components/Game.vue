@@ -9,7 +9,7 @@
       <Map
         :currentCell="currentCell"
         :cells="cells"
-        :Player="currentPlayer"
+        :player="currentPlayer"
         @selectCell="movePlayer"
       />
 
@@ -68,10 +68,11 @@ export default {
         this.currentPlayer.currentLife = Math.min(this.currentPlayer.currentLife + health, 100);
       }
     },
-    useItem(item, player = this.currentPlayer) {
+    useItem(item, Player = this.currentPlayer) {
+      // Items API need Player Object
       item.effects.forEach(effect => eval(effect));
-      player.currentLife = Math.min(player.currentLife, player.life);
-      player.items.splice(player.items.indexOf(item), 1);
+      Player.currentLife = Math.min(Player.currentLife, Player.life);
+      Player.items.splice(Player.items.indexOf(item), 1);
       this.savePlayerData();
     },
     addItem(item) {
@@ -126,8 +127,9 @@ export default {
       }
       if (enemy.currentLife <= 0) {
         this.currentPlayer.exp += enemy.exp;
+        this.currentPlayer.money += enemy.exp / 2;
         this.currentPlayer.kills += 1;
-        this.log(`Vous achevez ${enemy.name} en lui infligeant ${pDamage} dégats ! (+${enemy.exp}xp)`, 'success');
+        this.log(`Vous achevez ${enemy.name} en lui infligeant ${pDamage} dégats ! (+${enemy.exp}xp, +${enemy.exp / 2}💰)`, 'success');
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
         //
       }

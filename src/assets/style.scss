@@ -39,20 +39,55 @@ ul {
 h1,h2,h3,h4,h5,h6 {
   margin: 0.25em 0;
 }
-button {
+.button {
   display: inline-block;
-  vertical-align: top;
-  -webkit-appearance: none;
+  vertical-align: middle;
   border: 2px solid #222;
   margin: 5px;
+  background-color: #fff;
   transform: skew(5deg);
+  &:hover {
+    border-bottom-width: 3px;
+    border-top-width: 1px;
+    transform: skew(3deg);
+  }
+  &:active {
+    border-top-width: 3px;
+    border-bottom-width: 1px;
+  }
 }
-button:hover {
-  border-bottom-width: 3px;
-  border-top-width: 1px;
-  transform: skew(3deg);
+button {
+  @extend .button;
+  -webkit-appearance: none;
 }
-button:active {
-  border-top-width: 3px;
-  border-bottom-width: 1px;
+
+.hasTooltip {
+  position: relative;
+  float: left;
+  &:before {
+    content: '?';
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #999;
+    color: #fff;
+    font-weight: 900;
+    font-size: 0.5em;
+    line-height: 1rem;
+  }
+  &:after {
+    @extend .button;
+    content: attr(tooltip);
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+  }
+  &:hover:after {
+    display: block;
+  }
 }

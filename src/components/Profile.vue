@@ -19,10 +19,11 @@
     </div>
     <div class="profile-quest"></div>
 
-    <div class="item">
-      <div class="item" v-for="(items, i) in stackedItems" :key="i">
-        <button @click="useItem(items[0])">Utiliser</button>
-        {{ items.length }} {{ items[0].name }} {{items[0].effects}}
+    <div class="items">
+      <div class="item" v-for="(stack, i) in stackedItems" :key="i">
+        <div class="hasTooltip" :tooltip="stack[0].effects"></div>
+        <button @click="useItem(stack[0])">Utiliser</button>
+        {{ stack.length }} {{ stack[0].name }}
       </div>
     </div>
 

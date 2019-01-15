@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "json-server data/db.json | npm run serve"
+    "back": "json-server data/db.json",
+    "start": "npm run serve"
   },
   "dependencies": {
     "json-server": "^0.14.2",

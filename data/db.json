@@ -2,39 +2,19 @@
   "currentPlayer": {
     "name": "Joe",
     "level": 1,
-    "currentLife": 100,
+    "currentLife": 91,
     "life": 100,
     "atk": 14,
     "def": 4,
     "spe": 2,
     "x": 5,
-    "y": 14,
-    "exp": 442,
-    "money": 209,
+    "y": 11,
+    "exp": 492,
+    "money": 10,
     "deathCount": 0,
-    "kills": 181,
+    "kills": 186,
     "death": 22,
     "items": [
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
       {
         "name": "Pot de miel",
         "id": "987654321",
@@ -3023,28 +3003,16 @@
       "y": 11,
       "enemies": [
         {
-          "name": "Araignée veuve",
-          "id": "386545513",
-          "picture": "🦆",
-          "life": 200,
+          "name": "Grenouille maudite",
+          "id": "057683333",
+          "picture": "🐸",
+          "life": 20,
           "atk": 2,
           "def": 2,
           "spe": 2,
           "exp": 10,
-          "currentLife": 62,
-          "originId": "733617524"
-        },
-        {
-          "name": "Araignée veuve",
-          "id": "972287735",
-          "picture": "🦆",
-          "life": 200,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "currentLife": 68,
-          "originId": "733617524"
+          "currentLife": 20,
+          "originId": "097986442"
         }
       ],
       "players": []

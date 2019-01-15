@@ -33,7 +33,7 @@ export default {
       type: Object,
       default: () => ({})
     },
-    Player: {
+    player: {
       type: Object,
       default: () => ({})
     }
@@ -51,7 +51,7 @@ export default {
       }
       const x = cell.x;
       const y = cell.y;
-      const p = this.Player;
+      const p = this.player;
       if (x === p.x && y === p.y) { return false }
       return (x === p.x && y <= (p.y + 1) && y >= (p.y - 1)) // top & bottom
           || (y === p.y && x <= (p.x + 1) && x >= (p.x - 1)) // left & right

@@ -13,4 +13,7 @@ Dans un dernier espoir, elle mis tout son corp sous le poid d'une civilisation e
 
 
 note de la chute:
-Le plateau commenca une chute dévastatrice. Le monde entier était en branle, les batiments explosaient, le bétail s'enfuyait dans toutes les directions et même certains des plus braves soldats se jetèrent du précipice au bord de Terre. Nous savions que la fin était proche et le peu qui restait fut sacagé, pendant que la plupart des survivant s'entretuaient pour les miettes.
+  Le plateau commenca une chute dévastatrice. Le monde entier était en branle, les batiments explosaient, le bétail s'enfuyait dans toutes les directions et même certains des plus braves soldats se jetèrent du précipice au bord de Terre. Nous savions que la fin était proche et le peu qui restait fut sacagé, pendant que la plupart des survivant s'entretuaient pour les miettes.
+
+
+Commence dans la ville "Capitale", maison des Chevaliers (guilde), au Nord
