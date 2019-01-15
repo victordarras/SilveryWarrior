@@ -5,6 +5,7 @@ import App from './components/App.vue'
 import Game from './components/Game.vue'
 import MobEditor from './components/MobEditor.vue'
 import MapEditor from './components/MapEditor.vue'
+import ItemEditor from './components/ItemEditor.vue'
 
 Vue.config.productionTip = false
 
@@ -21,6 +22,9 @@ const routes = [
   }, {
     path: '/map-editor',
     component: MapEditor
+  }, {
+    path: '/item-editor',
+    component: ItemEditor
   }
 ]
 const router = new VueRouter({routes})

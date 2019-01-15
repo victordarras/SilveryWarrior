@@ -1,23 +1,25 @@
 <template>
-  <section class="profile">
-    <div class="profile-avatar">
-      <div class="lifeBar" :style="lifeCss(player.currentLife, player.life)">
-        <span class="lifeBar-value"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
+  <section class="sidebar">
+    <div class="profile">
+      <div class="profile-avatar">
+        <div class="lifeBar" :style="lifeCss(player.currentLife, player.life)">
+          <span class="lifeBar-value"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
+        </div>
       </div>
+      <h3>{{ player.name }}({{ player.level }})</h3>
+      <p>
+        {{ player.money }} 💰<br>
+        {{ player.exp }} experience points<br>
+        {{ player.kills }} mob killed
+      </p>
+      <div class="profile-menu">
+        <a class="profile-money"></a>
+        <a class="profile-settings"></a>
+        <a class="profile-inventory"></a>
+        <a @click="drinkPotion()" class="profile-drink"></a>
+      </div>
+      <div class="profile-quest"></div>
     </div>
-    <h3>{{ player.name }}({{ player.level }})</h3>
-    <p>
-      {{ player.money }} 💰<br>
-      {{ player.exp }} experience points<br>
-      {{ player.kills }} mob killed
-    </p>
-    <div class="profile-menu">
-      <a class="profile-money"></a>
-      <a class="profile-settings"></a>
-      <a class="profile-inventory"></a>
-      <a @click="drinkPotion()" class="profile-drink"></a>
-    </div>
-    <div class="profile-quest"></div>
 
     <div class="items">
       <div class="item" v-for="(stack, i) in stackedItems" :key="i">
@@ -34,7 +36,7 @@
 import { groupBy } from "../helpers.js"
 
 export default {
-  name: 'Profile',
+  name: 'Sidebar',
   props: {
     player: {
       type: Object,
@@ -61,4 +63,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="../assets/profile.scss" scoped></style>
+<style lang="scss" src="../assets/sidebar.scss" scoped></style>

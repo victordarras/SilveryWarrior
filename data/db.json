@@ -2,17 +2,17 @@
   "currentPlayer": {
     "name": "Joe",
     "level": 1,
-    "currentLife": 65,
+    "currentLife": 47,
     "life": 100,
     "atk": 14,
     "def": 4,
     "spe": 2,
     "x": 5,
-    "y": 14,
-    "exp": 10,
-    "money": 715,
+    "y": 11,
+    "exp": 2008,
+    "money": 1714,
     "deathCount": 0,
-    "kills": 189,
+    "kills": 192,
     "death": 22,
     "items": [
       {
@@ -5570,7 +5570,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Buisson animé",
@@ -5580,7 +5581,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 663
+      "exp": 666,
+      "money": 1000
     },
     {
       "name": "Babouin excité",
@@ -5590,7 +5592,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Blaireau enragé",
@@ -5600,7 +5603,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Chauve-souris sanguinaire",
@@ -5610,7 +5614,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Chat fouin",
@@ -5620,7 +5625,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Crabe vicieux",
@@ -5630,7 +5636,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Rat crâneur",
@@ -5640,7 +5647,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Main tremblante",
@@ -5650,7 +5658,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Corbeau blanc",
@@ -5660,7 +5669,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Scarabée géant",
@@ -5670,7 +5680,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Chèvre sénile",
@@ -5680,7 +5691,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Homonculus",
@@ -5690,7 +5702,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Hyène fétide",
@@ -5700,7 +5713,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Chacal banal",
@@ -5710,7 +5724,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Lézard affuté",
@@ -5720,7 +5735,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Champignon éveillé",
@@ -5730,7 +5746,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Poulpe sec",
@@ -5740,7 +5757,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Chouette déçue",
@@ -5750,7 +5768,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Scorpion rampant",
@@ -5760,7 +5779,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     },
     {
       "name": "Araignée veuve",
@@ -5770,7 +5790,8 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 10,
+      "money": 10
     }
   ],
   "itemOptions": {
@@ -5787,7 +5808,7 @@
       "id": "987654948",
       "kind": "equipment",
       "picture": "🗡",
-      "price": 50,
+      "price": 500,
       "stackBy": 1,
       "effects": [
         "Player.atk += roll(12) + 2"

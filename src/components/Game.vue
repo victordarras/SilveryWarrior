@@ -1,6 +1,6 @@
 <template>
   <section id="app">
-    <Profile
+    <Sidebar
       :player="currentPlayer"
       @drinkPotion="addLife"
       @useItem="useItem"
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import Profile from './Profile.vue'
+import Sidebar from './Sidebar.vue'
 import Map from './Map.vue'
 import Place from './Place.vue'
 import Logger from './Logger.vue'
@@ -126,9 +126,9 @@ export default {
       }
       if (enemy.currentLife <= 0) {
         this.currentPlayer.exp += enemy.exp;
-        this.currentPlayer.money += enemy.exp / 2;
+        this.currentPlayer.money += enemy.money;
         this.currentPlayer.kills += 1;
-        this.log(`Vous achevez ${enemy.name} en lui infligeant ${pDamage} dégats ! (+${enemy.exp}xp, +${enemy.exp / 2}💰)`, 'success');
+        this.log(`Vous achevez ${enemy.name} en lui infligeant ${pDamage} dégats ! (+${enemy.exp}xp, +${enemy.money}💰)`, 'success');
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
         //
       }
@@ -165,7 +165,7 @@ export default {
     return this.log("Bonjour, votre aventure commence ici.");
   },
   components: {
-    Map, Place, Profile, Logger
+    Map, Place, Sidebar, Logger
   }
 }
 </script>

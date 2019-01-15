@@ -2,8 +2,10 @@
   <main>
     <nav>
       <router-link to="/game">GAME</router-link>
+      <div class="admin-hr"></div>
       <router-link to="/mob-editor">MOBS</router-link>
-      <router-link to="/map-editor">MAP EDITOR</router-link>
+      <router-link to="/item-editor">ITEMS</router-link>
+      <router-link to="/map-editor">MAP</router-link>
     </nav>
     <router-view></router-view>
   </main>
@@ -25,14 +27,19 @@ export default {
     background: #000;
     color: #fff;
     display: flex;
+    align-items: center;
+    border-bottom: 1px solid #000;
+    .admin-hr {
+      margin-left: auto;
+    }
     a {
       padding: 0.25em 1rem;
       text-decoration: none;
       font-family: sans-serif;
       color: inherit;
-      border-top: 3px solid #000;
       &:hover {
-        border-top: 3px solid #fff
+        background-color: #fff;
+        color: #000;
       }
     }
   }
