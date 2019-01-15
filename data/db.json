@@ -2,145 +2,25 @@
   "currentPlayer": {
     "name": "Joe",
     "level": 1,
-    "currentLife": 47,
+    "currentLife": 100,
     "life": 100,
     "atk": 14,
     "def": 4,
     "spe": 2,
     "x": 5,
-    "y": 11,
-    "exp": 2008,
-    "money": 1714,
+    "y": 14,
+    "exp": 2674,
+    "money": 844,
     "deathCount": 0,
-    "kills": 192,
+    "kills": 193,
     "death": 22,
     "items": [
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Potion de vie",
-        "id": "123456789",
-        "picture": "🍺",
-        "price": 80,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 100"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
       {
         "name": "Epée rouillée",
         "id": "987654948",
         "kind": "equipment",
         "picture": "🗡",
-        "price": 50,
+        "price": 500,
         "stackBy": 1,
         "effects": [
           "Player.atk += roll(12) + 2"
@@ -177,6 +57,116 @@
         "stackBy": 16,
         "effects": [
           "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "kind": "consumable",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 16,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "kind": "consumable",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 16,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Potion de vie",
+        "id": "123456789",
+        "kind": "consumable",
+        "picture": "🍺",
+        "price": 80,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 100"
+        ]
+      },
+      {
+        "name": "Potion de vie",
+        "id": "123456789",
+        "kind": "consumable",
+        "picture": "🍺",
+        "price": 80,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 100"
+        ]
+      },
+      {
+        "name": "Potion de vie",
+        "id": "123456789",
+        "kind": "consumable",
+        "picture": "🍺",
+        "price": 80,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 100"
+        ]
+      },
+      {
+        "name": "Potion de vie",
+        "id": "123456789",
+        "kind": "consumable",
+        "picture": "🍺",
+        "price": 80,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 100"
+        ]
+      },
+      {
+        "name": "Potion de vie",
+        "id": "123456789",
+        "kind": "consumable",
+        "picture": "🍺",
+        "price": 80,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 100"
+        ]
+      },
+      {
+        "name": "Potion de vie",
+        "id": "123456789",
+        "kind": "consumable",
+        "picture": "🍺",
+        "price": 80,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 100"
+        ]
+      },
+      {
+        "name": "Potion de vie",
+        "id": "123456789",
+        "kind": "consumable",
+        "picture": "🍺",
+        "price": 80,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 100"
+        ]
+      },
+      {
+        "name": "Potion de vie",
+        "id": "123456789",
+        "kind": "consumable",
+        "picture": "🍺",
+        "price": 80,
+        "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 100"
         ]
       }
     ]
@@ -3045,7 +3035,47 @@
       "kind": "forest",
       "x": 5,
       "y": 11,
-      "enemies": [],
+      "enemies": [
+        {
+          "name": "Buisson animé",
+          "id": "450584269",
+          "picture": "🦆",
+          "life": 20,
+          "atk": 2,
+          "def": 2,
+          "spe": 2,
+          "exp": 666,
+          "money": 1000,
+          "currentLife": 20,
+          "originId": "395421478"
+        },
+        {
+          "name": "Buisson animé",
+          "id": "762831750",
+          "picture": "🦆",
+          "life": 20,
+          "atk": 2,
+          "def": 2,
+          "spe": 2,
+          "exp": 666,
+          "money": 1000,
+          "currentLife": 20,
+          "originId": "395421478"
+        },
+        {
+          "name": "Buisson animé",
+          "id": "493098593",
+          "picture": "🦆",
+          "life": 20,
+          "atk": 2,
+          "def": 2,
+          "spe": 2,
+          "exp": 666,
+          "money": 1000,
+          "currentLife": 20,
+          "originId": "395421478"
+        }
+      ],
       "players": []
     },
     {

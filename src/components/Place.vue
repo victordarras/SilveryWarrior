@@ -19,9 +19,9 @@
           <div class="enemy-picture">{{ enemy.picture }}</div>
           <div class="enemy-life">
             <svg width="100%" height="100%" viewBox="0 0 42 42" class="donut">
-              <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#000" stroke-width="9"></circle>
-              <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#fff" stroke-width="5"></circle>
-              <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#000" stroke-width="5" :stroke-dasharray="lifeCss(enemy.currentLife, enemy.life)" stroke-dashoffset="0"></circle>
+              <circle class="donut-ring" cx="21" cy="21" r="16" fill="transparent" stroke="#000" stroke-width="9"></circle>
+              <circle class="donut-ring" cx="21" cy="21" r="16" fill="transparent" stroke="#fff" stroke-width="5"></circle>
+              <circle class="donut-segment" cx="21" cy="21" r="16" fill="transparent" stroke="#000" stroke-width="5" :stroke-dasharray="lifeCss(enemy.currentLife, enemy.life)" stroke-dashoffset="0"></circle>
             </svg>
           </div>
           <div class="life">

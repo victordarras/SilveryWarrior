@@ -2,7 +2,6 @@
   <section id="app">
     <Sidebar
       :player="currentPlayer"
-      @drinkPotion="addLife"
       @useItem="useItem"
     />
     <template v-if="currentPlayer.currentLife > 0">
@@ -75,6 +74,7 @@ export default {
       item.effects.forEach(effect => eval(effect));
       Player.currentLife = Math.min(Player.currentLife, Player.life);
       Player.items.splice(Player.items.indexOf(item), 1);
+      this.log(`Vous utilisez ${item.picture}${item.name} (${item.effects})`, "alert")
       this.savePlayerData();
     },
     addItem(item) {

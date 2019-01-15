@@ -22,10 +22,10 @@
     </div>
 
     <div class="items">
-      <div class="item" v-for="(stack, i) in stackedItems" :key="i">
+      <div class="item" v-for="(stack, i) in stackedItems" :key="i" @click="useItem(stack[0])">
         <div class="hasTooltip" :tooltip="stack[0].effects"></div>
-        <button @click="useItem(stack[0])">Utiliser</button>
-        {{ stack.length }} {{ stack[0].name }}
+        <div class="item-length">{{ stack.length }}</div>
+        {{ stack[0].picture }} {{ stack[0].name }}
       </div>
     </div>
 
@@ -45,10 +45,15 @@ export default {
   },
   methods: {
     drinkPotion() {
-      return this.$emit('drinkPotion');
+      const popo = this.player.items.find(item => item.id === "123456789")
+      if (popo != undefined) {
+        return this.useItem(popo)
+      }
     },
     useItem(item) {
-      return this.$emit('useItem', item);
+      if (item.kind === "consumable") {
+        return this.$emit('useItem', item);
+      }
     },
     lifeCss (value, max) {
       const l = (value / max) * 100;
