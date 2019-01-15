@@ -2,17 +2,17 @@
   "currentPlayer": {
     "name": "Joe",
     "level": 1,
-    "currentLife": 91,
+    "currentLife": 65,
     "life": 100,
     "atk": 14,
     "def": 4,
     "spe": 2,
     "x": 5,
-    "y": 11,
-    "exp": 492,
-    "money": 10,
+    "y": 14,
+    "exp": 10,
+    "money": 715,
     "deathCount": 0,
-    "kills": 186,
+    "kills": 189,
     "death": 22,
     "items": [
       {
@@ -131,6 +131,50 @@
         "picture": "🍯",
         "price": 50,
         "stackBy": 32,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Epée rouillée",
+        "id": "987654948",
+        "kind": "equipment",
+        "picture": "🗡",
+        "price": 50,
+        "stackBy": 1,
+        "effects": [
+          "Player.atk += roll(12) + 2"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "kind": "consumable",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 16,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "kind": "consumable",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 16,
+        "effects": [
+          "Player.currentLife += 50"
+        ]
+      },
+      {
+        "name": "Pot de miel",
+        "id": "987654321",
+        "kind": "consumable",
+        "picture": "🍯",
+        "price": 50,
+        "stackBy": 16,
         "effects": [
           "Player.currentLife += 50"
         ]
@@ -3001,20 +3045,7 @@
       "kind": "forest",
       "x": 5,
       "y": 11,
-      "enemies": [
-        {
-          "name": "Grenouille maudite",
-          "id": "057683333",
-          "picture": "🐸",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "currentLife": 20,
-          "originId": "097986442"
-        }
-      ],
+      "enemies": [],
       "players": []
     },
     {
@@ -5549,7 +5580,7 @@
       "atk": 2,
       "def": 2,
       "spe": 2,
-      "exp": 10
+      "exp": 663
     },
     {
       "name": "Babouin excité",
@@ -5742,10 +5773,30 @@
       "exp": 10
     }
   ],
+  "itemOptions": {
+    "kind": [
+      "consumable",
+      "equipment",
+      "quest",
+      "map"
+    ]
+  },
   "items": [
+    {
+      "name": "Epée rouillée",
+      "id": "987654948",
+      "kind": "equipment",
+      "picture": "🗡",
+      "price": 50,
+      "stackBy": 1,
+      "effects": [
+        "Player.atk += roll(12) + 2"
+      ]
+    },
     {
       "name": "Pot de miel",
       "id": "987654321",
+      "kind": "consumable",
       "picture": "🍯",
       "price": 50,
       "stackBy": 16,
@@ -5756,6 +5807,7 @@
     {
       "name": "Potion de vie",
       "id": "123456789",
+      "kind": "consumable",
       "picture": "🍺",
       "price": 80,
       "stackBy": 32,

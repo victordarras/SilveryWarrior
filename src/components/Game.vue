@@ -56,10 +56,12 @@ export default {
     }
   },
   methods: {
+    log(message, kind = "normal") {
+      this.logs.push({kind: kind,content: message, id: this.logs.length});
+    },
     updateCell(cell = this.currentCell) {
       this.$fetch.patch(`http://localhost:3000/cells/${cell.id}`, cell);
     },
-    // ADMIN
     savePlayerData() {
       this.$fetch.patch('http://localhost:3000/currentPlayer', this.currentPlayer);
     },
@@ -76,17 +78,14 @@ export default {
       this.savePlayerData();
     },
     addItem(item) {
-      if (this.currentPlayer.money - item.price >= 0) { // can buy item
-        this.currentPlayer.money -= item.price;
-        this.currentPlayer.items.push(item);
-      } else {
-        this.logs("Vous n'avez pas assez d'argent", "alert")
+      if (this.currentPlayer.money - item.price <= 0) { // can't buy item
+        return this.log("Vous n'avez pas assez d'argent", "alert")
       }
+
+      this.currentPlayer.money -= item.price;
+      this.currentPlayer.items.push(item);
+      this.log(`Vous achetez ${item.name} pour ${item.price}💰`, "success");
       this.savePlayerData();
-    },
-    // NON ADMIN
-    log(message, kind = "normal") {
-      this.logs.push({kind: kind,content: message, id: this.logs.length});
     },
     revive() {
       this.currentPlayer.exp = Math.round(this.currentPlayer.exp *= 0.875);

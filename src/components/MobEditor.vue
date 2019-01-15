@@ -16,7 +16,9 @@
       <hr>
       <div v-for="key in Object.keys(currentMob)" :key="key" v-if="key !== 'id'">
         <label :for="key">{{ key }}:</label>
-        <input type="text" v-model="currentMob[key]">
+        <input v-if="typeof currentMob[key] === 'boolean'" type="checkbox" v-model="currentMob[key]">
+        <input v-else-if="typeof currentMob[key] === 'number'" type="number" v-model.number="currentMob[key]">
+        <input v-else type="text" v-model="currentMob[key]">
       </div>
     </form>
     <button class="button" @click="updateMob(currentMob)">Save mob</button>
