@@ -1,7 +1,11 @@
 # jsgame
 
-http://nintendo.wikia.com/wiki/List_of_EarthBound_enemies
-https://codepen.io/MadLittleMods/pen/vmhLF
+[Enemies inspiration](http://nintendo.wikia.com/wiki/List_of_EarthBound_enemies)
+[Inventory example](https://codepen.io/MadLittleMods/pen/vmhLF)
+[How to newtwork?](http://www.plinkojs.com/about)
+[What's ECS](https://www.reddit.com/r/gamedev/comments/afmi3v/game_objects_creation_incode_or_json/edzxdel/)
+[EventBus](https://alligator.io/vuejs/global-event-bus/) OR Vuex
+
 
 ## Project setup
 ```
