@@ -5,7 +5,7 @@
 [How to newtwork?](http://www.plinkojs.com/about)
 [What's ECS](https://www.reddit.com/r/gamedev/comments/afmi3v/game_objects_creation_incode_or_json/edzxdel/)
 [EventBus](https://alligator.io/vuejs/global-event-bus/) OR Vuex
-
+[vue-global-events](https://github.com/shentao/vue-global-events)
 
 ## Project setup
 ```
