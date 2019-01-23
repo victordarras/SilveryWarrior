@@ -1,13 +1,14 @@
 <template>
   <section class="mapEditor">
     <h1>Map editor <span v-if="isLoading">LOADING...</span></h1>
+    <button @click="addInfo">Add info</button>
     <Map
       :currentCell="currentCell"
       :cells="cells"
       @selectCell="selectCell"
     />
     <template v-if="currentCell">
-      <h2>Cell {{ currentCell.id }} [{{ currentCell.x }};{{ currentCell.y }}]</h2>
+      <h2>Cell {{ currentCell.name ? currentCell.name : 'unnamed' }} [{{ currentCell.x }};{{ currentCell.y }}]</h2>
       <p>Type: {{ currentCell.kind }}</p>
 
 
@@ -61,17 +62,16 @@ export default {
     }
   },
   methods: {
+    addInfo() {
+      // this.cells = this.cells.map(cell => ({...cell, name: ''}));
+      // console.log('done', JSON.stringify(this.cells));
+    },
     selectCell(cell) {
       this.currentCell = cell;
     },
     clearCell() {
       this.currentCell.enemies = [];
       this.updateCell()
-      // Uncomment to clear the entire map
-      // this.cells.forEach(cell => {
-      //   cell.enemies = [];
-      //   this.updateCell(cell)
-      // })
     },
     deleteMob(enemy) {
       this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1)

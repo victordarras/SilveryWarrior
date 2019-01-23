@@ -36,12 +36,6 @@ import Place from './Place.vue'
 import Logger from './Logger.vue'
 import { roll } from '../helpers.js'
 
-// function roll(sides) {
-//   return Math.floor(Math.random() * sides) + 1;
-// }
-// function newUID() {
-//   return ('' + Math.random()).substr(2, 9)
-// }
 export default {
   name: 'Game',
   data: () => {
@@ -74,7 +68,7 @@ export default {
       item.effects.forEach(effect => eval(effect));
       Player.currentLife = Math.min(Player.currentLife, Player.life);
       Player.items.splice(Player.items.indexOf(item), 1);
-      this.log(`Vous utilisez ${item.picture}${item.name} (${item.effects})`, "alert")
+      this.log(`Vous utilisez ${item.picture}${item.name} (${item.effects})`, "success")
       this.savePlayerData();
     },
     addItem(item) {
@@ -96,9 +90,9 @@ export default {
     movePlayer(cell) {
       this.currentPlayer.x = cell.x;
       this.currentPlayer.y = cell.y;
+      this.log(`Vous vous déplacez en [ ${cell.x}, ${cell.y} ] (${this.currentCell.kind})`);
       this.currentCell.enemies.forEach(this.attackPlayerBy);
       this.savePlayerData();
-      this.log(`Vous vous déplacez en [${cell.x}-${cell.y}] (${this.currentCell.kind})`);
     },
     attackPlayerBy(enemy) {
       const damage = (enemy.atk + roll(6) - this.currentPlayer.def + roll(6));

@@ -4,7 +4,7 @@
     <transition-group tag="ul" name="listAppear">
       <li
         class="log"
-        v-for="log in reverseLogs"
+        v-for="log in logs"
         :class="log.kind"
         :key="log.id"
       >{{ log.content }}</li>
@@ -37,12 +37,12 @@ export default {
   font-size: 16px;
   max-height: 100%;
   overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  font-family: sans-serif;
 }
 .log {
   margin: 0 0 0.25em 1rem;
-  &:nth-child(n + 7) {
-    opacity: 0.5;
-  }
   &.warning {color: darkorange;}
   &.alert {color: darkred;}
   &.success {color: darkgreen;}
