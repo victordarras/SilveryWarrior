@@ -21,12 +21,14 @@
         <input v-else type="text" v-model="currentItem[key]">
       </div>
     </form>
+    <pre>{{ itemOptions }}</pre>
     <button class="button" @click="updateMob(currentItem)">Save item</button>
     <button @click="addStats()">Add stats</button>
   </section>
 </template>
 
 <script>
+import db from '../api'
 
 export default {
   name: 'ItemEditor',
@@ -34,7 +36,7 @@ export default {
     return {
       isLoading: true,
       items: [],
-      itemOptions: {},
+      itemOptions: [],
       currentItem: {}
     }
   },
@@ -58,10 +60,23 @@ export default {
   created () {
     this.isLoading = true;
     (async () => {
-      let items = await this.$fetch.get('http://localhost:3000/items')
-      this.items = await items.json();
-      let itemOptions = await this.$fetch.get('http://localhost:3000/itemOptions')
-      this.itemOptions = await itemOptions.json();
+      // let items = await this.$fetch.get('http://localhost:3000/items')
+      // this.items = await items.json();
+      // let itemOptions = await this.$fetch.get('http://localhost:3000/itemOptions')
+      // this.itemOptions = await itemOptions.json();
+
+      db.collection("items").get().then((querySnapshot) => {
+        console.log(querySnapshot.docs)
+        querySnapshot.forEach(item => {
+          this.items.push(item.data())
+        });
+      });
+
+      db.collection("itemOptions").get().then((querySnapshot) => {
+        querySnapshot.forEach(item => {
+          this.itemOptions.push(item.data())
+        });
+      });
       this.isLoading = false;
     })()
   }

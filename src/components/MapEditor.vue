@@ -4,7 +4,6 @@
     <button @click="addInfo">Add info</button>
     <Map
       :currentCell="currentCell"
-      :cells="cells"
       @selectCell="selectCell"
     />
     <template v-if="currentCell">
@@ -95,9 +94,6 @@ export default {
     this.isLoading = true;
 
     (async () => {
-      let cells = await this.$fetch.get('http://localhost:3000/cells')
-      this.cells = await cells.json();
-
       let mobs = await this.$fetch.get('http://localhost:3000/mobs')
       this.mobs = await mobs.json();
 

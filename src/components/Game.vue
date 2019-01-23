@@ -119,9 +119,9 @@ export default {
         this.log(`Vous avez été brutalement abbatu par ${enemy.name}`, 'alert');
       }
       if (enemy.currentLife <= 0) {
-        this.currentPlayer.exp += enemy.exp;
-        this.currentPlayer.money += enemy.money;
-        this.currentPlayer.kills += 1;
+        player.exp += enemy.exp;
+        player.money += enemy.money;
+        player.kills += 1;
         this.log(`Vous achevez ${enemy.name} en lui infligeant ${pDamage} dégats ! (+${enemy.exp}xp, +${enemy.money}💰)`, 'success');
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
         //
@@ -148,8 +148,136 @@ export default {
     this.isLoading = true;
 
     (async () => {
-      let currentPlayer = await this.$fetch.get('http://localhost:3000/currentPlayer')
-      this.currentPlayer = await currentPlayer.json();
+      // let currentPlayer = await this.$fetch.get('http://localhost:3000/currentPlayer')
+      // this.currentPlayer = await currentPlayer.json();
+      this.currentPlayer = {
+        "name": "Joe",
+        "level": 1,
+        "currentLife": 83,
+        "life": 100,
+        "atk": 14,
+        "def": 4,
+        "spe": 2,
+        "x": 5,
+        "y": 11,
+        "exp": 4672,
+        "money": 3844,
+        "deathCount": 0,
+        "kills": 196,
+        "death": 22,
+        "items": [
+          {
+            "name": "Epée rouillée",
+            "id": "987654948",
+            "kind": "equipment",
+            "picture": "🗡",
+            "price": 500,
+            "stackBy": 1,
+            "effects": [
+              "Player.atk += roll(12) + 2"
+            ]
+          },
+          {
+            "name": "Pot de miel",
+            "id": "987654321",
+            "kind": "consumable",
+            "picture": "🍯",
+            "price": 50,
+            "stackBy": 16,
+            "effects": [
+              "Player.currentLife += 50"
+            ]
+          },
+          {
+            "name": "Pot de miel",
+            "id": "987654321",
+            "kind": "consumable",
+            "picture": "🍯",
+            "price": 50,
+            "stackBy": 16,
+            "effects": [
+              "Player.currentLife += 50"
+            ]
+          },
+          {
+            "name": "Pot de miel",
+            "id": "987654321",
+            "kind": "consumable",
+            "picture": "🍯",
+            "price": 50,
+            "stackBy": 16,
+            "effects": [
+              "Player.currentLife += 50"
+            ]
+          },
+          {
+            "name": "Potion de vie",
+            "id": "123456789",
+            "kind": "consumable",
+            "picture": "🍺",
+            "price": 80,
+            "stackBy": 32,
+            "effects": [
+              "Player.currentLife += 100"
+            ]
+          },
+          {
+            "name": "Potion de vie",
+            "id": "123456789",
+            "kind": "consumable",
+            "picture": "🍺",
+            "price": 80,
+            "stackBy": 32,
+            "effects": [
+              "Player.currentLife += 100"
+            ]
+          },
+          {
+            "name": "Potion de vie",
+            "id": "123456789",
+            "kind": "consumable",
+            "picture": "🍺",
+            "price": 80,
+            "stackBy": 32,
+            "effects": [
+              "Player.currentLife += 100"
+            ]
+          },
+          {
+            "name": "Potion de vie",
+            "id": "123456789",
+            "kind": "consumable",
+            "picture": "🍺",
+            "price": 80,
+            "stackBy": 32,
+            "effects": [
+              "Player.currentLife += 100"
+            ]
+          },
+          {
+            "name": "Potion de vie",
+            "id": "123456789",
+            "kind": "consumable",
+            "picture": "🍺",
+            "price": 80,
+            "stackBy": 32,
+            "effects": [
+              "Player.currentLife += 100"
+            ]
+          },
+          {
+            "name": "Potion de vie",
+            "id": "123456789",
+            "kind": "consumable",
+            "picture": "🍺",
+            "price": 80,
+            "stackBy": 32,
+            "effects": [
+              "Player.currentLife += 100"
+            ]
+          }
+        ]
+      }
 
       let cells = await this.$fetch.get('http://localhost:3000/cells')
       this.cells = await cells.json();
