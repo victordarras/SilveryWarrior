@@ -90,7 +90,6 @@ export default {
     }
   },
   created () {
-
     this.isLoading = true;
 
     (async () => {

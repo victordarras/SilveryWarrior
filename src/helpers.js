@@ -6,7 +6,7 @@ export function newUID() {
   return ('' + Math.random()).substr(2, 9)
 }
 
-export function groupBy (data, key) {
+export function groupBy(data, key) {
   return data.reduce(function(acc, cur) {
     (acc[cur[key]] = acc[cur[key]] || []).push(cur);
     return acc;

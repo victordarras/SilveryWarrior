@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import db from '../api'
-
 export default {
   name: 'Map',
   data() {
@@ -80,15 +78,9 @@ export default {
   created () {
     this.isLoading = true;
     (async () => {
-      // let cells = await this.$fetch.get('http://localhost:3000/cells')
-      // this.cells = await cells.json();
-      this.cells = []
-      await db.collection("cells").get().then((querySnapshot) => {
-        console.log(querySnapshot.docs)
-        querySnapshot.forEach(item => {
-          this.cells.push(item.data())
-        });
-      });
+      let cells = await this.$fetch.get('http://localhost:3000/cells')
+      this.cells = await cells.json();
+
       this.isLoading = false;
     })()
   }
