@@ -1,15 +1,22 @@
 <template>
   <div class="city">
     <div class="buildings">
+      <div class="building">
+        <button @click="storeActive = !storeActive">Entrer dans le magasin</button>
+      </div>
+      <div class="building">
+        <button @click="sleep()">Dormir à l'auberge (Vie max. gratuit)</button>
+      </div>
     </div>
-    <button @click="sleep()">Dormir à l'auberge (Vie max. gratuit)</button>
-    <button @click="storeActive = !storeActive">Entrer dans le magasin</button>
-    <div class="building" v-if="storeActive">
+
+    <div class="store" v-if="storeActive">
       <h2>Magasin</h2>
-      <ul>
-        <li v-for="item in items" :key="item.id">
-          {{ item.name }}
-          <button @click="buyItem(item)">Acheter ({{ item.price }}💰)</button>
+      <p>Bienvenue dans mon humble magasin, que désirez vous acheter ?</p>
+      <ul class="items">
+        <li class="item" v-for="item in items" :key="item.id">
+          <div class="picture">{{ item.picture }}</div>
+          <div class="name">{{ item.name }}</div>
+          <button @click="buyItem(item)">Acheter<br>({{ item.price }}💰)</button>
         </li>
       </ul>
     </div>

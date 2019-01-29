@@ -36,7 +36,7 @@ npm run back
 - **Sidebar:** Display mostly the player informations, avatar, name, level etc… and some shortcuts (like drinking potion)
 - **Map:** Display the map cells on a grid and allow the player to move.
 - **Place:** Display all visible mobs and enemies. Can also display a customized city place.
-- **City:** Display some action for now, but next there will be buildings and specific actions.
+- **City:** Display some actions for now, but next there will be buildings and specific actions.
 
 ### Admin Components
 

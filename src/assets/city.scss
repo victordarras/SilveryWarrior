@@ -23,7 +23,14 @@
     background: url(../assets/images/horizontal_separator.png) repeat-x top left / contain;
   }
   .buildings {
-    min-height: 14vh;
+    min-height: 13rem;
     background: url(../assets/images/city.png) no-repeat top center / contain;
+    display: flex;
+    justify-content: center;
+  }
+  .building {
+    flex: 0 0 20%;
+    display: flex;
+    align-items: flex-end;
   }
 }

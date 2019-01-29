@@ -1,32 +1,42 @@
 <template>
   <section id="app">
-    <Sidebar
-      :player="currentPlayer"
-      @useItem="useItem"
-      @logout="logout"
-    />
-    <template v-if="currentPlayer.currentLife > 0">
-      <Map
-        :currentCell="currentCell"
-        :cells="cells"
-        :player="currentPlayer"
-        @selectCell="movePlayer"
-      />
-
-      <Place
-        :cell="currentCell"
-        @attack="fight"
-        @sleep="addLife(currentPlayer.life)"
-        @buyItem="addItem"
-      />
+    <form class="Login" @submit.prevent="login()" v-if="!isConnected">
+      <label for="uid">Mot de passe:</label>
+      <input type="text" id="uid" v-model="currentPlayerUid">
+      <button type="submit" class="button">Connexion</button>
+    </form>
+    <template v-else-if="isLoading">
+      Loading…
     </template>
+    <template v-else>
+      <Sidebar
+        :player="currentPlayer"
+        @useItem="useItem"
+        @logout="logout"
+      />
+      <template v-if="currentPlayer.currentLife > 0">
+        <Map
+          :currentCell="currentCell"
+          :cells="cells"
+          :player="currentPlayer"
+          @selectCell="movePlayer"
+        />
 
-    <section v-else>
-      <h1>YOU ARE DEAD</h1>
-      <button @click="revive()">Revive (XP x 0.875)</button>
-    </section>
+        <Place
+          :cell="currentCell"
+          @attack="fight"
+          @sleep="addLife(currentPlayer.life)"
+          @buyItem="addItem"
+        />
+      </template>
 
-    <Logger :logs="logs" />
+      <section v-else>
+        <h1>YOU ARE DEAD</h1>
+        <button @click="revive()">Revive (XP x 0.875)</button>
+      </section>
+
+      <Logger :logs="logs" />
+    </template>
   </section>
 </template>
 
@@ -42,16 +52,36 @@ export default {
   data: () => {
     return {
       isAdmin: false,
+      isConnected: false,
       isLoading: false,
       currentPlayer: {},
       logs: [],
       cells: [],
-      players: []
+      players: [],
+      currentPlayerUid: ""
     }
   },
   methods: {
+    login() {
+      if (this.currentPlayerUid === '') {
+        return;
+      }
+      this.isLoading = true;
+      localStorage.setItem("currentPlayerUid", this.currentPlayerUid);
+
+      (async () => {
+        let currentPlayer = await this.$fetch.get(`http://localhost:3000/players/${this.currentPlayerUid}`)
+        this.currentPlayer = await currentPlayer.json();
+        let cells = await this.$fetch.get('http://localhost:3000/cells')
+        this.cells = await cells.json();
+
+        this.isLoading = false;
+      })()
+      this.isConnected = true;
+      return this.log("Bonjour, votre aventure commence ici.");
+    },
     logout() {
-      sessionStorage.setItem("currentPlayerUid", undefined);
+      localStorage.clear();
       window.location = "/"
     },
     log(message, kind = "normal") {
@@ -61,7 +91,7 @@ export default {
       this.$fetch.patch(`http://localhost:3000/cells/${cell.id}`, cell);
     },
     savePlayerData() {
-      this.$fetch.patch('http://localhost:3000/players/' + currentPlayer.uid, this.currentPlayer);
+      this.$fetch.patch('http://localhost:3000/players/' + this.currentPlayer.id, this.currentPlayer);
     },
     addLife(health = 50) {
       if (this.currentPlayer.currentLife < this.currentPlayer.life) {
@@ -105,8 +135,8 @@ export default {
       this.log(`Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`, 'warning');
     },
     fight(enemy, player = this.currentPlayer) {
-      const pDamage = (player.atk + roll(6) - enemy.def  + roll(6));
-      const eDamage = (enemy.atk  + roll(6) - player.def + roll(6));
+      const pDamage = Math.max(0, (player.atk + roll(6) - enemy.def  + roll(6)));
+      const eDamage = Math.max(0, (enemy.atk  + roll(6) - player.def + roll(6)));
 
       if (player.spe >= enemy.spe) {
         enemy.currentLife -= pDamage;
@@ -150,23 +180,10 @@ export default {
     }
   },
   mounted () {
-    this.isLoading = true;
-
-    var currentPlayerUid;
-    while (currentPlayerUid === undefined || currentPlayerUid === null) {
-      currentPlayerUid = sessionStorage.getItem('currentPlayerUid') ||  prompt("Quel est vôtre UID ?", "Sp1r1tu3l");
+    if (localStorage.getItem("currentPlayerUid")) {
+      this.currentPlayerUid = localStorage.getItem("currentPlayerUid");
+      this.login();
     }
-
-    (async () => {
-      let currentPlayer = await this.$fetch.get(`http://localhost:3000/players/${currentPlayerUid}`)
-      this.currentPlayer = await currentPlayer.json();
-      let cells = await this.$fetch.get('http://localhost:3000/cells')
-      this.cells = await cells.json();
-
-      this.isLoading = false;
-    })()
-
-    return this.log("Bonjour, votre aventure commence ici.");
   },
   components: {
     Map, Place, Sidebar, Logger

@@ -2,19 +2,19 @@
   "players": [
     {
       "name": "Victor",
-      "id": "0",
+      "id": "vic",
       "level": 1,
-      "currentLife": 100,
+      "currentLife": 92,
       "life": 100,
       "atk": 14,
-      "def": 40,
+      "def": 6,
       "spe": 20,
       "x": 5,
-      "y": 14,
-      "exp": 0,
-      "money": 0,
+      "y": 15,
+      "exp": 2704,
+      "money": 4040,
       "deathCount": 0,
-      "kills": 0,
+      "kills": 8,
       "death": 0,
       "items": []
     },
@@ -3972,19 +3972,6 @@
           "money": 10,
           "currentLife": 20,
           "originId": "441621257"
-        },
-        {
-          "name": "Scarabée géant",
-          "id": "054713045",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "money": 10,
-          "currentLife": 20,
-          "originId": "441621257"
         }
       ],
       "players": [],
@@ -4267,9 +4254,9 @@
       "y": 14,
       "enemies": [
         {
-          "name": "Hyène fétide",
-          "id": "719051414",
-          "picture": "🦆",
+          "name": "Grenouille maudite",
+          "id": "433161352",
+          "picture": "🐸",
           "life": 20,
           "atk": 2,
           "def": 2,
@@ -4277,20 +4264,7 @@
           "exp": 10,
           "money": 10,
           "currentLife": 20,
-          "originId": "191891400"
-        },
-        {
-          "name": "Hyène fétide",
-          "id": "027520381",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "money": 10,
-          "currentLife": 20,
-          "originId": "191891400"
+          "originId": "097986442"
         }
       ],
       "players": [],
@@ -4301,24 +4275,20 @@
       "kind": "city",
       "x": 5,
       "y": 14,
+      "enemies": [],
+      "players": [],
+      "name": ""
+    },
+    {
+      "id": "417199895",
+      "kind": "plain",
+      "x": 6,
+      "y": 14,
       "enemies": [
         {
-          "name": "Chat fouin",
-          "id": "188281056",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "money": 10,
-          "currentLife": 20,
-          "originId": "472877194"
-        },
-        {
           "name": "Babouin excité",
-          "id": "979358303",
-          "picture": "🦆",
+          "id": "230247251",
+          "picture": "🐒",
           "life": 20,
           "atk": 2,
           "def": 2,
@@ -4330,7 +4300,7 @@
         },
         {
           "name": "Buisson animé",
-          "id": "230670679",
+          "id": "689005828",
           "picture": "🦆",
           "life": 20,
           "atk": 2,
@@ -4340,68 +4310,6 @@
           "money": 1000,
           "currentLife": 20,
           "originId": "395421478"
-        },
-        {
-          "name": "Grenouille maudite",
-          "id": "630450532",
-          "picture": "🐸",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "money": 10,
-          "currentLife": 20,
-          "originId": "097986442"
-        },
-        {
-          "name": "Grenouille maudite",
-          "id": "397318720",
-          "picture": "🐸",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "money": 10,
-          "currentLife": 20,
-          "originId": "097986442"
-        }
-      ],
-      "players": [],
-      "name": ""
-    },
-    {
-      "id": "417199895",
-      "kind": "plain",
-      "x": 6,
-      "y": 14,
-      "enemies": [
-        {
-          "name": "Homonculus",
-          "id": "680499084",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "money": 10,
-          "currentLife": 20,
-          "originId": "666789172"
-        },
-        {
-          "name": "Homonculus",
-          "id": "798312472",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "money": 10,
-          "currentLife": 20,
-          "originId": "666789172"
         }
       ],
       "players": [],
@@ -4684,30 +4592,17 @@
       "y": 15,
       "enemies": [
         {
-          "name": "Scorpion rampant",
-          "id": "575072758",
+          "name": "Buisson animé",
+          "id": "627297465",
           "picture": "🦆",
           "life": 20,
           "atk": 2,
           "def": 2,
           "spe": 2,
-          "exp": 10,
-          "money": 10,
+          "exp": 666,
+          "money": 1000,
           "currentLife": 20,
-          "originId": "428329648"
-        },
-        {
-          "name": "Scorpion rampant",
-          "id": "923576199",
-          "picture": "🦆",
-          "life": 20,
-          "atk": 2,
-          "def": 2,
-          "spe": 2,
-          "exp": 10,
-          "money": 10,
-          "currentLife": 20,
-          "originId": "428329648"
+          "originId": "395421478"
         }
       ],
       "players": [],
@@ -5039,7 +4934,7 @@
     },
     {
       "id": "403104206",
-      "kind": "city",
+      "kind": "plain",
       "x": 10,
       "y": 16,
       "enemies": [],
@@ -6414,7 +6309,7 @@
     {
       "name": "Babouin excité",
       "id": "728386732",
-      "picture": "🦆",
+      "picture": "🐒",
       "life": 20,
       "atk": 2,
       "def": 2,
@@ -6425,7 +6320,7 @@
     {
       "name": "Blaireau enragé",
       "id": "729671167",
-      "picture": "🦆",
+      "picture": "🦡",
       "life": 20,
       "atk": 2,
       "def": 2,
