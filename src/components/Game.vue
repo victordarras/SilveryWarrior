@@ -3,6 +3,7 @@
     <Sidebar
       :player="currentPlayer"
       @useItem="useItem"
+      @logout="logout"
     />
     <template v-if="currentPlayer.currentLife > 0">
       <Map
@@ -49,6 +50,10 @@ export default {
     }
   },
   methods: {
+    logout() {
+      sessionStorage.setItem("currentPlayerUid", undefined);
+      window.location = "/"
+    },
     log(message, kind = "normal") {
       this.logs.push({kind: kind,content: message, id: this.logs.length});
     },
@@ -56,7 +61,7 @@ export default {
       this.$fetch.patch(`http://localhost:3000/cells/${cell.id}`, cell);
     },
     savePlayerData() {
-      this.$fetch.patch('http://localhost:3000/currentPlayer', this.currentPlayer);
+      this.$fetch.patch('http://localhost:3000/players/' + currentPlayer.uid, this.currentPlayer);
     },
     addLife(health = 50) {
       if (this.currentPlayer.currentLife < this.currentPlayer.life) {
@@ -144,11 +149,16 @@ export default {
       return this.cells.find(c => c.x === this.currentPlayer.x && c.y === this.currentPlayer.y);
     }
   },
-  created () {
+  mounted () {
     this.isLoading = true;
 
+    var currentPlayerUid;
+    while (currentPlayerUid === undefined || currentPlayerUid === null) {
+      currentPlayerUid = sessionStorage.getItem('currentPlayerUid') ||  prompt("Quel est vôtre UID ?", "Sp1r1tu3l");
+    }
+
     (async () => {
-      let currentPlayer = await this.$fetch.get('http://localhost:3000/currentPlayer')
+      let currentPlayer = await this.$fetch.get(`http://localhost:3000/players/${currentPlayerUid}`)
       this.currentPlayer = await currentPlayer.json();
       let cells = await this.$fetch.get('http://localhost:3000/cells')
       this.cells = await cells.json();

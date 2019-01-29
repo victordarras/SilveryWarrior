@@ -28,6 +28,7 @@
         {{ stack[0].picture }} {{ stack[0].name }}
       </div>
     </div>
+    <div @click="logout" class="button">logout</div>
 
   </section>
 </template>
@@ -50,6 +51,9 @@ export default {
         return this.useItem(popo)
       }
     },
+    logout() {
+        return this.$emit('logout');
+      },
     useItem(item) {
       if (item.kind === "consumable") {
         return this.$emit('useItem', item);

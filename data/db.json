@@ -1,132 +1,153 @@
 {
-  "currentPlayer": {
-    "name": "Joe",
-    "level": 1,
-    "currentLife": 26,
-    "life": 100,
-    "atk": 14,
-    "def": 4,
-    "spe": 2,
-    "x": 5,
-    "y": 14,
-    "exp": 5338,
-    "money": 4844,
-    "deathCount": 0,
-    "kills": 197,
-    "death": 22,
-    "items": [
-      {
-        "name": "Epée rouillée",
-        "id": "987654948",
-        "kind": "equipment",
-        "picture": "🗡",
-        "price": 500,
-        "stackBy": 1,
-        "effects": [
-          "Player.atk += roll(12) + 2"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "kind": "consumable",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 16,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "kind": "consumable",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 16,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Pot de miel",
-        "id": "987654321",
-        "kind": "consumable",
-        "picture": "🍯",
-        "price": 50,
-        "stackBy": 16,
-        "effects": [
-          "Player.currentLife += 50"
-        ]
-      },
-      {
-        "name": "Potion de vie",
-        "id": "123456789",
-        "kind": "consumable",
-        "picture": "🍺",
-        "price": 80,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 100"
-        ]
-      },
-      {
-        "name": "Potion de vie",
-        "id": "123456789",
-        "kind": "consumable",
-        "picture": "🍺",
-        "price": 80,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 100"
-        ]
-      },
-      {
-        "name": "Potion de vie",
-        "id": "123456789",
-        "kind": "consumable",
-        "picture": "🍺",
-        "price": 80,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 100"
-        ]
-      },
-      {
-        "name": "Potion de vie",
-        "id": "123456789",
-        "kind": "consumable",
-        "picture": "🍺",
-        "price": 80,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 100"
-        ]
-      },
-      {
-        "name": "Potion de vie",
-        "id": "123456789",
-        "kind": "consumable",
-        "picture": "🍺",
-        "price": 80,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 100"
-        ]
-      },
-      {
-        "name": "Potion de vie",
-        "id": "123456789",
-        "kind": "consumable",
-        "picture": "🍺",
-        "price": 80,
-        "stackBy": 32,
-        "effects": [
-          "Player.currentLife += 100"
-        ]
-      }
-    ]
-  },
+  "players": [
+    {
+      "name": "Victor",
+      "id": "0",
+      "level": 1,
+      "currentLife": 100,
+      "life": 100,
+      "atk": 14,
+      "def": 40,
+      "spe": 20,
+      "x": 5,
+      "y": 14,
+      "exp": 0,
+      "money": 0,
+      "deathCount": 0,
+      "kills": 0,
+      "death": 0,
+      "items": []
+    },
+    {
+      "name": "Joe",
+      "id": "Sp1r1tu3l",
+      "level": 1,
+      "currentLife": 26,
+      "life": 100,
+      "atk": 14,
+      "def": 4,
+      "spe": 2,
+      "x": 5,
+      "y": 14,
+      "exp": 5338,
+      "money": 4844,
+      "deathCount": 0,
+      "kills": 197,
+      "death": 22,
+      "items": [
+        {
+          "name": "Epée rouillée",
+          "id": "987654948",
+          "kind": "equipment",
+          "picture": "🗡",
+          "price": 500,
+          "stackBy": 1,
+          "effects": [
+            "Player.atk += roll(12) + 2"
+          ]
+        },
+        {
+          "name": "Pot de miel",
+          "id": "987654321",
+          "kind": "consumable",
+          "picture": "🍯",
+          "price": 50,
+          "stackBy": 16,
+          "effects": [
+            "Player.currentLife += 50"
+          ]
+        },
+        {
+          "name": "Pot de miel",
+          "id": "987654321",
+          "kind": "consumable",
+          "picture": "🍯",
+          "price": 50,
+          "stackBy": 16,
+          "effects": [
+            "Player.currentLife += 50"
+          ]
+        },
+        {
+          "name": "Pot de miel",
+          "id": "987654321",
+          "kind": "consumable",
+          "picture": "🍯",
+          "price": 50,
+          "stackBy": 16,
+          "effects": [
+            "Player.currentLife += 50"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        }
+      ]
+    }
+  ],
   "users": [],
   "cities": [],
   "cells": [
