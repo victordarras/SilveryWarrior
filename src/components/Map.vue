@@ -21,11 +21,7 @@ export default {
   name: 'Map',
   data() {
     return {
-      isLoading: false,
-      cells: {
-        type: Array,
-        default: () => ([])
-      }
+      isLoading: false
     }
   },
   props: {
@@ -36,7 +32,11 @@ export default {
     player: {
       type: Object,
       default: () => ({})
-    }
+    },
+      cells: {
+        type: Array,
+        default: () => ([])
+      }
   },
   methods: {
     isCurrentCell(cell) {
@@ -76,13 +76,6 @@ export default {
     }
   },
   created () {
-    this.isLoading = true;
-    (async () => {
-      let cells = await this.$fetch.get('http://localhost:3000/cells')
-      this.cells = await cells.json();
-
-      this.isLoading = false;
-    })()
   }
 }
 </script>

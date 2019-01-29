@@ -3,6 +3,7 @@
     <h1>Map editor <span v-if="isLoading">LOADING...</span></h1>
     <button @click="addInfo">Add info</button>
     <Map
+      :cells="cells"
       :currentCell="currentCell"
       @selectCell="selectCell"
     />
@@ -11,24 +12,23 @@
       <p>Type: {{ currentCell.kind }}</p>
 
 
-      <form @submit="updateCell(currentCell)">
+      <form @submit.prevent="updateCell(currentCell)">
         <select v-model="currentCell.kind">
           <option :value="kind" :key="kind" v-for="kind in cellKinds">{{ kind }}</option>
         </select>
         <button type="submit">Change cell type</button>
       </form>
 
-      <form @submit="addMob()">
+      <form @submit.prevent="addMob()">
         <select v-model="selectedMob">
-          <option :value="mob" :key="mob.id" v-for="mob in mobs">{{ mob.name }}</option>
+          <option :value="mob" :key="mob.uid" v-for="mob in mobs">{{ mob.name }}</option>
         </select>
         <button type="submit">Add Mob</button>
       </form>
 
-      <div v-if="currentCell.enemies" class="enemy-list">
-        <button @click="clearCell">CLEAR</button>
-        <p :key="enemy.id" v-for="enemy in currentCell.enemies">
-          <pre>{{ enemy }} <button @click="deleteMob(enemy)">🗑</button></pre>
+      <div v-if="currentCellMobs" class="enemy-list">
+        <p :key="enemy.id" v-for="enemy in currentCellMobs">
+          <pre>{{ enemy }} <button @click="deleteMob(currentCellMobs.find(mob => mob.id === enemy.uid))">🗑</button></pre>
         </p>
       </div>
       <p v-else>Aucun enemi</p>
@@ -67,36 +67,46 @@ export default {
     },
     selectCell(cell) {
       this.currentCell = cell;
-    },
-    clearCell() {
-      this.currentCell.enemies = [];
-      this.updateCell()
+      this.getLivingMobs();
     },
     deleteMob(enemy) {
-      this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1)
+      this.currentCellMobs.splice(this.currentCellMobs.indexOf(enemy), 1)
+      this.$fetch.del('http://localhost:3000/livingMobs/' + enemy.id)
       this.updateCell()
     },
     addMob() {
-      this.currentCell.enemies.push({
-        ...this.selectedMob,
+      const newMob = {
+        id: newUID(),
+        cell: this.currentCell.id,
+        createdAt: new Date(),
         currentLife: this.selectedMob.life,
-        originId: this.selectedMob.id,
-        id: newUID()
-      })
+        uid: this.selectedMob.id
+      };
+      this.currentCellMobs.push(newMob)
+      this.$fetch.post('http://localhost:3000/livingMobs', newMob)
       this.updateCell()
     },
     updateCell() {
-      this.$fetch.patch('http://localhost:3000/cells/' + this.currentCell.id, this.currentCell)
+      this.$fetch.patch('http://localhost:3000/cells/' + this.currentCell.id, this.currentCell);
+      this.getLivingMobs();
     }
   },
-  created () {
+  computed: {
+    currentCellMobs() {
+      return this.currentCell.enemies;
+    }
+  },
+  created() {
     this.isLoading = true;
 
     (async () => {
       let mobs = await this.$fetch.get('http://localhost:3000/mobs')
       this.mobs = await mobs.json();
-
+      let cells = await this.$fetch.get('http://localhost:3000/cells')
+      this.cells = await cells.json();
       this.currentCell = this.cells[0];
+
+      this.getLivingMobs();
       this.isLoading = false;
     })()
   },

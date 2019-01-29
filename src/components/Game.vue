@@ -56,6 +56,7 @@ export default {
       isLoading: false,
       currentPlayer: {},
       logs: [],
+      mobs: [],
       cells: [],
       players: [],
       currentPlayerUid: ""
@@ -72,9 +73,6 @@ export default {
       (async () => {
         let currentPlayer = await this.$fetch.get(`http://localhost:3000/players/${this.currentPlayerUid}`)
         this.currentPlayer = await currentPlayer.json();
-        let cells = await this.$fetch.get('http://localhost:3000/cells')
-        this.cells = await cells.json();
-
         this.isLoading = false;
       })()
       this.isConnected = true;
@@ -113,73 +111,89 @@ export default {
 
       this.currentPlayer.money -= item.price;
       this.currentPlayer.items.push(item);
-      this.log(`Vous achetez ${item.name} pour ${item.price}💰`, "success");
       this.savePlayerData();
+      this.log(`Vous achetez ${item.name} pour ${item.price}💰`, "success");
     },
     revive() {
       this.currentPlayer.exp = Math.round(this.currentPlayer.exp *= 0.875);
       this.currentPlayer.death += 1;
       this.currentPlayer.currentLife = this.currentPlayer.life;
       this.savePlayerData();
+      this.log("Vous perdez un peu d'XP et regagnez tous vos points de vie", "success");
     },
     movePlayer(cell) {
       this.currentPlayer.x = cell.x;
       this.currentPlayer.y = cell.y;
-      this.log(`Vous vous déplacez en [ ${cell.x}, ${cell.y} ] (${this.currentCell.kind})`);
-      this.currentCell.enemies.forEach(this.attackPlayerBy);
+
+      this.currentCellMobs.forEach(this.attackPlayerBy);
       this.savePlayerData();
+      this.log(`Vous vous déplacez en [ ${cell.x}, ${cell.y} ] (${this.currentCell.kind})`);
     },
     attackPlayerBy(enemy) {
-      const damage = (enemy.atk + roll(6) - this.currentPlayer.def + roll(6));
-      this.currentPlayer.currentLife -= damage
+      const damage = Math.max(0, (enemy.atk + roll(6) - this.currentPlayer.def + roll(6)));
+      this.currentPlayer.currentLife -= damage;
       this.log(`Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`, 'warning');
     },
     fight(enemy, player = this.currentPlayer) {
-      const pDamage = Math.max(0, (player.atk + roll(6) - enemy.def  + roll(6)));
-      const eDamage = Math.max(0, (enemy.atk  + roll(6) - player.def + roll(6)));
+      const sample = this.mobs.find(mob => mob.id === enemy.uid);
+      enemy = this.currentCell.enemies.find(mob => mob.id === enemy.id);
 
-      if (player.spe >= enemy.spe) {
+      const pDamage = Math.max(0, (player.atk + roll(6) - sample.def  + roll(6)));
+      const eDamage = Math.max(0, (sample.atk  + roll(6) - player.def + roll(6)));
+
+      if (player.spe >= sample.spe) {
         enemy.currentLife -= pDamage;
         player.currentLife -= eDamage;
-        this.log(`Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !`);
-        this.log(`${enemy.name} vous inflige ${eDamage} dégats !`, 'warning');
+        this.log(`Vous attaquez ${sample.name} et lui infligez ${pDamage} dégats !`);
+        this.log(`${sample.name} vous inflige ${eDamage} dégats !`, 'warning');
       } else  {
         player.currentLife -= eDamage;
         enemy.currentLife -= pDamage;
-        this.log(`${enemy.name} vous inflige ${eDamage} dégats !`, 'warning');
-        this.log(`Vous attaquez ${enemy.name} et lui infligez ${pDamage} dégats !`);
+        this.log(`${sample.name} vous inflige ${eDamage} dégats !`, 'warning');
+        this.log(`Vous attaquez ${sample.name} et lui infligez ${pDamage} dégats !`);
       }
 
       if (player.currentLife <= 0) {
-        this.log(`Vous avez été brutalement abbatu par ${enemy.name}`, 'alert');
+        this.log(`Vous avez été brutalement abbatu par ${sample.name}`, 'alert');
       }
       if (enemy.currentLife <= 0) {
-        player.exp += enemy.exp;
-        player.money += enemy.money;
+        player.exp += sample.exp;
+        player.money += sample.money;
         player.kills += 1;
-        this.log(`Vous achevez ${enemy.name} en lui infligeant ${pDamage} dégats ! (+${enemy.exp}xp, +${enemy.money}💰)`, 'success');
+        this.log(`Vous achevez ${sample.name} en lui infligeant ${pDamage} dégats ! (+${sample.exp}xp, +${sample.money}💰)`, 'success');
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
-        //
+        this.$fetch.del('http://localhost:3000/livingMobs/' + enemy.id);
       }
-      // if (this.currentCell.enemies.length === 0) {
-      //   this.currentCell.enemies.push(newEnemy());
-      // }
 
-      this.savePlayerData()
-      // TODO : update enemies, not the Cell
-      this.updateCell()
-      // this.$fetch.patch(`http://localhost:3000/cells/${this.currentCell.id}/enemies/${enemy.id}`, enemy)
+      this.savePlayerData();
+      this.updateCell();
+      this.$fetch.patch(`http://localhost:3000/livingMobs/${enemy.id}`, enemy)
     },
     cellPlayers(x, y) {
       return this.players.find(p => p.x == x && p.y == y );
     }
   },
   computed: {
+    currentCellMobs() {
+      return this.currentCell.enemies.map(enemy => this.mobs.find(mob => mob.id === enemy.uid))
+    },
     currentCell() {
-      return this.cells.find(c => c.x === this.currentPlayer.x && c.y === this.currentPlayer.y);
+      return {
+        ...this.cells.find(c => c.x === this.currentPlayer.x && c.y === this.currentPlayer.y)
+      };
     }
   },
   mounted () {
+    this.isLoading = true;
+
+    (async () => {
+      let mobs = await this.$fetch.get('http://localhost:3000/mobs')
+      this.mobs = await mobs.json();
+      let cells = await this.$fetch.get('http://localhost:3000/cells')
+      this.cells = await cells.json();
+
+      this.isLoading = false;
+    })()
     if (localStorage.getItem("currentPlayerUid")) {
       this.currentPlayerUid = localStorage.getItem("currentPlayerUid");
       this.login();

@@ -7,10 +7,9 @@
         @sleep="sleep"
         @buyItem="buyItem"
       />
-
-      <transition-group tag="ul" name="listAppear" class="enemies" v-if="cell.enemies">
+      <transition-group tag="ul" name="listAppear" class="enemies" v-if="currentCellMobs.length > 0" appear>
         <li
-          v-for="enemy in cell.enemies"
+          v-for="enemy in currentCellMobs"
           v-if="enemy.currentLife > 0"
           @click="attack(enemy)"
           class="enemy"
@@ -41,6 +40,11 @@ import City from './City.vue'
 
 export default {
   name: 'Place',
+  data() {
+    return {
+      mobs: []
+    }
+  },
   props: {
     cell: {
       type: Object,
@@ -52,8 +56,8 @@ export default {
       const l = (value / max) * 100;
       return `${l} ${100 - l}`;
     },
-    attack: function(enemy) {
-      this.$emit('attack', enemy)
+    attack: function(enemyId) {
+      this.$emit('attack', enemyId)
     },
     sleep: function() {
       this.$emit('sleep')
@@ -61,6 +65,22 @@ export default {
     buyItem: function(item) {
       this.$emit('buyItem',item)
     }
+  },
+  computed: {
+    currentCellMobs() {
+      return this.cell.enemies ? this.cell.enemies.map(enemy => {
+        return {
+          ...this.mobs.find(mob => mob.id === enemy.uid),
+          ...enemy
+        }
+      }) : []
+    }
+  },
+  created(){
+    (async () => {
+      let mobs = await this.$fetch.get('http://localhost:3000/mobs')
+      this.mobs = await mobs.json();
+    })()
   },
   components: {
     City
