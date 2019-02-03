@@ -12,18 +12,18 @@
     <div class="store" v-if="storeActive">
       <h2>Magasin</h2>
       <p>Bienvenue dans mon humble magasin, que désirez vous acheter ?</p>
-      <ul class="items">
-        <li class="item" v-for="item in items" :key="item.id">
-          <div class="picture">{{ item.picture }}</div>
-          <div class="name">{{ item.name }}</div>
-          <button @click="buyItem(item)">Acheter<br>({{ item.price }}💰)</button>
-        </li>
-      </ul>
+
+      <Inventory
+        :items="items"
+        :canBuy="true"
+        @clickItem="clickItem"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import Inventory from "./Inventory"
 export default {
   name: 'City',
   data() {
@@ -43,8 +43,8 @@ export default {
     sleep() {
       this.$emit('sleep');
     },
-    buyItem(item) {
-      this.$emit('buyItem', item);
+    clickItem(item) {
+      this.$emit('clickItem', item);
     }
   },
   created() {
@@ -55,6 +55,9 @@ export default {
       this.items = await items.json();
       this.isLoading = false;
     })()
+  },
+  components: {
+    Inventory
   }
 }
 </script>

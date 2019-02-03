@@ -14,21 +14,30 @@
       <dd>{{ player.exp }}</dd>
     </dl>
     <h2>Inventaire</h2>
-    <ul class="items">
-      <li class="item" v-for="item in player.items" :key="item.id">
-        {{ item.name }}
-      </li>
-    </ul>
+    <Inventory
+      :items="player.items"
+      @clickItem="clickItem"
+    />
   </section>
 </template>
 
 <script>
+import Inventory from "./Inventory";
+
 export default {
   props: {
     player: {
       type: Object,
       default: () => ({})
     }
+  },
+  methods: {
+    clickItem(item) {
+      return this.$emit('clickItem', item);
+    }
+  },
+  components: {
+    Inventory
   }
 }
 </script>

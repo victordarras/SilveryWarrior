@@ -22,17 +22,17 @@
       "name": "Joe",
       "id": "Sp1r1tu3l",
       "level": 1,
-      "currentLife": 91,
+      "currentLife": 96,
       "life": 100,
       "atk": 14,
       "def": 4,
       "spe": 2,
-      "x": 5,
+      "x": 6,
       "y": 14,
-      "exp": 2188,
-      "money": 6424,
+      "exp": 2198,
+      "money": 6194,
       "deathCount": 0,
-      "kills": 229,
+      "kills": 230,
       "death": 36,
       "items": [
         {
@@ -66,28 +66,6 @@
           "stackBy": 16,
           "effects": [
             "Player.currentLife += 50"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
           ]
         },
         {
@@ -4561,13 +4539,6 @@
           "uid": "000364087"
         },
         {
-          "id": "560686903",
-          "cell": "931248781",
-          "createdAt": "2019-02-03T15:19:25.750Z",
-          "currentLife": 20,
-          "uid": "000364087"
-        },
-        {
           "id": "191487891",
           "cell": "931248781",
           "createdAt": "2019-02-03T15:19:25.921Z",
@@ -6328,13 +6299,6 @@
       "id": "431872018",
       "cell": "931248781",
       "createdAt": "2019-02-03T15:19:25.558Z",
-      "currentLife": 20,
-      "uid": "000364087"
-    },
-    {
-      "id": "560686903",
-      "cell": "931248781",
-      "createdAt": "2019-02-03T15:19:25.750Z",
       "currentLife": 20,
       "uid": "000364087"
     },

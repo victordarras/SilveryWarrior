@@ -12,11 +12,15 @@
       <Sidebar
         :player="currentPlayer"
         @showProfile="showProfile = !showProfile"
-        @useItem="useItem"
+        @click="useItem"
         @logout="logout"
       />
 
-      <Profile :player="currentPlayer" v-if="showProfile"/>
+      <Profile
+        v-if="showProfile"
+        :player="currentPlayer"
+        @clickItem="useItem"
+      />
 
       <template v-else-if="currentPlayer.currentLife > 0">
         <Map
@@ -30,7 +34,7 @@
           :cell="currentCell"
           @attack="fight"
           @sleep="addLife(currentPlayer.life)"
-          @buyItem="addItem"
+          @clickItem="buyItem"
         />
       </template>
 
@@ -58,7 +62,7 @@ export default {
     return {
       isConnected: false,
       isLoading: false,
-      showProfile: true,
+      showProfile: false,
       currentPlayer: {},
       logs: [],
       players: [],
@@ -101,13 +105,17 @@ export default {
     },
     useItem(item, Player = this.currentPlayer) {
       // Items API need Player Object
+      if (item.kind !== "consumable") {
+        return this.log(`${item.picture}${item.name} n'est pas un consommage`, "alert")
+      }
+
       item.effects.forEach(effect => eval(effect));
       Player.currentLife = Math.min(Player.currentLife, Player.life);
       Player.items.splice(Player.items.indexOf(item), 1);
       this.log(`Vous utilisez ${item.picture}${item.name} (${item.effects})`, "success")
       this.savePlayerData();
     },
-    addItem(item) {
+    buyItem(item) {
       if (this.currentPlayer.money - item.price <= 0) { // can't buy item
         return this.log("Vous n'avez pas assez d'argent", "alert")
       }

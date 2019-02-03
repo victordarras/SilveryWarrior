@@ -20,24 +20,12 @@
       </div>
       <div class="profile-quest"></div>
     </div>
-
-    <div class="items">
-      <div class="item button" v-for="(stack, i) in stackedItems" :key="i" @click="useItem(stack[0])">
-        <div class="hasTooltip" :tooltip="stack[0].effects"></div>
-        <div class="picture">{{ stack[0].picture }} </div>
-        <div class="name">
-          {{ stack[0].name }} <span class="item-length">({{ stack.length }})</span>
-        </div>
-      </div>
-    </div>
     <div @click="$emit('logout')" class="button">logout</div>
 
   </section>
 </template>
 
 <script>
-import { groupBy } from "../helpers.js"
-
 export default {
   name: 'Sidebar',
   props: {
@@ -50,22 +38,15 @@ export default {
     drinkPotion() {
       const popo = this.player.items.find(item => item.id === "123456789")
       if (popo != undefined) {
-        return this.useItem(popo)
+        return this.useItem(popo);
       }
     },
     useItem(item) {
-      if (item.kind === "consumable") {
-        return this.$emit('useItem', item);
-      }
+      return this.$emit('useItem', item);
     },
     lifeCss (value, max) {
       const l = (value / max) * 100;
       return `background-image: linear-gradient(to right, black, black ${l-.01}%, #fff ${l}%, #fff )`
-    }
-  },
-  computed: {
-    stackedItems() {
-      return this.player.items ? groupBy(this.player.items, "name") : []
     }
   }
 }
