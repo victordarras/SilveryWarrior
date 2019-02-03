@@ -1,24 +1,40 @@
 <template>
-  <section>
-    <img src="../assets/images/Profile.png" alt="">
-    <h1>Fiche de personnage :<br/>{{ player.name }}</h1>
-    <dl>
-      <dt>Attaque:</dt>
-      <dd>{{ player.atk }}</dd>
-      <dt>Défense:</dt>
-      <dd>{{ player.def }}</dd>
-      <dt>Vitesse:</dt>
-      <dd>{{ player.spe }}</dd>
-      <dt>Money:</dt>
-      <dd>{{ player.money }}💰</dd>
-      <dt>Expérience:</dt>
-      <dd>{{ player.exp }}</dd>
-    </dl>
-    <h2>Inventaire</h2>
-    <Inventory
-      :items="player.items"
-      @clickItem="clickItem"
-    />
+  <section class="Profile">
+    <header>
+      <section>
+        <h2>Général</h2>
+        <h1>{{ player.level }} {{ player.name }}</h1>
+      </section>
+
+      <section>
+        <h2>Statistiques</h2>
+        <dl>
+          <dt>Attaque:</dt>
+          <dd>{{ player.atk }}</dd>
+          <dt>Défense:</dt>
+          <dd>{{ player.def }}</dd>
+          <dt>Vitesse:</dt>
+          <dd>{{ player.spe }}</dd>
+          <dt>Money:</dt>
+          <dd>{{ player.money }}💰</dd>
+          <dt>Expérience:</dt>
+          <dd>{{ player.exp }}</dd>
+        </dl>
+      </section>
+    </header>
+    <section>
+      <h2>Inventaire</h2>
+      <Inventory
+        :items="player.items"
+        @clickItem="clickItem"
+      />
+    </section>
+
+    <section>
+      <h2>Fiche de personnage</h2>
+    </section>
+    <!-- <img src="../assets/images/Profile.png" alt=""> -->
+
   </section>
 </template>
 
@@ -42,3 +58,19 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .Profile {
+    width: 100%;
+  }
+  section, dt, dd {
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+    display: inline-block;
+    width: 50%;
+  }
+  header, section {
+    padding: 1em;
+  }
+</style>

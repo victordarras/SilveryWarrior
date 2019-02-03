@@ -276,17 +276,6 @@
           "effects": [
             "Player.currentLife += 100"
           ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
         }
       ]
     }

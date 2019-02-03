@@ -1,10 +1,16 @@
 <template>
   <div class="Inventory">
-    <div class="Item button" v-for="(stack, i) in stackedItems" :key="i" @click="clickItem(stack[0])">
-      <div class="hasTooltip" :tooltip="stack[0].effects"></div>
+    <div
+      class="Item"
+      v-for="stack in stackedItems"
+      :key="stack[0].id"
+      @click="clickItem(stack[0])"
+      :title="stack[0].effects"
+    >
+      <span class="Item__count">{{ stack.length }}</span>
       <div class="Item__picture">{{ stack[0].picture }} </div>
       <div class="Item__name">
-        <span class="Item__count">{{ stack.length }}</span> {{ stack[0].name }}
+        {{ stack[0].name }}
       </div>
       <p v-if="canBuy">Acheter ?<br>({{ stack[0].price }}💰)</p>
     </div>

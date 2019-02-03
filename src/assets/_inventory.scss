@@ -3,18 +3,40 @@
   margin: 0 -5px 1em;
 }
 .Item {
-  border: 2px solid #000;
+  position: relative;
   text-align: center;
-  padding: 6px 6px 2px;
+  padding: 6px;
   margin: 5px;
+  width: 74px;
+  height: 74px;
+  background: url('../assets/images/cursor.png') no-repeat top / contain;
+
+  &:hover  {transform: scale(1.05);}
+  &:active {transform: scale(0.95);}
+
   &__name {
     font-size: 0.75em;
     font-weight: bold;
   }
+
   &__picture {
     font-size: 3rem;
+    margin-bottom: 1rem;
   }
-  &__length {
+
+  &__count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    text-align: center;
+    line-height: 1rem;
+    font-size: 0.5em;
     font-weight: bold;
   }
 }
