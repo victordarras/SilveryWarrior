@@ -22,13 +22,13 @@
       "name": "Joe",
       "id": "Sp1r1tu3l",
       "level": 1,
-      "currentLife": 4,
+      "currentLife": 91,
       "life": 100,
       "atk": 14,
       "def": 4,
       "spe": 2,
       "x": 5,
-      "y": 15,
+      "y": 14,
       "exp": 2188,
       "money": 6424,
       "deathCount": 0,
@@ -66,17 +66,6 @@
           "stackBy": 16,
           "effects": [
             "Player.currentLife += 50"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
           ]
         },
         {
@@ -2945,7 +2934,7 @@
     },
     {
       "id": "420371261",
-      "kind": "hills",
+      "kind": "plain",
       "x": 21,
       "y": 9,
       "enemies": [],
@@ -3224,7 +3213,7 @@
     },
     {
       "id": "444518706",
-      "kind": "hills",
+      "kind": "plain",
       "x": 20,
       "y": 10,
       "enemies": [],

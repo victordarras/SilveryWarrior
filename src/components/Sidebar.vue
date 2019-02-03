@@ -15,7 +15,7 @@
       <div class="profile-menu">
         <a class="profile-money"></a>
         <a class="profile-settings"></a>
-        <a class="profile-inventory"></a>
+        <a @click="$emit('showProfile')" class="profile-inventory"></a>
         <a @click="drinkPotion()" class="profile-drink"></a>
       </div>
       <div class="profile-quest"></div>
@@ -30,7 +30,7 @@
         </div>
       </div>
     </div>
-    <div @click="logout" class="button">logout</div>
+    <div @click="$emit('logout')" class="button">logout</div>
 
   </section>
 </template>
@@ -53,9 +53,6 @@ export default {
         return this.useItem(popo)
       }
     },
-    logout() {
-        return this.$emit('logout');
-      },
     useItem(item) {
       if (item.kind === "consumable") {
         return this.$emit('useItem', item);

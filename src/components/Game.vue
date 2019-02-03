@@ -11,10 +11,14 @@
     <template v-else>
       <Sidebar
         :player="currentPlayer"
+        @showProfile="showProfile = !showProfile"
         @useItem="useItem"
         @logout="logout"
       />
-      <template v-if="currentPlayer.currentLife > 0">
+
+      <Profile :player="currentPlayer" v-if="showProfile"/>
+
+      <template v-else-if="currentPlayer.currentLife > 0">
         <Map
           :currentCell="currentCell"
           :cells="cells"
@@ -41,19 +45,20 @@
 </template>
 
 <script>
-import Sidebar from './Sidebar.vue'
-import Map from './Map.vue'
-import Place from './Place.vue'
-import Logger from './Logger.vue'
-import { roll } from '../helpers.js'
+import Sidebar from './Sidebar'
+import Map from './Map'
+import Place from './Place'
+import Profile from './Profile'
+import Logger from './Logger'
+import { roll } from '../helpers'
 
 export default {
   name: 'Game',
   data: () => {
     return {
-      isAdmin: false,
       isConnected: false,
       isLoading: false,
+      showProfile: true,
       currentPlayer: {},
       logs: [],
       players: [],
@@ -192,7 +197,7 @@ export default {
     }
   },
   components: {
-    Map, Place, Sidebar, Logger
+    Map, Place, Sidebar, Logger, Profile
   }
 }
 </script>
