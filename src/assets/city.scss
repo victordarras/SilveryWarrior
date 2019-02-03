@@ -1,4 +1,4 @@
-.city {
+.City {
   position: relative;
   padding: 0;
   margin-bottom: 1vh;
@@ -22,15 +22,18 @@
     left: -15px;
     background: url(../assets/images/horizontal_separator.png) repeat-x top left / contain;
   }
-  .buildings {
+  &__buildings {
     min-height: 13rem;
     background: url(../assets/images/city.png) no-repeat top center / contain;
     display: flex;
     justify-content: center;
   }
-  .building {
+  &__building {
     flex: 0 0 20%;
     display: flex;
     align-items: flex-end;
+  }
+  &__store {
+    // ..
   }
 }

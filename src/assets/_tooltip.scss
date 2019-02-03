@@ -1,0 +1,30 @@
+.hasTooltip {
+  position: relative;
+  float: left;
+  &:before {
+    content: '?';
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #999;
+    color: #fff;
+    font-weight: 900;
+    font-size: 0.5em;
+    line-height: 1rem;
+  }
+  &:after {
+    @extend .button;
+    content: attr(tooltip);
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+  }
+  &:hover:after {
+    display: block;
+  }
+}

@@ -1,5 +1,6 @@
 <template>
   <section>
+    <img src="../assets/images/Profile.png" alt="">
     <h1>Fiche de personnage :<br/>{{ player.name }}</h1>
     <dl>
       <dt>Attaque:</dt>

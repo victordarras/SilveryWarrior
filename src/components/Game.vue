@@ -1,5 +1,5 @@
 <template>
-  <section id="app">
+  <section id="app" class="Game">
     <form class="Login" @submit.prevent="login()" v-if="!isConnected">
       <label for="uid">Mot de passe:</label>
       <input type="text" id="uid" v-model="currentPlayerUid">
@@ -12,7 +12,7 @@
       <Sidebar
         :player="currentPlayer"
         @showProfile="showProfile = !showProfile"
-        @click="useItem"
+        @clickItem="useItem"
         @logout="logout"
       />
 

@@ -1,0 +1,70 @@
+.Enemy__list {
+  margin-top: 4vh;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.Enemy {
+  position: relative;
+  height: 180px;
+  width: 124px;
+  padding: 28px 21px 19px 13px;
+  margin: 0 .25vh 1vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  background: url('../assets/images/card.png') no-repeat center / contain;
+  border-radius: 5px;
+  cursor: pointer;
+  line-height: 1;
+  text-align: center;
+  transition: all 0.1s cubic-bezier(0,.8,.6,1);
+
+  &:hover {
+    transform: scale(1.02);
+    transition: all 0.1s cubic-bezier(0,.8,.6,1);
+  }
+
+  &:active {
+    transition: none;
+    transform: scale(0.98)
+  }
+
+  &__label {
+    height: 22%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__name {
+    font-size: 0.625em;
+    font-weight: bold;
+  }
+  &__lifeLabel {
+    display: none;
+    font-size: 0.625em;
+    font-weight: bold;
+  }
+
+  &__picture {
+    font-size: 4rem;
+  }
+
+  &__life {
+    position: absolute;
+    right: -7%;
+    bottom: 35%;
+    width: 39px;
+    height: 39px;
+    opacity: 0.8;
+    color: #fff;
+    margin: 4px 8px 0px 4px;
+    border-radius: 2px;
+    transform: rotate(-90deg) rotateX(180deg);
+  }
+
+  &__lifeDonut {
+    transition: all 0.5s cubic-bezier(0, 0.9, 0.6, 1);
+  }
+}

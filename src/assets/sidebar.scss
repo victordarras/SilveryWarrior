@@ -1,10 +1,11 @@
-.sidebar {
+.Sidebar {
   padding: 20px 40px;
   position: relative;
   grid-area: profile;
   position: sticky;
   height: 100vh;
   top: 0;
+
   &:before {
     content:"";
     position: absolute;
@@ -15,78 +16,73 @@
     right: -10px;
     background: url(../assets/images/vertical_separator.png) repeat-y top right / contain;
   }
-}
-.profile {
-  &-menu {
-    width: 196px;
-    height: 184px;
-    background: url(../assets/images/profile_menu.png) no-repeat center / contain;
+
+  &__menu {
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    align-items: center;
     cursor: pointer;
-    transition: all 0.16s ease-in-out;
-    & > a {
-      &:hover {
-        transform: scale(1.05);
-      }
-      &:active {
-        transform: scale(0.95);
-      }
-    }
   }
 
-  &-quest {
+  &__inventory {
+    height: 90px;
+    background: url(../assets/images/profile_inventory.png) no-repeat center / contain;
+    &:hover  {transform: scale(1.05);}
+    &:active {transform: scale(0.95);}
+  }
+  &__potion {
+    height: 90px;
+    padding: 6px 24px;
+    background: url(/img/profile_potion.157d3f58.png) no-repeat center/contain;
+    font-size: 0.625em;
+    font-weight: bold;
+    &:hover  {transform: scale(1.05);}
+    &:active {transform: scale(0.95);}
+  }
+  &__money {
+    padding: 32px 14px;
+    height: 100px;
+    font-size: 0.875em;
+    font-weight: bold;
+    background: url(../assets/images/profile_money.png) no-repeat center / contain;
+  }
+  &__settings {
+    height: 70px;
+    background: url(../assets/images/profile_settings.png) no-repeat center / contain;
+  }
+
+  &__quest {
     width: 180px;
     height: 100px;
     background: url(../assets/images/profile_quests.png) no-repeat center / contain;
   }
 
-  &-avatar {
+  &__avatar {
     position: relative;
     width: 200px;
     height: 200px;
     background: url(../assets/images/profile_avatar.png) no-repeat center / contain;
   }
+
+  &__life {
+    position: absolute;
+    top: 150px;
+    left: 35px;
+    right: 53px;
+    height: 14px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__lifeValue {
+    mix-blend-mode: difference;
+    color: #fff;
+    font-size: 0.875em;
+    vertical-align: top;
+  }
 }
 
-.lifeBar {
-  position: absolute;
-  top: 150px;
-  left: 35px;
-  right: 53px;
-  height: 14px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.lifeBar-value {
-  mix-blend-mode: difference;
-  color: #fff;
-  font-size: 0.875em;
-  vertical-align: top;
-}
-
-// .items {
-//   display: flex;
-//   flex-flow: row wrap;
-//   margin: -0.5rem;
-//   .item {
-//     position: relative;
-//     width: 25%;
-//     height: 25%;
-//     padding: 0;
-//     margin: .5rem;
-//     font-size: 0.75em;
-//     font-weight: bold;
-//     &-length {
-//       position: absolute;
-//       top: 0;
-//       right: 0;
-//       padding: 0.125em 0.25em;
-//       background-color: #000;
-//       color: #fff;
-//     }
-//   }
-// }

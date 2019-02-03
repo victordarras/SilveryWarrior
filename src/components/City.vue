@@ -1,15 +1,15 @@
 <template>
-  <div class="city">
-    <div class="buildings">
-      <div class="building">
+  <div class="City">
+    <div class="City__buildings">
+      <div class="City__building">
         <button @click="storeActive = !storeActive">Entrer dans le magasin</button>
       </div>
-      <div class="building">
+      <div class="City__building">
         <button @click="sleep()">Dormir à l'auberge (Vie max. gratuit)</button>
       </div>
     </div>
 
-    <div class="store" v-if="storeActive">
+    <div class="City__store" v-if="storeActive">
       <h2>Magasin</h2>
       <p>Bienvenue dans mon humble magasin, que désirez vous acheter ?</p>
 

@@ -1,0 +1,26 @@
+// used by items
+.listAppear-enter-active {
+  transition: all .3s ease;
+}
+.listAppear-leave-active {
+  transition: all .2s ease;
+}
+.listAppear-enter, .listAppear-leave-to{
+  transform-origin: left;
+  transform: scale(0.97);
+  opacity: 0;
+}
+.listAppear-leave-to {
+  transform: translateY(-10%);
+}
+
+@keyframes load {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes appear {
+  from {transform: scale(0);opacity: 0;}
+  to   {transform: scale(1);opacity: 1;}
+}

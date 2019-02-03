@@ -1,39 +1,28 @@
-
 $map-ratio: 1.5168;
 $map-width: 900px;
 
-#app {
+.Game {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
   width: 100%;
-  min-height: 100vh;
   display: grid;
   padding: 10px;
   grid-gap: 10px;
+  min-height: 100vh;
   grid-template-columns: 300px $map-width 1fr;
-  grid-template-rows: $map-width/$map-ratio 1fr;
+  grid-template-rows: $map-width/$map-ratio auto;
   grid-template-areas:
     "profile table logs"
     "profile place buttons";
 }
 
-.buttons {
-  grid-template-area: buttons;
-}
 
 .Loader {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: calc(50% - 46px);
+  left: calc(50% - 15px);
   height: 30px;
   width: 93px;
   background: url(../assets/images/doodle.png) no-repeat center / cover;
-  animation: load 1s linear infinite;
-}
-
-@keyframes load {
-  100% {
-    transform: rotate(1turn);
-  }
+  animation: load 1.6s cubic-bezier(.68,-0.55,.27,1.55) infinite;
 }

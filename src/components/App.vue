@@ -1,6 +1,6 @@
 <template>
   <main>
-    <nav class="navigation">
+    <nav class="Navigation">
       <router-link to="/game">GAME</router-link>
       <div class="admin-hr"></div>
       <router-link to="/mob-editor">MOBS</router-link>

@@ -1,27 +1,38 @@
 <template>
-  <section class="sidebar">
-    <div class="profile">
-      <div class="profile-avatar">
-        <div class="lifeBar" :style="lifeCss(player.currentLife, player.life)">
-          <span class="lifeBar-value"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
-        </div>
+  <section class="Sidebar">
+    <div class="Sidebar__avatar">
+      <div class="Sidebar__life" :style="lifeCss(player.currentLife, player.life)">
+        <span class="Sidebar__lifeValue"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
       </div>
-      <h3>{{ player.name }}({{ player.level }})</h3>
-      <p>
-        {{ player.money }} 💰<br>
-        {{ player.exp }} experience points<br>
-        {{ player.kills }} mob killed
-      </p>
-      <div class="profile-menu">
-        <a class="profile-money"></a>
-        <a class="profile-settings"></a>
-        <a @click="$emit('showProfile')" class="profile-inventory"></a>
-        <a @click="drinkPotion()" class="profile-drink"></a>
-      </div>
-      <div class="profile-quest"></div>
     </div>
-    <div @click="$emit('logout')" class="button">logout</div>
+    <h3>{{ player.name }}({{ player.level }})</h3>
+    <p>
+      {{ player.exp }} experience points<br>
+      {{ player.kills }} mob killed
+    </p>
 
+    <div class="Sidebar__menu">
+      <a
+        class="Sidebar__money"
+      >{{ player.money }}</a>
+      <a
+        class="Sidebar__settings"
+      ></a>
+      <a
+        @click="$emit('showProfile')"
+        class="Sidebar__inventory"
+        title="Voir mon profil"
+      ></a>
+      <a
+        @click="drinkPotion()"
+        class="Sidebar__potion"
+        title="Boire une potion de vie"
+      >{{ potionsCount }}</a>
+    </div>
+
+    <div class="Sidebar__quest"></div>
+
+    <div @click="$emit('logout')" class="button">logout</div>
   </section>
 </template>
 
@@ -34,15 +45,17 @@ export default {
       default: () => ({})
     }
   },
+  computed: {
+    potionsCount() {
+      return this.player.items.filter(item => item.id === "123456789").length;
+    }
+  },
   methods: {
     drinkPotion() {
-      const popo = this.player.items.find(item => item.id === "123456789")
+      const popo = this.player.items.find(item => item.id === "123456789");
       if (popo != undefined) {
-        return this.useItem(popo);
+        this.$emit('clickItem', popo)
       }
-    },
-    useItem(item) {
-      return this.$emit('useItem', item);
     },
     lifeCss (value, max) {
       const l = (value / max) * 100;

@@ -1,6 +1,6 @@
 <template>
-  <div class="map">
-    <div class="cells">
+  <div class="Map">
+    <div class="Map__cells">
         <div
           v-for="cell in cells"
           :class="cellClass(cell)"
@@ -49,12 +49,12 @@ export default {
           || (y === p.y -1 && x <= (p.x + 1) && x >= (p.x - 1)) // bottom-left & bottom-right
     },
     cellClass: function(cell) {
-      let klass = ["cell"]
-      klass.push(this.isReachable(cell) ? " reachable" : "");
-      klass.push(this.isCurrentCell(cell) ? " current" : "");
-      klass.push(cell.enemies.length ? " enemy" : "");
-      klass.push(` ${cell.kind}`);
-      return klass.join(' ');
+      let klass = [""]
+      klass.push(this.isReachable(cell) ? "--reachable" : "");
+      klass.push(this.isCurrentCell(cell) ? "--current" : "");
+      klass.push(cell.enemies.length ? "--enemy" : "");
+      klass.push(`--${cell.kind}`);
+      return klass.join(' Cell');
     },
     selectCell: function(cell) {
       this.$emit('selectCell', cell);
