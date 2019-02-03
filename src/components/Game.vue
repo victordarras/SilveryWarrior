@@ -6,7 +6,7 @@
       <button type="submit" class="button">Connexion</button>
     </form>
     <template v-else-if="isLoading">
-      Loading…
+      <div class="Loader"></div>
     </template>
     <template v-else>
       <Sidebar

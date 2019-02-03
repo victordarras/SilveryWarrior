@@ -21,3 +21,19 @@ $map-width: 900px;
 .buttons {
   grid-template-area: buttons;
 }
+
+.Loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 30px;
+  width: 93px;
+  background: url(../assets/images/doodle.png) no-repeat center / cover;
+  animation: load 1s linear infinite;
+}
+
+@keyframes load {
+  100% {
+    transform: rotate(1turn);
+  }
+}
