@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueFetch from 'vue-fetch'
 import VueRouter from 'vue-router'
+import store from './store'
 import App from './components/App.vue'
 import Game from './components/Game.vue'
 import MobEditor from './components/MobEditor.vue'
@@ -30,6 +31,7 @@ const routes = [
 const router = new VueRouter({routes})
 
 new Vue({
+  store,
   router,
   render: h => h(App)
 }).$mount('#app')

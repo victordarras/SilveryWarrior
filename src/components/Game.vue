@@ -56,8 +56,6 @@ export default {
       isLoading: false,
       currentPlayer: {},
       logs: [],
-      mobs: [],
-      cells: [],
       players: [],
       currentPlayerUid: ""
     }
@@ -85,8 +83,8 @@ export default {
     log(message, kind = "normal") {
       this.logs.push({kind: kind,content: message, id: this.logs.length});
     },
-    updateCell(cell = this.currentCell) {
-      this.$fetch.patch(`http://localhost:3000/cells/${cell.id}`, cell);
+    updateCell() {
+      this.$store.dispatch('updateCell', this.currentCell);
     },
     savePlayerData() {
       this.$fetch.patch('http://localhost:3000/players/' + this.currentPlayer.id, this.currentPlayer);
@@ -174,26 +172,20 @@ export default {
     }
   },
   computed: {
+    mobs() {
+      return this.$store.getters.getMobs;
+    },
+    cells() {
+      return this.$store.getters.getCells;
+    },
     currentCellMobs() {
-      return this.currentCell.enemies.map(enemy => this.mobs.find(mob => mob.id === enemy.uid))
+      return this.currentCell.enemies.map(enemy => this.mobs.find(mob => mob.id === enemy.uid));
     },
     currentCell() {
-      return {
-        ...this.cells.find(c => c.x === this.currentPlayer.x && c.y === this.currentPlayer.y)
-      };
+      return this.cells.find(c => c.x === this.currentPlayer.x && c.y === this.currentPlayer.y);
     }
   },
   mounted () {
-    this.isLoading = true;
-
-    (async () => {
-      let mobs = await this.$fetch.get('http://localhost:3000/mobs')
-      this.mobs = await mobs.json();
-      let cells = await this.$fetch.get('http://localhost:3000/cells')
-      this.cells = await cells.json();
-
-      this.isLoading = false;
-    })()
     if (localStorage.getItem("currentPlayerUid")) {
       this.currentPlayerUid = localStorage.getItem("currentPlayerUid");
       this.login();

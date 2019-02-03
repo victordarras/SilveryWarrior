@@ -14,9 +14,9 @@
 <script>
 export default {
   name: 'App',
-  data: () => {
-    return {
-    }
+  created() {
+    this.$store.dispatch('loadMobs');
+    this.$store.dispatch('loadCells');
   }
 }
 </script>

@@ -31,6 +31,7 @@
           </div>
         </li>
       </transition-group>
+      {{ cell.players }}
 
   </div>
 </template>
@@ -41,9 +42,7 @@ import City from './City.vue'
 export default {
   name: 'Place',
   data() {
-    return {
-      mobs: []
-    }
+    return {}
   },
   props: {
     cell: {
@@ -67,6 +66,9 @@ export default {
     }
   },
   computed: {
+    mobs() {
+      return this.$store.getters.getMobs;
+    },
     currentCellMobs() {
       return this.cell.enemies ? this.cell.enemies.map(enemy => {
         return {
@@ -75,12 +77,6 @@ export default {
         }
       }) : []
     }
-  },
-  created(){
-    (async () => {
-      let mobs = await this.$fetch.get('http://localhost:3000/mobs')
-      this.mobs = await mobs.json();
-    })()
   },
   components: {
     City

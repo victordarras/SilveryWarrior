@@ -89,6 +89,7 @@ export default {
   }
   .items {
     float: left;
+    flex-flow: column;
     margin-right: 2rem;
     padding-right: 2rem;
     border-right: 1px solid #333;

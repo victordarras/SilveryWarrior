@@ -1,7 +1,6 @@
 <template>
   <div class="map">
-    <div class="cells" v-if="!isLoading">
-
+    <div class="cells">
         <div
           v-for="cell in cells"
           :class="cellClass(cell)"
@@ -19,11 +18,6 @@
 <script>
 export default {
   name: 'Map',
-  data() {
-    return {
-      isLoading: false
-    }
-  },
   props: {
     currentCell: {
       type: Object,
@@ -32,15 +26,11 @@ export default {
     player: {
       type: Object,
       default: () => ({})
-    },
-      cells: {
-        type: Array,
-        default: () => ([])
-      }
+    }
   },
   methods: {
     isCurrentCell(cell) {
-      return this.currentCell.x === cell.x && this.currentCell.y === cell.y;
+      return this.currentCell.id === cell.id;
     },
     isReachable(cell) {
       if (this.isAdmin) {
@@ -71,11 +61,12 @@ export default {
     }
   },
   computed: {
+    cells() {
+      return this.$store.getters.getCells;
+    },
     isAdmin() {
       return this.$route.path === "/map-editor";
     }
-  },
-  created () {
   }
 }
 </script>
