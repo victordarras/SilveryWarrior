@@ -1,6 +1,12 @@
 .Navigation {
   background: #000;
   color: #fff;
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.25rem;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #000;
@@ -8,7 +14,8 @@
     margin-left: auto;
   }
   a {
-    padding: 0.25em 1rem;
+    padding: 0.5em 1rem;
+    line-height: 1;
     text-decoration: none;
     font-family: sans-serif;
     color: inherit;
