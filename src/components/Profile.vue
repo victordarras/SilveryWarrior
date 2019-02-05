@@ -2,23 +2,29 @@
   <section class="Profile">
     <header>
       <section>
-        <h2>Général</h2>
-        <h1>{{ player.level }} {{ player.name }}</h1>
+        <h1>{{ player.name }}</h1>
+        <h3>Niveau {{ player.level }}</h3>
       </section>
 
       <section>
         <h2>Statistiques</h2>
         <dl>
-          <dt>Attaque:</dt>
-          <dd>{{ player.atk }}</dd>
-          <dt>Défense:</dt>
-          <dd>{{ player.def }}</dd>
-          <dt>Vitesse:</dt>
-          <dd>{{ player.spe }}</dd>
-          <dt>Money:</dt>
-          <dd>{{ player.money }}💰</dd>
-          <dt>Expérience:</dt>
+          <dt>Money</dt>
+          <dd>💰{{ player.money }}</dd>
+          <dt>Expérience</dt>
           <dd>{{ player.exp }}</dd>
+          <hr>
+          <dt>Attaque</dt>
+          <dd>{{ player.atk }}</dd>
+          <dt>Défense</dt>
+          <dd>{{ player.def }}</dd>
+          <dt>Vitesse</dt>
+          <dd>{{ player.spe }}</dd>
+          <hr>
+          <dt>Enemis tués</dt>
+          <dd>{{ player.kills }}</dd>
+          <dt>Morts</dt>
+          <dd>{{ player.death }}</dd>
         </dl>
       </section>
     </header>
@@ -69,6 +75,12 @@ export default {
     vertical-align: top;
     display: inline-block;
     width: 50%;
+  }
+  dl {
+    max-width: 15em;
+  }
+  dd {
+    text-align: right;
   }
   header, section {
     padding: 1em;

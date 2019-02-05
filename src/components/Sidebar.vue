@@ -6,10 +6,6 @@
       </div>
     </div>
     <h3>{{ player.name }}({{ player.level }})</h3>
-    <p>
-      {{ player.exp }} experience points<br>
-      {{ player.kills }} mob killed
-    </p>
 
     <div class="Sidebar__menu">
       <a
