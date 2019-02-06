@@ -1,14 +1,17 @@
 .Inventory {
   display: flex;
+  flex-flow: row wrap;
   margin: 0 -5px 1em;
+  max-width: 36rem;
 }
 .Item {
   position: relative;
+  display: block;
   text-align: center;
   padding: 6px;
   margin: 5px;
-  width: 74px;
-  height: 74px;
+  width: 70px;
+  height: 70px;
   background: url('../assets/images/cursor.png') no-repeat top / contain;
 
   &:hover  {transform: scale(1.05);}
@@ -21,7 +24,7 @@
 
   &__picture {
     font-size: 3rem;
-    margin-bottom: 1rem;
+    // margin-bottom: 1rem;
   }
 
   &__count {

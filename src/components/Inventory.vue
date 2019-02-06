@@ -21,11 +21,14 @@
         </ul>
       </div>
     </div>
+    <div class='Item' v-for="item in remainingSlots"></div>
   </div>
 </template>
 
 <script>
 import { groupBy } from "../helpers";
+
+const INVENTORY_SIZE = 30;
 
 export default {
   props: {
@@ -44,6 +47,13 @@ export default {
     }
   },
   computed: {
+    remainingSlots() {
+      var content = [];
+      for (var i = INVENTORY_SIZE - Object.keys(this.stackedItems).length; i--; i > 0) {
+        content.push("");
+      }
+      return content;
+    },
     stackedItems() {
       return this.items ? groupBy(this.items, "name") : []
     }
