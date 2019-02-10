@@ -3,25 +3,6 @@
   padding: 0;
   margin-bottom: 1vh;
   padding-bottom: 1vh;
-  &:before {
-    content:"";
-    position: absolute;
-    width: 25px;
-    top: -10px;
-    bottom: 0;
-    left: -29px;
-    background: #fff;
-  }
-  &:after {
-    content:"";
-    position: absolute;
-    /*930x23*/
-    height: 23px;
-    bottom: -10px;
-    right: -10px;
-    left: -15px;
-    background: url(../assets/images/horizontal_separator.png) repeat-x top left / contain;
-  }
   &__buildings {
     min-height: 13rem;
     background: url(../assets/images/city.png) no-repeat top center / contain;

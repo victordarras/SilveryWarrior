@@ -32,6 +32,7 @@
           <div class="Enemy__label">{{ enemy.name }}</div>
         </li>
       </transition-group>
+      <hr>
       {{ cell.players }}
 
   </div>
