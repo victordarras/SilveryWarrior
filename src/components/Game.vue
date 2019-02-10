@@ -19,6 +19,9 @@
       <Profile
         v-if="showProfile"
         :player="currentPlayer"
+        @equipItem="equipItem"
+        @unequipItem="unequipItem"
+        @useItem="useItem"
         @clickItem="useItem"
       />
 
@@ -92,6 +95,14 @@ export default {
     log(message, kind = "normal") {
       this.logs.push({kind: kind,content: message, id: this.logs.length});
     },
+    equipItem(item) {
+      item.equiped = true;
+      this.savePlayerData();
+    },
+    unequipItem(item) {
+      item.equiped = false;
+      this.savePlayerData();
+    },
     updateCell() {
       this.$store.dispatch('updateCell', this.currentCell);
     },
@@ -146,32 +157,38 @@ export default {
       this.log(`Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`, 'warning');
     },
     fight(enemy, player = this.currentPlayer) {
-      const sample = this.mobs.find(mob => mob.id === enemy.uid);
+      const mob = this.mobs.find(mob => mob.id === enemy.uid);
       enemy = this.currentCell.enemies.find(mob => mob.id === enemy.id);
 
-      const pDamage = Math.max(0, (player.atk + roll(6) - sample.def  + roll(6)));
-      const eDamage = Math.max(0, (sample.atk  + roll(6) - player.def + roll(6)));
+      const playerAtk = player.atk + this.equipments.reduce((acc, item) => acc += item.atk, 0)
+      const playerDef = player.def + this.equipments.reduce((acc, item) => acc += item.def, 0)
+      const playerSpe = player.spe + this.equipments.reduce((acc, item) => acc += item.spe, 0)
 
-      if (player.spe >= sample.spe) {
+      const isCritical = roll(20) >= 18;
+      const eDamage = Math.max(0, (playerDef + roll(2) - mob.atk + roll(2)));
+      let pDamage = Math.max(0, (playerAtk + roll(2) - mob.def + roll(2)));
+      pDamage += isCritical ? pDamage : 0;
+
+      if (playerSpe >= mob.spe) {
         enemy.currentLife -= pDamage;
         player.currentLife -= eDamage;
-        this.log(`Vous attaquez ${sample.name} et lui infligez ${pDamage} dégats !`);
-        this.log(`${sample.name} vous inflige ${eDamage} dégats !`, 'warning');
+        this.log(`${isCritical ? 'CRITIQUE ! ' : ''}Vous attaquez ${mob.name} et lui infligez ${pDamage} dégats !`);
+        this.log(`${mob.name} vous inflige ${eDamage} dégats !`, 'warning');
       } else  {
         player.currentLife -= eDamage;
         enemy.currentLife -= pDamage;
-        this.log(`${sample.name} vous inflige ${eDamage} dégats !`, 'warning');
-        this.log(`Vous attaquez ${sample.name} et lui infligez ${pDamage} dégats !`);
+        this.log(`${mob.name} vous inflige ${eDamage} dégats !`, 'warning');
+        this.log(`Vous attaquez ${mob.name} et lui infligez ${pDamage} dégats !`);
       }
 
       if (player.currentLife <= 0) {
-        this.log(`Vous avez été brutalement abbatu par ${sample.name}`, 'alert');
+        this.log(`Vous avez été brutalement abbatu par ${mob.name}`, 'alert');
       }
       if (enemy.currentLife <= 0) {
-        player.exp += sample.exp;
-        player.money += sample.money;
+        player.exp += mob.exp;
+        player.money += mob.money;
         player.kills += 1;
-        this.log(`Vous achevez ${sample.name} en lui infligeant ${pDamage} dégats ! (+${sample.exp}xp, +${sample.money}💰)`, 'success');
+        this.log(`Vous achevez ${mob.name} en lui infligeant ${pDamage} dégats ! (+${mob.exp}xp, +${mob.money}💰)`, 'success');
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
         this.$fetch.del('http://localhost:3000/livingMobs/' + enemy.id);
       }
@@ -196,6 +213,9 @@ export default {
     },
     currentCell() {
       return this.cells.find(c => c.x === this.currentPlayer.x && c.y === this.currentPlayer.y);
+    },
+    equipments() {
+      return this.currentPlayer.items.filter(item => item.equiped === true);
     }
   },
   mounted () {

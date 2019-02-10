@@ -2,7 +2,7 @@
   <section class="ItemEditor">
     <h1>Item Editor</h1>
     <div class="list">
-      <ul v-for="kind in Object.keys(itemsByKind)">
+      <ul v-for="kind in Object.keys(itemsByKind)" :key="kind">
         <h4>{{ kind }}</h4>
         <li
           v-for="item in itemsByKind[kind]"
@@ -24,15 +24,30 @@
       <div class="Form__section">
         <label for="">Kind</label>
         <select name="kind" id="kind" v-model="currentItem.kind">
-          <option v-for="k in itemOptions.kind" :value="k">{{ k }}</option>
+          <option v-for="k in itemOptions.kind" :value="k" :key="k">{{ k }}</option>
         </select>
       </div>
-      <div v-if="currentItem.kind === 'equipment'" class="Form__section">
-        <label for="">Equipment kind</label>
-        <select name="eKind" id="eKind" v-model="currentItem.equipmentKind">
-          <option v-for="k in itemOptions.equipmentKind" :value="k">{{ k }}</option>
-        </select>
-      </div>
+      <template v-if="currentItem.kind === 'equipment'" >
+
+        <div class="Form__section">
+          <label for="">Equipment kind</label>
+          <select name="eKind" id="eKind" v-model="currentItem.equipmentKind">
+            <option v-for="k in itemOptions.equipmentKind" :value="k" :key="k">{{ k }}</option>
+          </select>
+        </div>
+        <div class="Form__section">
+          <label for="">Attaque</label>
+          <input type="number" v-model.number="currentItem.atk">
+        </div>
+        <div class="Form__section">
+          <label for="">Defense</label>
+          <input type="number" v-model.number="currentItem.def">
+        </div>
+        <div class="Form__section">
+          <label for="">Vitesse</label>
+          <input type="number" v-model.number="currentItem.spe">
+        </div>
+      </template>
       <div class="Form__section">
         <label for="">Picture</label>
         <input type="text" v-model="currentItem.picture">
@@ -113,7 +128,7 @@ export default {
   label {
     display: inline-block;
     vertical-align: top;
-    width: 6em;
+    width: 10em;
   }
   input {
     font-size: 1em;

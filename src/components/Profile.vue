@@ -15,11 +15,17 @@
           <dd>{{ player.exp }}</dd>
           <hr>
           <dt>Attaque</dt>
-          <dd>{{ player.atk }}</dd>
+          <dd>
+            {{ player.atk }} <strong>+{{ equipments.reduce((acc, item) => acc += item.atk, 0) }}</strong>
+          </dd>
           <dt>Défense</dt>
-          <dd>{{ player.def }}</dd>
+          <dd>
+            {{ player.def }} <strong>+{{ equipments.reduce((acc, item) => acc += item.def, 0) }}</strong>
+          </dd>
           <dt>Vitesse</dt>
-          <dd>{{ player.spe }}</dd>
+          <dd>
+            {{ player.spe }} <strong>+{{ equipments.reduce((acc, item) => acc += item.spe, 0) }}</strong>
+          </dd>
           <hr>
           <dt>Enemis tués</dt>
           <dd>{{ player.kills }}</dd>
@@ -31,13 +37,17 @@
     <section>
       <h2>Inventaire</h2>
       <Inventory
-        :items="player.items"
+        :items="items"
         @clickItem="clickItem"
       />
     </section>
 
     <section>
       <h2>Fiche de personnage</h2>
+      <Inventory
+        :items="equipments"
+        @clickItem="clickItem"
+      />
     </section>
     <!-- <img src="../assets/images/Profile.png" alt=""> -->
 
@@ -56,7 +66,26 @@ export default {
   },
   methods: {
     clickItem(item) {
-      return this.$emit('clickItem', item);
+      switch (item.kind) {
+        case "equipment":
+          if (item.equiped && item.equiped === true) {
+            return this.$emit('unequipItem', item);
+          }
+          item.equiped = true;
+          return this.$emit('equipItem', item);
+        case "consumable":
+          return this.$emit('useItem', item);
+        default:
+          return this.$emit('clickItem', item);
+      }
+    }
+  },
+  computed: {
+    equipments() {
+      return this.player.items.filter(item => item.equiped === true);
+    },
+    items() {
+      return this.player.items.filter(item => item.equiped !== true);
     }
   },
   components: {

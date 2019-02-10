@@ -6,9 +6,9 @@
       "level": 1,
       "currentLife": 100,
       "life": 100,
-      "atk": 14,
-      "def": 6,
-      "spe": 20,
+      "atk": 5,
+      "def": 5,
+      "spe": 5,
       "x": 5,
       "y": 14,
       "exp": 1811,
@@ -22,19 +22,118 @@
       "name": "Joe",
       "id": "Sp1r1tu3l",
       "level": 1,
-      "currentLife": 100,
+      "currentLife": 3,
       "life": 100,
-      "atk": 14,
-      "def": 4,
-      "spe": 2,
-      "x": 5,
+      "atk": 5,
+      "def": 5,
+      "spe": 5,
+      "x": 4,
       "y": 14,
-      "exp": 2198,
+      "exp": 2647,
       "money": 4754,
       "deathCount": 0,
-      "kills": 230,
-      "death": 36,
+      "kills": 246,
+      "death": 37,
       "items": [
+        {
+          "name": "Pot de miel",
+          "id": "987654321",
+          "kind": "consumable",
+          "picture": "🍯",
+          "price": 50,
+          "stackBy": 16,
+          "effects": [
+            "Player.currentLife += 50"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        },
+        {
+          "name": "Potion de vie",
+          "id": "123456789",
+          "kind": "consumable",
+          "picture": "🍺",
+          "price": 80,
+          "stackBy": 32,
+          "effects": [
+            "Player.currentLife += 100"
+          ]
+        },
         {
           "name": "Epée rouillée",
           "id": "987654948",
@@ -42,9 +141,26 @@
           "picture": "🗡",
           "price": 500,
           "stackBy": 1,
-          "effects": [
-            "Player.atk += roll(12) + 2"
-          ]
+          "effects": "Player.atk += 10",
+          "equipmentKind": "right",
+          "atk": 10,
+          "def": 0,
+          "spe": 0,
+          "equiped": true
+        },
+        {
+          "name": "Bouclier rouillé",
+          "id": "647654948",
+          "kind": "equipment",
+          "picture": "🛡",
+          "price": 500,
+          "stackBy": 1,
+          "effects": "Player.def += 5",
+          "equipmentKind": "right",
+          "atk": 0,
+          "def": 5,
+          "spe": 0,
+          "equiped": true
         },
         {
           "name": "Pot de miel",
@@ -69,201 +185,14 @@
           ]
         },
         {
-          "name": "Potion de vie",
-          "id": "123456789",
+          "name": "Pot de miel",
+          "id": "987654321",
           "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
+          "picture": "🍯",
+          "price": 50,
+          "stackBy": 16,
           "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
+            "Player.currentLife += 50"
           ]
         }
       ]
@@ -4080,6 +4009,13 @@
           "createdAt": "2019-02-01T21:51:16.984Z",
           "currentLife": 20,
           "uid": "729671167"
+        },
+        {
+          "id": "503174732",
+          "cell": "783047042",
+          "createdAt": "2019-02-10T15:29:25.379Z",
+          "currentLife": 20,
+          "uid": "728386732"
         }
       ],
       "players": [],
@@ -4362,10 +4298,10 @@
       "y": 14,
       "enemies": [
         {
-          "id": "722615663",
+          "id": "902652900",
           "cell": "096666203",
-          "createdAt": "2019-02-03T14:04:16.700Z",
-          "currentLife": 63,
+          "createdAt": "2019-02-10T15:33:08.285Z",
+          "currentLife": null,
           "uid": "097986442"
         }
       ],
@@ -4377,22 +4313,7 @@
       "kind": "city",
       "x": 5,
       "y": 14,
-      "enemies": [
-        {
-          "id": "408458826",
-          "cell": "231423770",
-          "createdAt": "2019-02-10T12:18:01.113Z",
-          "currentLife": 80,
-          "uid": "097986442"
-        },
-        {
-          "id": "329349159",
-          "cell": "231423770",
-          "createdAt": "2019-02-10T12:18:02.858Z",
-          "currentLife": 100,
-          "uid": "097986442"
-        }
-      ],
+      "enemies": [],
       "players": [],
       "name": ""
     },
@@ -4403,11 +4324,18 @@
       "y": 14,
       "enemies": [
         {
-          "id": "250860141",
+          "id": "707434991",
           "cell": "417199895",
-          "createdAt": "2019-02-01T21:54:35.393Z",
+          "createdAt": "2019-02-10T15:29:10.317Z",
+          "currentLife": 7,
+          "uid": "097986442"
+        },
+        {
+          "id": "255806586",
+          "cell": "417199895",
+          "createdAt": "2019-02-10T15:29:16.673Z",
           "currentLife": 20,
-          "uid": "729671167"
+          "uid": "728386732"
         }
       ],
       "players": [],
@@ -4702,6 +4630,13 @@
           "createdAt": "2019-02-03T15:19:25.921Z",
           "currentLife": 3,
           "uid": "000364087"
+        },
+        {
+          "id": "056482560",
+          "cell": "931248781",
+          "createdAt": "2019-02-10T15:29:22.369Z",
+          "currentLife": 20,
+          "uid": "728386732"
         }
       ],
       "players": [],
@@ -6419,13 +6354,6 @@
       "uid": "729671167"
     },
     {
-      "id": "250860141",
-      "cell": "417199895",
-      "createdAt": "2019-02-01T21:54:35.393Z",
-      "currentLife": 20,
-      "uid": "729671167"
-    },
-    {
       "id": "221312030",
       "cell": "150997684",
       "createdAt": "2019-02-03T12:48:25.596Z",
@@ -6447,13 +6375,6 @@
       "uid": "664642651"
     },
     {
-      "id": "722615663",
-      "cell": "096666203",
-      "createdAt": "2019-02-03T14:04:16.700Z",
-      "currentLife": 63,
-      "uid": "097986442"
-    },
-    {
       "id": "431872018",
       "cell": "931248781",
       "createdAt": "2019-02-03T15:19:25.558Z",
@@ -6468,17 +6389,38 @@
       "uid": "000364087"
     },
     {
-      "id": "408458826",
-      "cell": "231423770",
-      "createdAt": "2019-02-10T12:18:01.113Z",
-      "currentLife": 80,
+      "id": "707434991",
+      "cell": "417199895",
+      "createdAt": "2019-02-10T15:29:10.317Z",
+      "currentLife": 7,
       "uid": "097986442"
     },
     {
-      "id": "329349159",
-      "cell": "231423770",
-      "createdAt": "2019-02-10T12:18:02.858Z",
-      "currentLife": 100,
+      "id": "255806586",
+      "cell": "417199895",
+      "createdAt": "2019-02-10T15:29:16.673Z",
+      "currentLife": 20,
+      "uid": "728386732"
+    },
+    {
+      "id": "056482560",
+      "cell": "931248781",
+      "createdAt": "2019-02-10T15:29:22.369Z",
+      "currentLife": 20,
+      "uid": "728386732"
+    },
+    {
+      "id": "503174732",
+      "cell": "783047042",
+      "createdAt": "2019-02-10T15:29:25.379Z",
+      "currentLife": 20,
+      "uid": "728386732"
+    },
+    {
+      "id": "902652900",
+      "cell": "096666203",
+      "createdAt": "2019-02-10T15:33:08.285Z",
+      "currentLife": null,
       "uid": "097986442"
     }
   ],
@@ -6737,8 +6679,24 @@
       "picture": "🗡",
       "price": 500,
       "stackBy": 1,
-      "effects": "Player.atk += roll(12) + 3",
-      "equipmentKind": "right"
+      "effects": "Player.atk += 10",
+      "equipmentKind": "right",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "Bouclier rouillé",
+      "id": "647654948",
+      "kind": "equipment",
+      "picture": "🛡",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.def += 5",
+      "equipmentKind": "right",
+      "atk": 0,
+      "def": 5,
+      "spe": 0
     },
     {
       "name": "Pot de miel",

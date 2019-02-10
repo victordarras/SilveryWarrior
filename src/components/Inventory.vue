@@ -2,8 +2,8 @@
   <div class="Inventory">
     <div
       class="Item hasTooltip"
-      v-for="stack in stackedItems"
-      :key="stack[0].id"
+      v-for="(stack, i) in stackedItems"
+      :key="i"
       @click="clickItem(stack[0])"
     >
       <span v-if="stack.length > 1" class="Item__count">{{ stack.length }}</span>
@@ -15,19 +15,11 @@
           {{ stack[0].name }}
         </div>
         <ul class="Tooltip__content">
-          <li v-for="effect in stack[0].effects" :key="effect">
-            <!-- {{ effect }} -->
+          <li v-for="(effect, j) in stack[0].effects" :key="j" :title="effect">
           </li>
         </ul>
       </div>
     </div>
-    <div
-      class='Item'
-      v-if="!canBuy"
-      v-for="item in remainingSlots"
-      style="pointer-events:none"
-      :key="item"
-    >{{ item }}</div>
   </div>
 </template>
 
