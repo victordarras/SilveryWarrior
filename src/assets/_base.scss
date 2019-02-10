@@ -6,7 +6,7 @@ body {
   background: #fff;
   color: #222;
   line-height: 1.2;
-  font-family: 'Merriweather', serif;
+  font-family: 'Taviraj', 'Merriweather', serif;
 }
 
 ul {
@@ -37,3 +37,11 @@ h3{font-size: 1.325rem;}
 h3{font-size: 1.25rem;}
 h4{font-size: 1.125rem;}
 h5{font-size: 1rem;}
+
+hr {
+  border: 0;
+  // border-top: 1px solid #000;
+  height: 1em;
+  margin: 1em 0;
+  background: url(../assets/images/horizontal_separator.png) repeat-x top left / contain;
+}

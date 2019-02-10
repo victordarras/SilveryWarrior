@@ -6,7 +6,6 @@ $map-width: 900px;
   background: url(../assets/images/map_2.png);
   background-size: cover;
   grid-area: table;
-  cursor: url('../assets/images/cursor_2.png'), auto;
 
   &__cells {
     display: grid;
@@ -59,6 +58,7 @@ $map-width: 900px;
   &--reachable:hover {
     z-index: 1;
     transform: scale(1.1);
+    cursor: url('../assets/images/cursor_2.png'), auto;
   }
 
   // Kinds

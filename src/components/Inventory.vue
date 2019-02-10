@@ -8,7 +8,7 @@
     >
       <span v-if="stack.length > 1" class="Item__count">{{ stack.length }}</span>
       <div class="Item__picture">{{ stack[0].picture }} </div>
-      <p v-if="canBuy">Acheter ?<br>({{ stack[0].price }}💰)</p>
+      <p class="Item__price" v-if="canBuy">{{ stack[0].price }}💰</p>
 
       <div class="Tooltip">
         <div class="Tooltip__name">
@@ -16,12 +16,18 @@
         </div>
         <ul class="Tooltip__content">
           <li v-for="effect in stack[0].effects" :key="effect">
-            {{ effect }}
+            <!-- {{ effect }} -->
           </li>
         </ul>
       </div>
     </div>
-    <div class='Item' v-for="item in remainingSlots"></div>
+    <div
+      class='Item'
+      v-if="!canBuy"
+      v-for="item in remainingSlots"
+      style="pointer-events:none"
+      :key="item"
+    >{{ item }}</div>
   </div>
 </template>
 
