@@ -6721,6 +6721,12 @@
       "equipment",
       "quest",
       "map"
+    ],
+    "equipmentKind": [
+      "head",
+      "left",
+      "right",
+      "feet"
     ]
   },
   "items": [
@@ -6731,7 +6737,8 @@
       "picture": "🗡",
       "price": 500,
       "stackBy": 1,
-      "effects": "Player.atk += roll(12) + 3"
+      "effects": "Player.atk += roll(12) + 3",
+      "equipmentKind": "right"
     },
     {
       "name": "Pot de miel",
