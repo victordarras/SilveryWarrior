@@ -12,6 +12,7 @@
       </li>
     </ul>
     <form @submit="updateMob()" :style="isLoading ? 'opacity:0.5;' : ''">
+      <img :src="pictureURL(currentMob.picture)" alt="nope" width="320" height="320" style="float:left">
       <h2>{{ currentMob.name }}</h2>({{ currentMob.id }})
       <hr>
       <div v-for="key in Object.keys(currentMob)" :key="key" v-if="key !== 'id'">
@@ -38,6 +39,9 @@ export default {
     }
   },
   methods: {
+    pictureURL(img) {
+      return `/images/mobs/${img}`
+    },
     addStats() {
       this.mobs = this.mobs.map(mob => {
         return {
@@ -59,6 +63,8 @@ export default {
     (async () => {
       let mobs = await this.$fetch.get('http://localhost:3000/mobs')
       this.mobs = await mobs.json();
+
+      this.currentMob = this.mobs[0]
       this.isLoading = false;
     })()
   }

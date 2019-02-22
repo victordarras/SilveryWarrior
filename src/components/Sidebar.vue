@@ -35,15 +35,12 @@
 <script>
 export default {
   name: 'Sidebar',
-  props: {
-    player: {
-      type: Object,
-      default: () => ({})
-    }
-  },
   computed: {
+    player() {
+      return this.$store.getters.getPlayer;
+    },
     potionsCount() {
-      return this.player.items.filter(item => item.id === "123456789").length;
+      return this.player.items ? this.player.items.filter(item => item.id === "123456789").length : [];
     }
   },
   methods: {

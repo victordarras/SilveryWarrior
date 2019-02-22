@@ -15,8 +15,12 @@
       </ul>
     </div>
     <form @submit.prevent="updateItem()" :style="isLoading ? 'opacity:0.5;' : ''">
+      <img :src="pictureURL(currentItem.picture)" alt="nope" width="60" height="60" class="picture">
       <h2>{{ currentItem.name }}</h2>
-      <small>{{ currentItem.id }}</small><hr>
+      <small>{{ currentItem.id }}</small>
+      <br>
+      <br>
+      <br>
       <div class="Form__section">
         <label for="">Name</label>
         <input type="text" v-model="currentItem.name">
@@ -82,6 +86,9 @@ export default {
     }
   },
   methods: {
+    pictureURL(img) {
+      return `/images/items/${img}`
+    },
     addStats() {
       this.items = this.items.map(mob => {
         return {
@@ -125,6 +132,11 @@ export default {
   .ItemEditor {
     padding: 0 2em;
   }
+  .picture {
+    float: left;
+    border: 2px solid #222;
+    margin: 0 1em 1em 0;
+  }
   label {
     display: inline-block;
     vertical-align: top;
@@ -148,6 +160,7 @@ export default {
     padding-right: 2rem;
     border-right: 1px solid #333;
     height: 90vh;
+    overflow: auto;
     ul {
       margin-top: 1em;
     }

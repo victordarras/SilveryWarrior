@@ -58,12 +58,6 @@
 import Inventory from "./Inventory";
 
 export default {
-  props: {
-    player: {
-      type: Object,
-      default: () => ({})
-    }
-  },
   methods: {
     clickItem(item) {
       switch (item.kind) {
@@ -81,6 +75,9 @@ export default {
     }
   },
   computed: {
+    player() {
+      return this.$store.getters.getPlayer;
+    },
     equipments() {
       return this.player.items.filter(item => item.equiped === true);
     },

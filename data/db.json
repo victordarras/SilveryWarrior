@@ -22,180 +22,19 @@
       "name": "Joe",
       "id": "Sp1r1tu3l",
       "level": 1,
-      "currentLife": 3,
+      "currentLife": 12,
       "life": 100,
       "atk": 5,
       "def": 5,
       "spe": 5,
-      "x": 4,
+      "x": 5,
       "y": 14,
-      "exp": 2647,
-      "money": 4754,
+      "exp": 2356,
+      "money": 994744,
       "deathCount": 0,
-      "kills": 246,
-      "death": 37,
-      "items": [
-        {
-          "name": "Pot de miel",
-          "id": "987654321",
-          "kind": "consumable",
-          "picture": "🍯",
-          "price": 50,
-          "stackBy": 16,
-          "effects": [
-            "Player.currentLife += 50"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Potion de vie",
-          "id": "123456789",
-          "kind": "consumable",
-          "picture": "🍺",
-          "price": 80,
-          "stackBy": 32,
-          "effects": [
-            "Player.currentLife += 100"
-          ]
-        },
-        {
-          "name": "Epée rouillée",
-          "id": "987654948",
-          "kind": "equipment",
-          "picture": "🗡",
-          "price": 500,
-          "stackBy": 1,
-          "effects": "Player.atk += 10",
-          "equipmentKind": "right",
-          "atk": 10,
-          "def": 0,
-          "spe": 0,
-          "equiped": true
-        },
-        {
-          "name": "Bouclier rouillé",
-          "id": "647654948",
-          "kind": "equipment",
-          "picture": "🛡",
-          "price": 500,
-          "stackBy": 1,
-          "effects": "Player.def += 5",
-          "equipmentKind": "right",
-          "atk": 0,
-          "def": 5,
-          "spe": 0,
-          "equiped": true
-        },
-        {
-          "name": "Pot de miel",
-          "id": "987654321",
-          "kind": "consumable",
-          "picture": "🍯",
-          "price": 50,
-          "stackBy": 16,
-          "effects": [
-            "Player.currentLife += 50"
-          ]
-        },
-        {
-          "name": "Pot de miel",
-          "id": "987654321",
-          "kind": "consumable",
-          "picture": "🍯",
-          "price": 50,
-          "stackBy": 16,
-          "effects": [
-            "Player.currentLife += 50"
-          ]
-        },
-        {
-          "name": "Pot de miel",
-          "id": "987654321",
-          "kind": "consumable",
-          "picture": "🍯",
-          "price": 50,
-          "stackBy": 16,
-          "effects": [
-            "Player.currentLife += 50"
-          ]
-        }
-      ]
+      "kills": 250,
+      "death": 38,
+      "items": []
     }
   ],
   "users": [],
@@ -3997,13 +3836,6 @@
       "y": 13,
       "enemies": [
         {
-          "id": "631620433",
-          "cell": "783047042",
-          "createdAt": "2019-02-01T21:51:13.903Z",
-          "currentLife": 20,
-          "uid": "728386732"
-        },
-        {
           "id": "014373134",
           "cell": "783047042",
           "createdAt": "2019-02-01T21:51:16.984Z",
@@ -4322,22 +4154,7 @@
       "kind": "plain",
       "x": 6,
       "y": 14,
-      "enemies": [
-        {
-          "id": "707434991",
-          "cell": "417199895",
-          "createdAt": "2019-02-10T15:29:10.317Z",
-          "currentLife": 7,
-          "uid": "097986442"
-        },
-        {
-          "id": "255806586",
-          "cell": "417199895",
-          "createdAt": "2019-02-10T15:29:16.673Z",
-          "currentLife": 20,
-          "uid": "728386732"
-        }
-      ],
+      "enemies": [],
       "players": [],
       "name": ""
     },
@@ -4617,13 +4434,6 @@
       "x": 5,
       "y": 15,
       "enemies": [
-        {
-          "id": "431872018",
-          "cell": "931248781",
-          "createdAt": "2019-02-03T15:19:25.558Z",
-          "currentLife": 1,
-          "uid": "000364087"
-        },
         {
           "id": "191487891",
           "cell": "931248781",
@@ -6317,118 +6127,12 @@
       "name": ""
     }
   ],
-  "livingMobs": [
-    {
-      "id": "907412838",
-      "cell": "150997684",
-      "createdAt": "2019-02-01T21:32:43.674Z",
-      "currentLife": 100,
-      "uid": "097986442"
-    },
-    {
-      "id": "563825385",
-      "cell": "096666203",
-      "createdAt": "2019-02-01T21:37:41.181Z",
-      "currentLife": 100,
-      "uid": "097986442"
-    },
-    {
-      "id": "268284497",
-      "cell": "096666203",
-      "createdAt": "2019-02-01T21:40:22.683Z",
-      "currentLife": 68,
-      "uid": "097986442"
-    },
-    {
-      "id": "631620433",
-      "cell": "783047042",
-      "createdAt": "2019-02-01T21:51:13.903Z",
-      "currentLife": 20,
-      "uid": "728386732"
-    },
-    {
-      "id": "014373134",
-      "cell": "783047042",
-      "createdAt": "2019-02-01T21:51:16.984Z",
-      "currentLife": 20,
-      "uid": "729671167"
-    },
-    {
-      "id": "221312030",
-      "cell": "150997684",
-      "createdAt": "2019-02-03T12:48:25.596Z",
-      "currentLife": 100,
-      "uid": "097986442"
-    },
-    {
-      "id": "649260898",
-      "cell": "931248781",
-      "createdAt": "2019-02-03T13:38:29.735Z",
-      "currentLife": 65,
-      "uid": "097986442"
-    },
-    {
-      "id": "198452556",
-      "cell": "931248781",
-      "createdAt": "2019-02-03T13:46:27.015Z",
-      "currentLife": 20,
-      "uid": "664642651"
-    },
-    {
-      "id": "431872018",
-      "cell": "931248781",
-      "createdAt": "2019-02-03T15:19:25.558Z",
-      "currentLife": 1,
-      "uid": "000364087"
-    },
-    {
-      "id": "191487891",
-      "cell": "931248781",
-      "createdAt": "2019-02-03T15:19:25.921Z",
-      "currentLife": 3,
-      "uid": "000364087"
-    },
-    {
-      "id": "707434991",
-      "cell": "417199895",
-      "createdAt": "2019-02-10T15:29:10.317Z",
-      "currentLife": 7,
-      "uid": "097986442"
-    },
-    {
-      "id": "255806586",
-      "cell": "417199895",
-      "createdAt": "2019-02-10T15:29:16.673Z",
-      "currentLife": 20,
-      "uid": "728386732"
-    },
-    {
-      "id": "056482560",
-      "cell": "931248781",
-      "createdAt": "2019-02-10T15:29:22.369Z",
-      "currentLife": 20,
-      "uid": "728386732"
-    },
-    {
-      "id": "503174732",
-      "cell": "783047042",
-      "createdAt": "2019-02-10T15:29:25.379Z",
-      "currentLife": 20,
-      "uid": "728386732"
-    },
-    {
-      "id": "902652900",
-      "cell": "096666203",
-      "createdAt": "2019-02-10T15:33:08.285Z",
-      "currentLife": null,
-      "uid": "097986442"
-    }
-  ],
+  "livingMobs": [],
   "mobs": [
     {
-      "name": "Grenouille maudite",
-      "id": "097986442",
-      "picture": "🐸",
+      "name": "bilboquet",
+      "id": "853874250",
+      "picture": "bilboquet.png",
       "life": 100,
       "atk": 2,
       "def": 2,
@@ -6437,21 +6141,10 @@
       "money": 10
     },
     {
-      "name": "Buisson animé",
-      "id": "395421478",
-      "picture": "🦆",
-      "life": 20,
-      "atk": 2,
-      "def": 2,
-      "spe": 2,
-      "exp": 666,
-      "money": 1000
-    },
-    {
-      "name": "Babouin excité",
-      "id": "728386732",
-      "picture": "🐒",
-      "life": 20,
+      "name": "blob-aristo",
+      "id": "321812993",
+      "picture": "blob-aristo.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6459,10 +6152,10 @@
       "money": 10
     },
     {
-      "name": "Blaireau enragé",
-      "id": "729671167",
-      "picture": "🦡",
-      "life": 20,
+      "name": "blob",
+      "id": "744827653",
+      "picture": "blob.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6470,10 +6163,10 @@
       "money": 10
     },
     {
-      "name": "Chauve-souris sanguinaire",
-      "id": "664642651",
-      "picture": "🦇",
-      "life": 20,
+      "name": "casserole",
+      "id": "575288712",
+      "picture": "casserole.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6481,10 +6174,10 @@
       "money": 10
     },
     {
-      "name": "Chat fouin",
-      "id": "472877194",
-      "picture": "🐈",
-      "life": 20,
+      "name": "champi",
+      "id": "561198310",
+      "picture": "champi.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6492,10 +6185,10 @@
       "money": 10
     },
     {
-      "name": "Crabe vicieux",
-      "id": "339403453",
-      "picture": "🦀",
-      "life": 20,
+      "name": "charette",
+      "id": "851204606",
+      "picture": "charette.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6503,10 +6196,10 @@
       "money": 10
     },
     {
-      "name": "Rat crâneur",
-      "id": "000364087",
-      "picture": "🐀",
-      "life": 20,
+      "name": "chauve-souris",
+      "id": "546999198",
+      "picture": "chauve-souris.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6514,10 +6207,10 @@
       "money": 10
     },
     {
-      "name": "Main tremblante",
-      "id": "953903512",
-      "picture": "👋🏽",
-      "life": 20,
+      "name": "chevelu",
+      "id": "652479523",
+      "picture": "chevelu.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6525,10 +6218,10 @@
       "money": 10
     },
     {
-      "name": "Corbeau blanc",
-      "id": "099732271",
-      "picture": "🕊",
-      "life": 20,
+      "name": "cle",
+      "id": "150247818",
+      "picture": "cle.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6536,10 +6229,10 @@
       "money": 10
     },
     {
-      "name": "Scarabée géant",
-      "id": "441621257",
-      "picture": "🐞",
-      "life": 20,
+      "name": "coffre",
+      "id": "145078139",
+      "picture": "coffre.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6547,10 +6240,10 @@
       "money": 10
     },
     {
-      "name": "Chèvre sénile",
-      "id": "126072202",
-      "picture": "🐑",
-      "life": 20,
+      "name": "crane",
+      "id": "790418003",
+      "picture": "crane.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6558,10 +6251,10 @@
       "money": 10
     },
     {
-      "name": "Homonculus",
-      "id": "666789172",
-      "picture": "🦆",
-      "life": 20,
+      "name": "griffe",
+      "id": "110363715",
+      "picture": "griffe.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6569,10 +6262,10 @@
       "money": 10
     },
     {
-      "name": "Hyène fétide",
-      "id": "191891400",
-      "picture": "🦆",
-      "life": 20,
+      "name": "lapin",
+      "id": "840468049",
+      "picture": "lapin.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6580,10 +6273,10 @@
       "money": 10
     },
     {
-      "name": "Chacal banal",
-      "id": "029207779",
-      "picture": "🦆",
-      "life": 20,
+      "name": "minimage",
+      "id": "004247759",
+      "picture": "minimage.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6591,10 +6284,10 @@
       "money": 10
     },
     {
-      "name": "Lézard affuté",
-      "id": "129127870",
-      "picture": "🦆",
-      "life": 20,
+      "name": "ours",
+      "id": "971232674",
+      "picture": "ours.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6602,10 +6295,10 @@
       "money": 10
     },
     {
-      "name": "Champignon éveillé",
-      "id": "386410029",
-      "picture": "🦆",
-      "life": 20,
+      "name": "pacman",
+      "id": "060200090",
+      "picture": "pacman.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6613,10 +6306,10 @@
       "money": 10
     },
     {
-      "name": "Poulpe sec",
-      "id": "929806671",
-      "picture": "🦆",
-      "life": 20,
+      "name": "pot",
+      "id": "357769927",
+      "picture": "pot.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6624,10 +6317,10 @@
       "money": 10
     },
     {
-      "name": "Chouette déçue",
-      "id": "001251643",
-      "picture": "🦆",
-      "life": 20,
+      "name": "theiere",
+      "id": "683310029",
+      "picture": "theiere.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6635,10 +6328,10 @@
       "money": 10
     },
     {
-      "name": "Scorpion rampant",
-      "id": "428329648",
-      "picture": "🦆",
-      "life": 20,
+      "name": "tonneau",
+      "id": "866896767",
+      "picture": "tonneau.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6646,10 +6339,10 @@
       "money": 10
     },
     {
-      "name": "Araignée veuve",
-      "id": "733617524",
-      "picture": "🦆",
-      "life": 200,
+      "name": "tortue",
+      "id": "665623766",
+      "picture": "tortue.png",
+      "life": 100,
       "atk": 2,
       "def": 2,
       "spe": 2,
@@ -6673,10 +6366,10 @@
   },
   "items": [
     {
-      "name": "Epée rouillée",
-      "id": "987654948",
+      "name": "batte",
+      "id": "361554941",
       "kind": "equipment",
-      "picture": "🗡",
+      "picture": "batte.png",
       "price": 500,
       "stackBy": 1,
       "effects": "Player.atk += 10",
@@ -6686,23 +6379,348 @@
       "spe": 0
     },
     {
-      "name": "Bouclier rouillé",
-      "id": "647654948",
+      "name": "bouclier1",
+      "id": "796585394",
       "kind": "equipment",
-      "picture": "🛡",
+      "picture": "bouclier1.png",
       "price": 500,
       "stackBy": 1,
-      "effects": "Player.def += 5",
-      "equipmentKind": "right",
-      "atk": 0,
-      "def": 5,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "left",
+      "atk": 10,
+      "def": 0,
       "spe": 0
     },
     {
-      "name": "Pot de miel",
-      "id": "987654321",
+      "name": "bouclier2",
+      "id": "298942787",
+      "kind": "equipment",
+      "picture": "bouclier2.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "left",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "bouclier3",
+      "id": "175894339",
+      "kind": "equipment",
+      "picture": "bouclier3.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "left",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "bouclier4",
+      "id": "946388313",
+      "kind": "equipment",
+      "picture": "bouclier4.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "left",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "colier3",
+      "id": "385003774",
+      "kind": "equipment",
+      "picture": "colier3.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "head",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "collier1",
+      "id": "975218702",
+      "kind": "equipment",
+      "picture": "collier1.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "head",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "collier2",
+      "id": "133417454",
+      "kind": "equipment",
+      "picture": "collier2.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "head",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "collier4",
+      "id": "446901877",
+      "kind": "equipment",
+      "picture": "collier4.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "head",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "coutelas",
+      "id": "740310064",
+      "kind": "equipment",
+      "picture": "coutelas.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "right",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "hache1",
+      "id": "409689861",
+      "kind": "equipment",
+      "picture": "hache1.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "right",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "hache2",
+      "id": "475388965",
+      "kind": "equipment",
+      "picture": "hache2.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "right",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "hache3",
+      "id": "582626881",
+      "kind": "equipment",
+      "picture": "hache3.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "right",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "hache4",
+      "id": "758542559",
+      "kind": "equipment",
+      "picture": "hache4.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "right",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "hache5",
+      "id": "416663198",
+      "kind": "equipment",
+      "picture": "hache5.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "right",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "lame1",
+      "id": "126614992",
+      "kind": "equipment",
+      "picture": "lame1.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "right",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "lame2",
+      "id": "658013926",
+      "kind": "equipment",
+      "picture": "lame2.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "right",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "lame3",
+      "id": "302481981",
+      "kind": "equipment",
+      "picture": "lame3.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "right",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "lame4",
+      "id": "845766096",
+      "kind": "equipment",
+      "picture": "lame4.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "right",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "lame5",
+      "id": "678510096",
+      "kind": "equipment",
+      "picture": "lame5.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "right",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "machette",
+      "id": "794156044",
+      "kind": "equipment",
+      "picture": "machette.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "right",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "ocarina",
+      "id": "824539746",
+      "kind": "quest",
+      "picture": "ocarina.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "head",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "pipe1",
+      "id": "061291228",
+      "kind": "equipment",
+      "picture": "pipe1.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "head",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "pipe2",
+      "id": "962811609",
+      "kind": "equipment",
+      "picture": "pipe2.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "head",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "serpe",
+      "id": "398359967",
+      "kind": "quest",
+      "picture": "serpe.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "left",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "tire-bouchon",
+      "id": "517508517",
+      "kind": "quest",
+      "picture": "tire-bouchon.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "left",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "cuillere",
+      "id": "340358103",
+      "kind": "equipment",
+      "picture": "cuillere.png",
+      "price": 500,
+      "stackBy": 1,
+      "effects": "Player.atk += 10",
+      "equipmentKind": "left",
+      "atk": 10,
+      "def": 0,
+      "spe": 0
+    },
+    {
+      "name": "carotte",
+      "id": "555064771",
       "kind": "consumable",
-      "picture": "🍯",
+      "picture": "carotte.png",
       "price": 50,
       "stackBy": 16,
       "effects": [
@@ -6710,14 +6728,146 @@
       ]
     },
     {
-      "name": "Potion de vie",
-      "id": "123456789",
+      "name": "fleur",
+      "id": "530909174",
       "kind": "consumable",
-      "picture": "🍺",
-      "price": 80,
-      "stackBy": 32,
+      "picture": "fleur.png",
+      "price": 50,
+      "stackBy": 16,
       "effects": [
-        "Player.currentLife += 100"
+        "Player.currentLife += 50"
+      ]
+    },
+    {
+      "name": "gobelet",
+      "id": "000598912",
+      "kind": "consumable",
+      "picture": "gobelet.png",
+      "price": 50,
+      "stackBy": 16,
+      "effects": [
+        "Player.currentLife += 50"
+      ]
+    },
+    {
+      "name": "libellule",
+      "id": "559374455",
+      "kind": "consumable",
+      "picture": "libellule.png",
+      "price": 50,
+      "stackBy": 16,
+      "effects": [
+        "Player.currentLife += 50"
+      ]
+    },
+    {
+      "name": "longue-vue",
+      "id": "831004543",
+      "kind": "consumable",
+      "picture": "longue-vue.png",
+      "price": 50,
+      "stackBy": 16,
+      "effects": [
+        "Player.currentLife += 50"
+      ]
+    },
+    {
+      "name": "miel",
+      "id": "620764347",
+      "kind": "consumable",
+      "picture": "miel.png",
+      "price": 50,
+      "stackBy": 16,
+      "effects": [
+        "Player.currentLife += 50"
+      ]
+    },
+    {
+      "name": "parchemin",
+      "id": "003192459",
+      "kind": "consumable",
+      "picture": "parchemin.png",
+      "price": 50,
+      "stackBy": 16,
+      "effects": [
+        "Player.currentLife += 50"
+      ]
+    },
+    {
+      "name": "patate",
+      "id": "393942115",
+      "kind": "consumable",
+      "picture": "patate.png",
+      "price": 50,
+      "stackBy": 16,
+      "effects": [
+        "Player.currentLife += 50"
+      ]
+    },
+    {
+      "name": "popo",
+      "id": "958853074",
+      "kind": "consumable",
+      "picture": "popo.png",
+      "price": 50,
+      "stackBy": 16,
+      "effects": [
+        "Player.currentLife += 50"
+      ]
+    },
+    {
+      "name": "popo2",
+      "id": "630418561",
+      "kind": "consumable",
+      "picture": "popo2.png",
+      "price": 50,
+      "stackBy": 16,
+      "effects": [
+        "Player.currentLife += 50"
+      ]
+    },
+    {
+      "name": "popo3",
+      "id": "006972710",
+      "kind": "consumable",
+      "picture": "popo3.png",
+      "price": 50,
+      "stackBy": 16,
+      "effects": [
+        "Player.currentLife += 50"
+      ]
+    },
+    {
+      "name": "popo4",
+      "id": "748030915",
+      "kind": "consumable",
+      "picture": "popo4.png",
+      "price": 50,
+      "stackBy": 16,
+      "effects": [
+        "Player.currentLife += 50"
+      ]
+    },
+    {
+      "name": "popo5",
+      "id": "641289723",
+      "kind": "consumable",
+      "picture": "popo5.png",
+      "price": 50,
+      "stackBy": 16,
+      "effects": [
+        "Player.currentLife += 50"
+      ]
+    },
+    {
+      "name": "steak",
+      "id": "263827961",
+      "kind": "consumable",
+      "picture": "steak.png",
+      "price": 50,
+      "stackBy": 16,
+      "effects": [
+        "Player.currentLife += 50"
       ]
     }
   ]

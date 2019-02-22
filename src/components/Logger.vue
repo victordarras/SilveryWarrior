@@ -16,15 +16,9 @@
 <script>
 export default {
   name: 'Logger',
-  props: {
-    logs: {
-      type: Array,
-      default: () => ([])
-    }
-  },
   computed: {
-    reverseLogs() {
-      return this.logs.slice().reverse();
+    logs() {
+      return this.$store.getters.getLogs;
     }
   }
 }
