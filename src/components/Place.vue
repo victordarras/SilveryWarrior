@@ -21,7 +21,7 @@
           :title="enemyTitle(enemy)"
           :key="enemy.id"
         >
-          <div class="Enemy__picture">{{ enemy.picture }}</div>
+          <img class="Enemy__picture" :src="`/images/mobs/${enemy.picture}`" />
           <div class="Enemy__life">
             <svg width="100%" height="100%" viewBox="0 0 42 42" class="donut">
               <circle class="donut-ring" cx="21" cy="21" r="16" fill="transparent" stroke="#000" stroke-width="9"></circle>

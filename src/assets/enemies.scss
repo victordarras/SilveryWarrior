@@ -8,7 +8,7 @@
   position: relative;
   height: 180px;
   width: 124px;
-  padding: 28px 21px 19px 13px;
+  padding: 12px 21px 19px 14px;
   margin: 0 .25vh 1vh;
   display: flex;
   flex-flow: column;
@@ -46,7 +46,8 @@
   }
 
   &__picture {
-    font-size: 4rem;
+    width: 92px;
+    height: 92px;
   }
 
   &__life {

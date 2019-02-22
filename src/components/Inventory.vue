@@ -7,7 +7,7 @@
       @click="clickItem(stack[0])"
     >
       <span v-if="stack.length > 1" class="Item__count">{{ stack.length }}</span>
-      <div class="Item__picture">{{ stack[0].picture }} </div>
+      <img class="Item__picture"  :src="`/images/items/${ stack[0].picture }`" />
       <p class="Item__price" v-if="canBuy">{{ stack[0].price }}💰</p>
 
       <div class="Tooltip">

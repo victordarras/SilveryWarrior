@@ -12,7 +12,7 @@
       </li>
     </ul>
     <form @submit="updateMob()" :style="isLoading ? 'opacity:0.5;' : ''">
-      <img :src="pictureURL(currentMob.picture)" alt="nope" width="320" height="320" style="float:left">
+      <img :src="pictureURL(currentMob.picture)" alt="nope" width="140" height="140" class="picture">
       <h2>{{ currentMob.name }}</h2>({{ currentMob.id }})
       <hr>
       <div v-for="key in Object.keys(currentMob)" :key="key" v-if="key !== 'id'">
@@ -74,6 +74,11 @@ export default {
 <style lang="scss" scoped>
   .MobEditor {
     padding: 0 2em;
+  }
+  .picture {
+    float: left;
+    border: 2px solid #222;
+    margin: 0 1em 1em 0;
   }
   label {
     display: inline-block;

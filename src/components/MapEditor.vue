@@ -10,7 +10,7 @@
     />
     <section class="Form" v-if="currentCell">
       <h2>Cell {{ currentCell.name ? currentCell.name : 'unnamed' }} [{{ currentCell.x }};{{ currentCell.y }}]</h2>
-
+      <button @click="clearEnemies()">Effacer enemies</button>
       <fieldset>
         <p>Cell kind: {{ currentCell.kind }}</p>
         <select v-model="currentCell.kind" @change="updateCell(currentCell)">
@@ -65,6 +65,10 @@ export default {
     addInfo() {
       // this.cells = this.cells.map(cell => ({...cell, name: ''}));
       // console.log('done', JSON.stringify(this.cells));
+    },
+    clearEnemies() {
+      this.currentCell.enemies = [];
+      this.updateCell();
     },
     selectCell(cell) {
       this.currentCell = cell;

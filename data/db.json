@@ -4,19 +4,114 @@
       "name": "Victor",
       "id": "vic",
       "level": 1,
-      "currentLife": 100,
+      "currentLife": 85,
       "life": 100,
       "atk": 5,
       "def": 5,
       "spe": 5,
       "x": 5,
-      "y": 14,
+      "y": 13,
       "exp": 1811,
-      "money": 4040,
+      "money": 2690,
       "deathCount": 0,
       "kills": 8,
       "death": 3,
-      "items": []
+      "items": [
+        {
+          "name": "popo4",
+          "id": "748030915",
+          "kind": "consumable",
+          "picture": "popo4.png",
+          "price": 50,
+          "stackBy": 16,
+          "effects": [
+            "Player.currentLife += 50"
+          ]
+        },
+        {
+          "name": "popo3",
+          "id": "006972710",
+          "kind": "consumable",
+          "picture": "popo3.png",
+          "price": 50,
+          "stackBy": 16,
+          "effects": [
+            "Player.currentLife += 50"
+          ]
+        },
+        {
+          "name": "popo2",
+          "id": "630418561",
+          "kind": "consumable",
+          "picture": "popo2.png",
+          "price": 50,
+          "stackBy": 16,
+          "effects": [
+            "Player.currentLife += 50"
+          ]
+        },
+        {
+          "name": "popo2",
+          "id": "630418561",
+          "kind": "consumable",
+          "picture": "popo2.png",
+          "price": 50,
+          "stackBy": 16,
+          "effects": [
+            "Player.currentLife += 50"
+          ]
+        },
+        {
+          "name": "popo2",
+          "id": "630418561",
+          "kind": "consumable",
+          "picture": "popo2.png",
+          "price": 50,
+          "stackBy": 16,
+          "effects": [
+            "Player.currentLife += 50"
+          ]
+        },
+        {
+          "name": "popo2",
+          "id": "630418561",
+          "kind": "consumable",
+          "picture": "popo2.png",
+          "price": 50,
+          "stackBy": 16,
+          "effects": [
+            "Player.currentLife += 50"
+          ]
+        },
+        {
+          "name": "hache5",
+          "id": "416663198",
+          "kind": "equipment",
+          "picture": "hache5.png",
+          "price": 500,
+          "stackBy": 1,
+          "effects": "Player.atk += 10",
+          "equipmentKind": "right",
+          "atk": 10,
+          "def": 0,
+          "spe": 0,
+          "equiped": true
+        },
+        {
+          "name": "bouclier3",
+          "id": "175894339",
+          "kind": "equipment",
+          "picture": "bouclier3.png",
+          "price": 500,
+          "stackBy": 1,
+          "effects": "Player.atk += 10",
+          "equipmentKind": "left",
+          "atk": 10,
+          "def": 0,
+          "spe": 0,
+          "equiped": true
+        }
+      ]
     },
     {
       "name": "Joe",
@@ -3836,18 +3931,25 @@
       "y": 13,
       "enemies": [
         {
-          "id": "014373134",
+          "id": "161225734",
           "cell": "783047042",
-          "createdAt": "2019-02-01T21:51:16.984Z",
-          "currentLife": 20,
-          "uid": "729671167"
+          "createdAt": "2019-02-22T15:56:26.391Z",
+          "currentLife": 100,
+          "uid": "575288712"
         },
         {
-          "id": "503174732",
+          "id": "448025822",
           "cell": "783047042",
-          "createdAt": "2019-02-10T15:29:25.379Z",
-          "currentLife": 20,
-          "uid": "728386732"
+          "createdAt": "2019-02-22T15:56:34.225Z",
+          "currentLife": 100,
+          "uid": "790418003"
+        },
+        {
+          "id": "987375337",
+          "cell": "783047042",
+          "createdAt": "2019-02-22T15:56:37.700Z",
+          "currentLife": 100,
+          "uid": "357769927"
         }
       ],
       "players": [],
@@ -4128,15 +4230,7 @@
       "kind": "plain",
       "x": 4,
       "y": 14,
-      "enemies": [
-        {
-          "id": "902652900",
-          "cell": "096666203",
-          "createdAt": "2019-02-10T15:33:08.285Z",
-          "currentLife": null,
-          "uid": "097986442"
-        }
-      ],
+      "enemies": [],
       "players": [],
       "name": ""
     },
@@ -4433,22 +4527,7 @@
       "kind": "plain",
       "x": 5,
       "y": 15,
-      "enemies": [
-        {
-          "id": "191487891",
-          "cell": "931248781",
-          "createdAt": "2019-02-03T15:19:25.921Z",
-          "currentLife": 3,
-          "uid": "000364087"
-        },
-        {
-          "id": "056482560",
-          "cell": "931248781",
-          "createdAt": "2019-02-10T15:29:22.369Z",
-          "currentLife": 20,
-          "uid": "728386732"
-        }
-      ],
+      "enemies": [],
       "players": [],
       "name": ""
     },
@@ -6127,7 +6206,29 @@
       "name": ""
     }
   ],
-  "livingMobs": [],
+  "livingMobs": [
+    {
+      "id": "161225734",
+      "cell": "783047042",
+      "createdAt": "2019-02-22T15:56:26.391Z",
+      "currentLife": 100,
+      "uid": "575288712"
+    },
+    {
+      "id": "448025822",
+      "cell": "783047042",
+      "createdAt": "2019-02-22T15:56:34.225Z",
+      "currentLife": 100,
+      "uid": "790418003"
+    },
+    {
+      "id": "987375337",
+      "cell": "783047042",
+      "createdAt": "2019-02-22T15:56:37.700Z",
+      "currentLife": 100,
+      "uid": "357769927"
+    }
+  ],
   "mobs": [
     {
       "name": "bilboquet",
@@ -6387,8 +6488,8 @@
       "stackBy": 1,
       "effects": "Player.atk += 10",
       "equipmentKind": "left",
-      "atk": 10,
-      "def": 0,
+      "atk": 0,
+      "def": 5,
       "spe": 0
     },
     {
@@ -6413,8 +6514,8 @@
       "stackBy": 1,
       "effects": "Player.atk += 10",
       "equipmentKind": "left",
-      "atk": 10,
-      "def": 0,
+      "atk": 0,
+      "def": 15,
       "spe": 0
     },
     {
