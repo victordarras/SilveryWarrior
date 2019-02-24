@@ -1,0 +1,10 @@
+{
+  "short_name": "SW",
+  "name": "SilveryWarrior",
+  "icons": [
+  ],
+  "start_url": "/",
+  "background_color": "#000",
+  "display": "fullscreen",
+  "theme_color": "#000"
+}

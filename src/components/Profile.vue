@@ -1,92 +1,52 @@
 <template>
-  <section class="Profile">
-    <header>
-      <section>
-        <h1>{{ player.name }}</h1>
-        <h3>Niveau {{ player.level }}</h3>
-      </section>
-
-      <section>
-        <h2>Statistiques</h2>
-        <dl>
-          <dt>Money</dt>
-          <dd>💰{{ player.money }}</dd>
-          <dt>Expérience</dt>
-          <dd>{{ player.exp }}</dd>
-          <hr>
-          <dt>Attaque</dt>
-          <dd>
-            {{ player.atk }} <strong>+{{ equipments.reduce((acc, item) => acc += item.atk, 0) }}</strong>
-          </dd>
-          <dt>Défense</dt>
-          <dd>
-            {{ player.def }} <strong>+{{ equipments.reduce((acc, item) => acc += item.def, 0) }}</strong>
-          </dd>
-          <dt>Vitesse</dt>
-          <dd>
-            {{ player.spe }} <strong>+{{ equipments.reduce((acc, item) => acc += item.spe, 0) }}</strong>
-          </dd>
-          <hr>
-          <dt>Enemis tués</dt>
-          <dd>{{ player.kills }}</dd>
-          <dt>Morts</dt>
-          <dd>{{ player.death }}</dd>
-        </dl>
-      </section>
-    </header>
+  <div class="Profile">
     <section>
-      <h2>Inventaire</h2>
-      <Inventory
-        :items="items"
-        @clickItem="clickItem"
-      />
+      <h2 class="PageTitle">Fiche du joueur</h2>
+      <h1>{{ player.name }}</h1>
     </section>
 
     <section>
-      <h2>Fiche de personnage</h2>
-      <Inventory
-        :items="equipments"
-        @clickItem="clickItem"
-      />
+      <h2 class="PageTitle">Statistiques</h2>
+      <h3>Niveau {{ player.level }}</h3>
+      <dl>
+        <dt>Money</dt>
+        <dd>💰{{ player.money }}</dd>
+        <dt>Expérience</dt>
+        <dd>{{ player.exp }}</dd>
+        <hr>
+        <dt>Attaque</dt>
+        <dd>
+          {{ player.atk }} <strong>+{{ equipments.reduce((acc, item) => acc += item.atk, 0) }}</strong>
+        </dd>
+        <dt>Défense</dt>
+        <dd>
+          {{ player.def }} <strong>+{{ equipments.reduce((acc, item) => acc += item.def, 0) }}</strong>
+        </dd>
+        <dt>Vitesse</dt>
+        <dd>
+          {{ player.spe }} <strong>+{{ equipments.reduce((acc, item) => acc += item.spe, 0) }}</strong>
+        </dd>
+        <hr>
+        <dt>Enemis tués</dt>
+        <dd>{{ player.kills }}</dd>
+        <dt>Morts</dt>
+        <dd>{{ player.death }}</dd>
+      </dl>
     </section>
-    <!-- <img src="../assets/images/Profile.png" alt=""> -->
 
-  </section>
+  </div>
 </template>
 
 <script>
-import Inventory from "./Inventory";
 
 export default {
-  methods: {
-    clickItem(item) {
-      switch (item.kind) {
-        case "equipment":
-          if (item.equiped && item.equiped === true) {
-            return this.$emit('unequipItem', item);
-          }
-          item.equiped = true;
-          return this.$emit('equipItem', item);
-        case "consumable":
-          return this.$emit('useItem', item);
-        default:
-          return this.$emit('clickItem', item);
-      }
-    }
-  },
   computed: {
     player() {
       return this.$store.getters.getPlayer;
     },
     equipments() {
       return this.player.items.filter(item => item.equiped === true);
-    },
-    items() {
-      return this.player.items.filter(item => item.equiped !== true);
     }
-  },
-  components: {
-    Inventory
   }
 }
 </script>
@@ -94,8 +54,12 @@ export default {
 <style lang="scss" scoped>
   .Profile {
     width: 100%;
+    padding-top: 2rem;
   }
-  section, dt, dd {
+  section {
+    padding: 2vh;
+  }
+  dt, dd {
     padding: 0;
     margin: 0;
     vertical-align: top;
@@ -103,12 +67,9 @@ export default {
     width: 50%;
   }
   dl {
-    max-width: 15em;
+    max-width: 24em;
   }
   dd {
     text-align: right;
-  }
-  header, section {
-    padding: 1em;
   }
 </style>

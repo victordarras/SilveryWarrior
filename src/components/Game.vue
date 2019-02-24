@@ -1,50 +1,77 @@
 <template>
   <section id="app" class="Game">
-    <template v-if="isLoading">
-      <div class="Loader"></div>
-    </template>
-    <form class="Login" @submit.prevent="login()" v-else-if="!isConnected">
-      <label for="uid">Mot de passe:</label>
+    <form class="Login" @submit.prevent="login()" v-if="!isConnected">
+      <h1>SilverWorld</h1>
+      <label for="uid">Veuillez entrer votre identifiant</label>
       <input type="text" id="uid" v-model="currentPlayerUid">
       <button type="submit" class="button">Connexion</button>
     </form>
-    <template v-else-if="!isLoading">
-      <Sidebar
-        @showProfile="showProfile = !showProfile"
-        @clickItem="useItem"
-        @logout="logout"
-      />
 
-      <Profile
-        v-if="showProfile"
-        @equipItem="equipItem"
-        @unequipItem="unequipItem"
-        @useItem="useItem"
-        @clickItem="useItem"
-      />
+    <template v-else-if="isLoading">
+      <div class="Loader"></div>
+    </template>
 
-      <template v-else-if="player.currentLife > 0">
-        <Map
-          :currentCell="currentCell"
-          :cells="cells"
-          :player="player"
-          @selectCell="movePlayer"
+    <template v-if="isConnected">
+
+      <div class="Header">
+        <a class="logout" style="float:right" @click="logout()">logout</a>
+        <div class="Header__life" :style="lifeCss">
+          <span class="Header__lifeValue"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
+        </div>
+      </div>
+
+      <div class="Center">
+        <Profile
+          v-if="currentPage === 'profile'"
+          @equipItem="equipItem"
+          @unequipItem="unequipItem"
+          @useItem="useItem"
+          @clickItem="useItem"
+        />
+        <Equipments
+          v-if="currentPage === 'equipments'"
+          @equipItem="equipItem"
+          @unequipItem="unequipItem"
+          @useItem="useItem"
+          @clickItem="useItem"
         />
 
-        <Place
-          :cell="currentCell"
-          @attack="fight"
-          @sleep="addLife(player.life)"
-          @clickItem="buyItem"
-        />
-      </template>
+        <template v-else-if="player.currentLife > 0 && currentPage === 'map'">
+          <Map
+            :currentCell="currentCell"
+            :cells="cells"
+            :player="player"
+            @selectCell="movePlayer"
+          />
+          <h1 class="PageTitle">Carte du monde</h1>
+          <h1 class="PageSubTitle">{{ currentCell.kind }}</h1>
 
-      <section v-else>
-        <h1>YOU ARE DEAD</h1>
-        <button @click="revive()">Revive (XP x 0.875)</button>
-      </section>
+          <Place
+            :cell="currentCell"
+            @attack="fight"
+            @sleep="addLife(player.life)"
+            @clickItem="buyItem"
+          />
+          <Logger />
+        </template>
 
-      <Logger />
+        <section v-else-if="player.currentLife <= 0">
+          <h1>YOU ARE DEAD</h1>
+          <button @click="revive()">Revive (XP x 0.875)</button>
+        </section>
+      </div>
+      <nav class="MenuMobile">
+        <div class="MenuMobile__link" @click="currentPage = 'map'">MAP</div>
+        <div class="MenuMobile__link">
+          <span
+            @click="drinkPotion()"
+            class="Sidebar__potion"
+            title="Boire une potion de vie"
+          >{{ potionsCount }} POPOS</span>
+        </div>
+        <div class="MenuMobile__link" @click="currentPage = 'equipments'">EQUIPMENTS</div>
+        <div class="MenuMobile__link" @click="currentPage = 'profile'">PROFILE</div>
+      </nav>
     </template>
   </section>
 </template>
@@ -55,6 +82,7 @@ import Map from './Map'
 import Place from './Place'
 import Profile from './Profile'
 import Logger from './Logger'
+import Equipments from './Equipments'
 import { roll, newUID } from '../helpers'
 
 export default {
@@ -63,7 +91,7 @@ export default {
     return {
       isConnected: false,
       isLoading: true,
-      showProfile: false,
+      currentPage: 'map',
       players: [],
       currentPlayerUid: ""
     }
@@ -76,15 +104,16 @@ export default {
       localStorage.setItem("currentPlayerUid", this.currentPlayerUid);
 
       (async () => {
-        let player = await this.$fetch.get(`http://localhost:3000/players/${this.currentPlayerUid}`)
+        let player = await this.$fetch.get(`http://192.168.1.110:3000/players/${this.currentPlayerUid}`)
         this.$store.dispatch('updatePlayer', await player.json());
       })()
 
       this.isConnected = true;
-      this.isLoading = false;
+      window.setTimeout(() => {this.isLoading = false}, 1000)
       this.log("Bonjour, votre aventure commence ici.");
     },
     logout() {
+      console.log('logout')
       localStorage.clear();
       window.location = "/"
     },
@@ -112,6 +141,12 @@ export default {
     addLife(health = 50) {
       if (this.player.currentLife < this.player.life) {
         this.player.currentLife = Math.min(this.player.currentLife + health, 100);
+      }
+    },
+    drinkPotion() {
+      const popo = this.player.items.find(item => item.id === "123456789");
+      if (popo != undefined) {
+        this.useItem(popo);
       }
     },
     useItem(item, Player = this.player) {
@@ -190,12 +225,12 @@ export default {
         player.kills += 1;
         this.log(`Vous achevez ${mob.name} en lui infligeant ${pDamage} dégats ! (+${mob.exp}xp, +${mob.money}💰)`, 'success');
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
-        this.$fetch.del('http://localhost:3000/livingMobs/' + enemy.id);
+        this.$fetch.del('http://192.168.1.110:3000/livingMobs/' + enemy.id);
       }
 
       this.savePlayerData();
       this.updateCell();
-      this.$fetch.patch(`http://localhost:3000/livingMobs/${enemy.id}`, enemy)
+      this.$fetch.patch(`http://192.168.1.110:3000/livingMobs/${enemy.id}`, enemy)
     },
     cellPlayers(x, y) {
       return this.players.find(p => p.x == x && p.y == y );
@@ -219,16 +254,23 @@ export default {
     },
     equipments() {
       return this.player.items.filter(item => item.equiped === true);
+    },
+    potionsCount() {
+      return this.player.items ? this.player.items.filter(item => item.id === "123456789").length : [];
+    },
+    lifeCss () {
+      const l = (this.player.currentLife / this.player.life) * 100;
+      return `background-image: linear-gradient(to right, black, black ${l-.01}%, #fff ${l}%, #fff )`
     }
   },
   created () {
     if (localStorage.getItem("currentPlayerUid")) {
       this.currentPlayerUid = localStorage.getItem("currentPlayerUid");
-      this.login();
     }
+    this.login();
   },
   components: {
-    Map, Place, Sidebar, Logger, Profile
+    Map, Place, Sidebar, Logger, Profile, Equipments
   }
 }
 </script>

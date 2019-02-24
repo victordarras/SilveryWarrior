@@ -79,7 +79,7 @@ export default {
     deleteEnemy(enemy) {
       this.enemies.splice(this.enemies.indexOf(enemy), 1)
 
-      this.$fetch.del('http://localhost:3000/livingMobs/' + enemy.id);
+      this.$fetch.del('http://192.168.1.110:3000/livingMobs/' + enemy.id);
       this.updateCell();
     },
     addMob() {
@@ -92,7 +92,7 @@ export default {
       };
       this.enemies.push(newMob)
 
-      this.$fetch.post('http://localhost:3000/livingMobs', newMob);
+      this.$fetch.post('http://192.168.1.110:3000/livingMobs', newMob);
       this.updateCell();
     }
   },

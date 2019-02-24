@@ -1,20 +1,16 @@
 .Enemy__list {
-  margin-top: 4vh;
+  margin-top: 2vh;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
 }
 
 .Enemy {
   position: relative;
-  height: 124px;
-  width: 124px;
-  // padding: 12px 21px 19px 14px;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: space-between;
-  // background: url('../assets/images/card.png') no-repeat center / contain;
-  // border-radius: 5px;
+  min-width: 78px;
+  width: 24vw;
+  max-width: 128px;
+  padding: 0px 2vw 1vh;
   cursor: url('../assets/images/cursor_2.png'), auto;
   line-height: 1;
   text-align: center;
@@ -32,11 +28,8 @@
   }
 
   &__label {
-    height: 22%;
-    display: flex;
-    align-items: center;
     font-size: 0.625em;
-    font-weight: bold;
+    font-weight: 600;
   }
 
   &__lifeLabel {
@@ -46,25 +39,14 @@
   }
 
   &__picture {
-    width: 92px;
-    height: 92px;
+
   }
 
   &__life {
-    display: none;
-    position: absolute;
-    right: -7%;
-    bottom: 35%;
-    width: 39px;
-    height: 39px;
-    opacity: 0.8;
-    color: #fff;
-    margin: 4px 8px 0px 4px;
-    border-radius: 2px;
-    transform: rotate(-90deg) rotateX(180deg);
-  }
-
-  &__lifeDonut {
-    transition: all 0.5s cubic-bezier(0, 0.9, 0.6, 1);
+    width: 66%;
+    margin: 0 auto 2px;
+    height: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
   }
 }

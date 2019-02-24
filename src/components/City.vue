@@ -51,7 +51,7 @@ export default {
     this.isLoading = true;
 
     (async () => {
-      let items = await this.$fetch.get('http://localhost:3000/items')
+      let items = await this.$fetch.get('http://192.168.1.110:3000/items')
       this.items = await items.json();
       this.isLoading = false;
     })()

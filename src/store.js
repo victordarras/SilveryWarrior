@@ -3,7 +3,7 @@ import Vue from 'vue'
 import axios from 'axios'
 
 const API = axios.create({
-    baseURL: `http://localhost:3000`,
+    baseURL: `http://192.168.1.110:3000`,
     withCredentials: false,
     headers: {
       'Accept': 'application/json',
@@ -39,12 +39,12 @@ var store = new Vuex.Store({
       })
     },
     updateCell(context, cell) {
-      API.patch('http://localhost:3000/cells/' + cell.id, cell).then(() => {
+      API.patch('http://192.168.1.110:3000/cells/' + cell.id, cell).then(() => {
         this.commit("updateCell", cell)
       })
     },
     updatePlayer(context, player) {
-      API.patch('http://localhost:3000/players/' + player.id, player).then(() => {
+      API.patch('http://192.168.1.110:3000/players/' + player.id, player).then(() => {
         this.commit("updatePlayer", player)
       })
     },

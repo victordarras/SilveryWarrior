@@ -1,9 +1,6 @@
 <template>
   <section class="Sidebar">
     <div class="Sidebar__avatar">
-      <div class="Sidebar__life" :style="lifeCss(player.currentLife, player.life)">
-        <span class="Sidebar__lifeValue"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
-      </div>
     </div>
     <h3>{{ player.name }}({{ player.level }})</h3>
 

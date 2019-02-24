@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
 
+*,*:after,*:before{box-sizing: inherit;}
+
 body {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
   background: #fff;
   color: #222;
@@ -15,7 +18,9 @@ ul {
   padding: 0;
 }
 
-*,*:after,*:before{box-sizing: inherit;}
+img {
+  max-width: 100%;
+}
 
 *:focus {
   outline: 2px solid #000;
@@ -41,7 +46,22 @@ h5{font-size: 1rem;}
 hr {
   border: 0;
   // border-top: 1px solid #000;
-  height: 1em;
-  margin: 1em 0;
+  height: 0.5rem;
+  margin: 1vh 0;
   background: url(../assets/images/horizontal_separator.png) repeat-x top left / contain;
+}
+
+.PageTitle,
+.PageSubTitle {
+  font-weight: normal;
+  text-align: center;
+  line-height: 1;
+}
+.PageTitle {
+  font-size: 0.875em;
+}
+
+.PageSubTitle {
+  font-size: 0.75em;
+  margin: 0 0 1em;
 }

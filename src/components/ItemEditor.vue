@@ -100,7 +100,7 @@ export default {
     updateItem() {
       this.isLoading = true;
       (async () => {
-        await this.$fetch.patch('http://localhost:3000/items/' + this.currentItem.id, this.currentItem)
+        await this.$fetch.patch('http://192.168.1.110:3000/items/' + this.currentItem.id, this.currentItem)
         this.isLoading = false;
       })()
     }
@@ -113,9 +113,9 @@ export default {
   created () {
     this.isLoading = true;
     (async () => {
-      let items = await this.$fetch.get('http://localhost:3000/items')
+      let items = await this.$fetch.get('http://192.168.1.110:3000/items')
       this.items = await items.json();
-      let itemOptions = await this.$fetch.get('http://localhost:3000/itemOptions')
+      let itemOptions = await this.$fetch.get('http://192.168.1.110:3000/itemOptions')
       this.itemOptions = await itemOptions.json();
       this.currentItem = this.items[0];
 

@@ -1,7 +1,6 @@
 <template>
-  <section class="logs">
-
-    <transition-group tag="ul" name="listAppear">
+  <section>
+    <transition-group class="logs" tag="ul" name="listAppear">
       <li
         class="log"
         v-for="log in logs"
@@ -18,7 +17,7 @@ export default {
   name: 'Logger',
   computed: {
     logs() {
-      return this.$store.getters.getLogs;
+      return this.$store.getters.getLogs.reverse();
     }
   }
 }
@@ -28,15 +27,17 @@ export default {
 .logs {
   grid-area: logs;
   z-index: 1;
-  font-size: 16px;
-  max-height: 100%;
+  font-size: 0.625rem;
+  padding: 4vh 2vh 0;
+  max-height: 19vh;
   overflow: auto;
   display: flex;
+  flex-flow: column;
   flex-direction: column-reverse;
   font-family: sans-serif;
 }
 .log {
-  margin: 0 0 0.25em 1rem;
+  margin: 0 0 0.25em;
   &.warning {color: darkorange;}
   &.alert {color: darkred;}
   &.success {color: darkgreen;}

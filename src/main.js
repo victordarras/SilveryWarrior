@@ -15,7 +15,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/game',
+    path: '/',
     component: Game
   }, {
     path: '/mob-editor',
