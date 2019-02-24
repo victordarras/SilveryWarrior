@@ -9,9 +9,9 @@
   display: block;
   text-align: left;
   padding: 3px 4px;
-  margin: 5px;
-  width: 70px;
-  height: 70px;
+  margin: 4px;
+  width: 72px;
+  height: 72px;
   background: url('../assets/images/cursor.png') no-repeat top / contain;
   cursor: url('../assets/images/cursor_2.png'), auto;
 
@@ -24,8 +24,9 @@
   }
 
   &__picture {
-    width: 58px;
-    height: 58px;
+    object-fit: cover;
+    width: 62px;
+    height: 60px;
   }
 
   &__count,

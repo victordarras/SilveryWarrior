@@ -6,19 +6,19 @@
 
 .Enemy {
   position: relative;
-  height: 180px;
+  height: 124px;
   width: 124px;
-  padding: 12px 21px 19px 14px;
-  margin: 0 .25vh 1vh;
+  // padding: 12px 21px 19px 14px;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: space-between;
-  background: url('../assets/images/card.png') no-repeat center / contain;
-  border-radius: 5px;
+  // background: url('../assets/images/card.png') no-repeat center / contain;
+  // border-radius: 5px;
   cursor: url('../assets/images/cursor_2.png'), auto;
   line-height: 1;
   text-align: center;
+  font-family: "open-sans", sans-serif;
   transition: all 0.1s cubic-bezier(0,.8,.6,1);
 
   &:hover {
@@ -51,6 +51,7 @@
   }
 
   &__life {
+    display: none;
     position: absolute;
     right: -7%;
     bottom: 35%;
