@@ -3,6 +3,8 @@
 2D MMORPG, fight mobs, gain experience, deal with merchants and compare your big
 stuff with your friend.
 
+![Screenshot of the game](screenshot.png)
+
 ## Front
 
 This project use VueJS and Vuex (no so implemented) with a standard VueCli config.
