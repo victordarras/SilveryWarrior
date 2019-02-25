@@ -31,8 +31,8 @@ export default {
   grid-area: logs;
   z-index: 1;
   font-size: 0.625rem;
-  padding: 4vh 2vh 0;
-  max-height: 19vh;
+  padding: 10vh 2vh 0;
+  // max-height: 19vh;
   overflow: auto;
   display: flex;
   flex-flow: column;

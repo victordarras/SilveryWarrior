@@ -1,5 +1,6 @@
 <template>
   <main>
+    <router-view></router-view>
     <nav class="Navigation">
       <router-link to="/">GAME</router-link>
       <div class="admin-hr"></div>
@@ -7,7 +8,6 @@
       <router-link to="/item-editor">ITEMS</router-link>
       <router-link to="/map-editor">MAP</router-link>
     </nav>
-    <router-view></router-view>
   </main>
 </template>
 

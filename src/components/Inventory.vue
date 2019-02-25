@@ -4,7 +4,7 @@
       class="Item hasTooltip"
       v-for="(stack, i) in stackedItems"
       :key="i"
-      @click="clickItem(stack[0])"
+      @click="currentItem = stack[0]"
     >
       <span v-if="stack.length > 1" class="Item__count">{{ stack.length }}</span>
       <img class="Item__picture"  :src="`/images/items/${ stack[0].picture }`" />
@@ -20,6 +20,22 @@
         </ul>
       </div>
     </div>
+
+    <div class="Details" v-if="currentItem">
+      <div class="Details__content">
+        <img class="Item__picture"  :src="`/images/items/${ currentItem.picture }`" />
+        <h3>{{ currentItem.name }}</h3>
+        <p>Prix : {{currentItem.price}}</p>
+        <p>Type : {{currentItem.kind}}</p>
+        <p class="Item__price" v-if="canBuy">{{ currentItem.price }}💰</p>
+        <button @click="clickItem(currentItem)">
+          <span v-if="currentItem.kind === 'equipment'">Equiper</span>
+          <span v-else-if="currentItem.kind === 'consumable'">Utiliser</span>
+          <span v-else>Euh…</span>
+        </button>
+        <button @click="currentItem = null">Annuler</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -29,6 +45,11 @@ import { groupBy } from "../helpers";
 const INVENTORY_SIZE = 30;
 
 export default {
+  data() {
+    return {
+      currentItem: null
+    }
+  },
   props: {
     items: {
       type: Array,
@@ -41,6 +62,7 @@ export default {
   },
   methods: {
     clickItem(item) {
+      this.currentItem = null;
       return this.$emit('clickItem', item);
     }
   },

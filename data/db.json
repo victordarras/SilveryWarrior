@@ -4,41 +4,19 @@
       "name": "Victor",
       "id": "vic",
       "level": 1,
-      "currentLife": 26,
+      "currentLife": 84,
       "life": 100,
       "atk": 5,
       "def": 5,
       "spe": 5,
       "x": 5,
-      "y": 14,
-      "exp": 1016,
-      "money": 9999991950,
+      "y": 13,
+      "exp": 1036,
+      "money": 9999991970,
       "deathCount": 0,
-      "kills": 19,
+      "kills": 21,
       "death": 8,
       "items": [
-        {
-          "name": "popo4",
-          "id": "748030915",
-          "kind": "consumable",
-          "picture": "popo4.png",
-          "price": 50,
-          "stackBy": 16,
-          "effects": [
-            "Player.currentLife += 50"
-          ]
-        },
-        {
-          "name": "popo2",
-          "id": "630418561",
-          "kind": "consumable",
-          "picture": "popo2.png",
-          "price": 50,
-          "stackBy": 16,
-          "effects": [
-            "Player.currentLife += 50"
-          ]
-        },
         {
           "name": "popo2",
           "id": "630418561",
@@ -87,7 +65,7 @@
           "atk": 10,
           "def": 0,
           "spe": 0,
-          "equiped": false
+          "equiped": true
         },
         {
           "name": "carotte",
@@ -296,7 +274,7 @@
           "atk": 10,
           "def": 0,
           "spe": 0,
-          "equiped": true
+          "equiped": false
         },
         {
           "name": "lame4",
@@ -379,17 +357,6 @@
           "def": 0,
           "spe": 0,
           "equiped": false
-        },
-        {
-          "name": "popo",
-          "id": "958853074",
-          "kind": "consumable",
-          "picture": "popo.png",
-          "price": 50,
-          "stackBy": 16,
-          "effects": [
-            "Player.currentLife += 50"
-          ]
         }
       ]
     },
@@ -4237,13 +4204,6 @@
           "createdAt": "2019-02-25T21:03:46.709Z",
           "currentLife": 100,
           "uid": "575288712"
-        },
-        {
-          "id": "478974858",
-          "cell": "783047042",
-          "createdAt": "2019-02-25T21:03:52.328Z",
-          "currentLife": 200,
-          "uid": "321812993"
         }
       ],
       "players": [],
@@ -6612,20 +6572,6 @@
       "createdAt": "2019-02-25T21:03:42.778Z",
       "currentLife": 100,
       "uid": "004247759"
-    },
-    {
-      "id": "120248791",
-      "cell": "783047042",
-      "createdAt": "2019-02-25T21:03:46.709Z",
-      "currentLife": 100,
-      "uid": "575288712"
-    },
-    {
-      "id": "478974858",
-      "cell": "783047042",
-      "createdAt": "2019-02-25T21:03:52.328Z",
-      "currentLife": 200,
-      "uid": "321812993"
     }
   ],
   "mobs": [

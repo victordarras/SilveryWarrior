@@ -21,6 +21,8 @@
       </div>
 
       <div class="Center">
+
+        <Logger v-if="currentPage === 'logs'"/>
         <Profile
           v-if="currentPage === 'profile'"
         />
@@ -48,7 +50,6 @@
               @sleep="addLife(player.life)"
               @clickItem="buyItem"
             />
-            <Logger />
           </div>
         </template>
 
@@ -59,13 +60,14 @@
       </div>
       <nav class="MenuMobile">
         <div class="MenuMobile__link" @click="currentPage = 'map'">MAP</div>
-        <div class="MenuMobile__link">
+        <!-- <div class="MenuMobile__link">
           <span
             @click="drinkPotion()"
             class="Sidebar__potion"
             title="Boire une potion de vie"
           >{{ potionsCount }} POPOS</span>
-        </div>
+        </div> -->
+        <div class="MenuMobile__link" @click="currentPage = 'logs'">LOGS</div>
         <div class="MenuMobile__link" @click="currentPage = 'equipments'">EQUIPMENTS</div>
         <div class="MenuMobile__link" @click="currentPage = 'profile'">PROFILE</div>
       </nav>

@@ -2,8 +2,9 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  margin-top: 1rem;
   max-width: 36rem;
-  max-height: 20rem;
+  // max-height: 20rem;
   overflow: auto;
 }
 .Item {
@@ -17,7 +18,10 @@
   cursor: url('../assets/images/cursor_2.png'), auto;
 
   &:hover  {transform: scale(1.05);}
-  &:active {transform: scale(0.95);}
+  &:active {
+    transform: scale(0.8);
+    mix-blend-mode: difference;
+  }
 
   &__name {
     font-size: 0.75em;
@@ -27,10 +31,6 @@
   &__picture {
     object-fit: cover;
     width: 97%;
-  }
-
-  &:active &__picture {
-    mix-blend-mode: darken;
   }
 
   &__count,
@@ -56,5 +56,28 @@
     transform: translateX(50%);
     font-size: 0.625em;
     white-space: nowrap;
+  }
+}
+
+.Details {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(#fff, 0.7);
+  text-align: center;
+  img {
+    width: 50vw;
+    height: auto;
+    margin: 4vh auto;
+  }
+  &__content {
+    margin: 6vh;
+    background: #fff;
+    padding: 2vh;
+    border: 2px solid #000;
+    animation: mapAppear 0.16s ease-out;
   }
 }
