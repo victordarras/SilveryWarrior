@@ -80,7 +80,7 @@ export default {
     deleteEnemy(enemy) {
       this.enemies.splice(this.enemies.indexOf(enemy), 1)
 
-      API.del('/livingMobs/' + enemy.id);
+      API.delete('/livingMobs/' + enemy.id);
       this.updateCell();
     },
     addMob() {

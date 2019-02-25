@@ -1,6 +1,6 @@
 <template>
   <section>
-    <transition-group class="logs" tag="ul" name="listAppear">
+    <transition-group class="logs" tag="ul" name="listAppear" ref="logs">
       <li
         class="log"
         v-for="log in logs"
@@ -17,8 +17,11 @@ export default {
   name: 'Logger',
   computed: {
     logs() {
-      return this.$store.getters.getLogs.reverse();
+      return this.$store.getters.getLogs;
     }
+  },
+  updated: function() {
+    this.$refs.logs.scrollTop = this.$refs.logs.offsetHeight;
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="MapContainer">
-    <div class="MapScroll">
+    <div class="MapScroll" ref="mapScroll">
       <div class="Map">
         <div class="Map__cells">
           <div
@@ -61,6 +61,15 @@ export default {
     },
     selectCell: function(cell) {
       this.$emit('selectCell', cell);
+      this.alignCurrentCell();
+    },
+    alignCurrentCell() {
+      this.$nextTick(function () {
+        var cell = document.querySelector('.Cell--current');
+        this.$refs.mapScroll.scrollLeft = cell.offsetLeft - (window.outerWidth / 2) + (cell.offsetWidth / 2);
+        this.$refs.mapScroll.scrollTop  = cell.offsetTop - (this.$refs.mapScroll.offsetHeight / 2) + (cell.offsetWidth / 2);
+        // this.$refs.mapScroll.style = "scroll-behavior: smooth;";
+      })
     }
   },
   computed: {
@@ -70,6 +79,9 @@ export default {
     isAdmin() {
       return this.$route.path === "/map-editor";
     }
+  },
+  created() {
+    this.alignCurrentCell();
   }
 }
 </script>

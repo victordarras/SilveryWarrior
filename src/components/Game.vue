@@ -41,14 +41,15 @@
           />
           <h1 class="PageTitle">Carte du monde</h1>
           <h1 class="PageSubTitle">{{ currentCell.kind }}</h1>
-
-          <Place
-            :cell="currentCell"
-            @attack="fight"
-            @sleep="addLife(player.life)"
-            @clickItem="buyItem"
-          />
-          <Logger />
+          <div class="Content">
+            <Place
+              :cell="currentCell"
+              @attack="fight"
+              @sleep="addLife(player.life)"
+              @clickItem="buyItem"
+            />
+            <Logger />
+          </div>
         </template>
 
         <section v-else-if="player.currentLife <= 0">
@@ -224,7 +225,7 @@ export default {
         player.kills += 1;
         this.log(`Vous achevez ${mob.name} en lui infligeant ${pDamage} dégats ! (+${mob.exp}xp, +${mob.money}💰)`, 'success');
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
-        API.del('/livingMobs/' + enemy.id);
+        API.delete('/livingMobs/' + enemy.id);
       }
 
       this.savePlayerData();

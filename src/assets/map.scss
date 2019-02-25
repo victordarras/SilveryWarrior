@@ -1,5 +1,5 @@
 $map-ratio: 1.5168;
-$map-width: 1024px;
+$map-width: 1440px;
 
 .MapContainer {
   position: relative;
@@ -25,6 +25,13 @@ $map-width: 1024px;
   will-change: scroll-position;
 }
 
+@keyframes mapAppear {
+  from {
+    opacity: 0;
+    transform: translateY(5%);
+  }
+}
+
 .Map {
   position: relative;
   overflow: auto;
@@ -33,8 +40,7 @@ $map-width: 1024px;
   grid-area: table;
   width: $map-width;
   height: ($map-width / $map-ratio);
-  // transform: translate(-6%, -39%);
-
+  animation: mapAppear .3s ease-in;
 
   &__cells {
     display: grid;
@@ -81,7 +87,7 @@ $map-width: 1024px;
     pointer-events: none;
     background: url('../assets/images/cursor.png') no-repeat top / contain;
     mix-blend-mode: darken;
-    animation: appear 0.16s;
+    // animation: appear 0.16s;
   }
   &--reachable:hover {
     z-index: 1;

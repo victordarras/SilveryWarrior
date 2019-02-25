@@ -54,7 +54,7 @@ export default {
 
     (async () => {
       let items = await API.get('/items')
-      this.items = await items.json();
+      this.items = await items.data;
       this.isLoading = false;
     })()
   },
