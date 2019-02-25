@@ -44,6 +44,7 @@
 import Map from './Map'
 import Place from './Place'
 import { newUID } from '../helpers'
+import API from "../api"
 
 export default {
   name: 'MapEditor',
@@ -79,7 +80,7 @@ export default {
     deleteEnemy(enemy) {
       this.enemies.splice(this.enemies.indexOf(enemy), 1)
 
-      this.$fetch.del('http://192.168.1.110:3000/livingMobs/' + enemy.id);
+      API.del('/livingMobs/' + enemy.id);
       this.updateCell();
     },
     addMob() {
@@ -92,7 +93,7 @@ export default {
       };
       this.enemies.push(newMob)
 
-      this.$fetch.post('http://192.168.1.110:3000/livingMobs', newMob);
+      API.post('/livingMobs', newMob);
       this.updateCell();
     }
   },

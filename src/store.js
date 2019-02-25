@@ -1,15 +1,6 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
-import axios from 'axios'
-
-const API = axios.create({
-    baseURL: `http://192.168.1.110:3000`,
-    withCredentials: false,
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-})
+import API from "./api"
 
 Vue.use(Vuex)
 
@@ -39,12 +30,12 @@ var store = new Vuex.Store({
       })
     },
     updateCell(context, cell) {
-      API.patch('http://192.168.1.110:3000/cells/' + cell.id, cell).then(() => {
+      API.patch('/cells/' + cell.id, cell).then(() => {
         this.commit("updateCell", cell)
       })
     },
     updatePlayer(context, player) {
-      API.patch('http://192.168.1.110:3000/players/' + player.id, player).then(() => {
+      API.patch('/players/' + player.id, player).then(() => {
         this.commit("updatePlayer", player)
       })
     },

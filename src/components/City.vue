@@ -24,6 +24,8 @@
 
 <script>
 import Inventory from "./Inventory"
+import API from "../api"
+
 export default {
   name: 'City',
   data() {
@@ -51,7 +53,7 @@ export default {
     this.isLoading = true;
 
     (async () => {
-      let items = await this.$fetch.get('http://192.168.1.110:3000/items')
+      let items = await API.get('/items')
       this.items = await items.json();
       this.isLoading = false;
     })()

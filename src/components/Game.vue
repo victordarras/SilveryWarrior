@@ -23,10 +23,6 @@
       <div class="Center">
         <Profile
           v-if="currentPage === 'profile'"
-          @equipItem="equipItem"
-          @unequipItem="unequipItem"
-          @useItem="useItem"
-          @clickItem="useItem"
         />
         <Equipments
           v-if="currentPage === 'equipments'"
@@ -84,6 +80,7 @@ import Profile from './Profile'
 import Logger from './Logger'
 import Equipments from './Equipments'
 import { roll, newUID } from '../helpers'
+import API from "../api"
 
 export default {
   name: 'Game',
@@ -98,14 +95,17 @@ export default {
   },
   methods: {
     login() {
+      if (localStorage.getItem("currentPlayerUid")) {
+        this.currentPlayerUid = localStorage.getItem("currentPlayerUid");
+      }
       if (this.currentPlayerUid === '') {
         return;
       }
       localStorage.setItem("currentPlayerUid", this.currentPlayerUid);
 
       (async () => {
-        let player = await this.$fetch.get(`http://192.168.1.110:3000/players/${this.currentPlayerUid}`)
-        this.$store.dispatch('updatePlayer', await player.json());
+        let player = await API.get(`/players/${this.currentPlayerUid}`)
+        this.$store.dispatch('updatePlayer', player.data);
       })()
 
       this.isConnected = true;
@@ -113,7 +113,6 @@ export default {
       this.log("Bonjour, votre aventure commence ici.");
     },
     logout() {
-      console.log('logout')
       localStorage.clear();
       window.location = "/"
     },
@@ -225,12 +224,12 @@ export default {
         player.kills += 1;
         this.log(`Vous achevez ${mob.name} en lui infligeant ${pDamage} dégats ! (+${mob.exp}xp, +${mob.money}💰)`, 'success');
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
-        this.$fetch.del('http://192.168.1.110:3000/livingMobs/' + enemy.id);
+        API.del('/livingMobs/' + enemy.id);
       }
 
       this.savePlayerData();
       this.updateCell();
-      this.$fetch.patch(`http://192.168.1.110:3000/livingMobs/${enemy.id}`, enemy)
+      API.patch(`/livingMobs/${enemy.id}`, enemy)
     },
     cellPlayers(x, y) {
       return this.players.find(p => p.x == x && p.y == y );
@@ -264,9 +263,6 @@ export default {
     }
   },
   created () {
-    if (localStorage.getItem("currentPlayerUid")) {
-      this.currentPlayerUid = localStorage.getItem("currentPlayerUid");
-    }
     this.login();
   },
   components: {

@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import API from "../api"
 
 export default {
   name: 'MobEditor',
@@ -53,7 +54,7 @@ export default {
     updateMob() {
       this.isLoading = true;
       (async () => {
-        await this.$fetch.patch('http://192.168.1.110:3000/mobs/' + this.currentMob.id, this.currentMob)
+        await API.patch('/mobs/' + this.currentMob.id, this.currentMob)
         this.isLoading = false;
       })()
     }
@@ -61,7 +62,7 @@ export default {
   created () {
     this.isLoading = true;
     (async () => {
-      let mobs = await this.$fetch.get('http://192.168.1.110:3000/mobs')
+      let mobs = await API.get('/mobs')
       this.mobs = await mobs.json();
 
       this.currentMob = this.mobs[0]

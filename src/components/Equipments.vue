@@ -3,7 +3,7 @@
     <section class="Equipments--fixed">
       <h2 class="PageTitle">Inventaire</h2>
       <Inventory
-        :items="items"
+        :items="player.items.filter(item => item.equiped !== true)"
         @clickItem="clickItem"
       />
     </section>
@@ -11,7 +11,7 @@
     <section>
       <h2 class="PageTitle">Equipement</h2>
       <Inventory
-        :items="equipments"
+        :items="player.items.filter(item => item.equiped === true)"
         @clickItem="clickItem"
       />
     </section>
@@ -41,12 +41,6 @@ export default {
   computed: {
     player() {
       return this.$store.getters.getPlayer;
-    },
-    equipments() {
-      return this.player.items.filter(item => item.equiped === true);
-    },
-    items() {
-      return this.player.items.filter(item => item.equiped !== true);
     }
   },
   components: {
@@ -62,6 +56,6 @@ export default {
   .Equipments--fixed {
     padding-top: 3rem;
     overflow-y: auto;
-    height: 62vh;
+    height: 68vh;
   }
 </style>
