@@ -63,7 +63,7 @@ export default {
     this.isLoading = true;
     (async () => {
       let mobs = await API.get('/mobs')
-      this.mobs = await mobs.json();
+      this.mobs = await mobs.data;
 
       this.currentMob = this.mobs[0]
       this.isLoading = false;

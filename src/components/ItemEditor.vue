@@ -115,9 +115,9 @@ export default {
     this.isLoading = true;
     (async () => {
       let items = await API.get('/items')
-      this.items = await items.json();
+      this.items = await items.data;
       let itemOptions = await API.get('/itemOptions')
-      this.itemOptions = await itemOptions.json();
+      this.itemOptions = await itemOptions.data;
       this.currentItem = this.items[0];
 
       this.isLoading = false;

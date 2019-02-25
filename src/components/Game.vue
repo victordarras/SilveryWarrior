@@ -225,12 +225,13 @@ export default {
         player.kills += 1;
         this.log(`Vous achevez ${mob.name} en lui infligeant ${pDamage} dégats ! (+${mob.exp}xp, +${mob.money}💰)`, 'success');
         this.currentCell.enemies.splice(this.currentCell.enemies.indexOf(enemy), 1);
+        this.updateCell();
         API.delete('/livingMobs/' + enemy.id);
+      } else {
+        API.patch(`/livingMobs/${enemy.id}`, enemy)
       }
 
       this.savePlayerData();
-      this.updateCell();
-      API.patch(`/livingMobs/${enemy.id}`, enemy)
     },
     cellPlayers(x, y) {
       return this.players.find(p => p.x == x && p.y == y );

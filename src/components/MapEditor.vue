@@ -3,7 +3,7 @@
     <h1>Map editor</h1>
     <!-- <button @click="addInfo">Add info</button> -->
     <Map
-      v-if="cells"
+      v-if="currentCell"
       :cells="cells"
       :currentCell="currentCell"
       @selectCell="selectCell"

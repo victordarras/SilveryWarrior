@@ -52,7 +52,7 @@ export default {
           || (y === p.y -1 && x <= (p.x + 1) && x >= (p.x - 1)) // bottom-left & bottom-right
     },
     cellClass: function(cell) {
-      let klass = [""]
+      let klass = ["Cell"]
       klass.push(this.isReachable(cell) ? "--reachable" : "");
       klass.push(this.isCurrentCell(cell) ? "--current" : "");
       klass.push(cell.enemies.length ? "--enemy" : "");
