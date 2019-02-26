@@ -29,7 +29,8 @@
         <p>Type : {{currentItem.kind}}</p>
         <p class="Item__price" v-if="canBuy">{{ currentItem.price }}💰</p>
         <button @click="clickItem(currentItem)">
-          <span v-if="currentItem.kind === 'equipment'">Equiper</span>
+          <span v-if="currentItem.kind === 'equipment' && currentItem.equiped">Retirer</span>
+          <span v-else-if="currentItem.kind === 'equipment' && !currentItem.equiped">Équiper</span>
           <span v-else-if="currentItem.kind === 'consumable'">Utiliser</span>
           <span v-else>Euh…</span>
         </button>
