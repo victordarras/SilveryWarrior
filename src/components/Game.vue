@@ -15,7 +15,7 @@
 
       <div class="Header">
         <a class="logout" style="float:right" @click="logout()">logout</a>
-        <div class="Header__life" :style="lifeCss">
+        <div class="Header__life" :style="lifeCss" :class="{'Header__life--wobble': wobbleLife}">
           <span class="Header__lifeValue"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
         </div>
       </div>
@@ -91,6 +91,7 @@ export default {
       isConnected: false,
       isLoading: true,
       currentPage: 'map',
+      wobbleLife: false,
       players: [],
       currentPlayerUid: ""
     }
@@ -180,6 +181,7 @@ export default {
       this.log("Vous perdez un peu d'XP et regagnez tous vos points de vie", "success");
     },
     movePlayer(cell) {
+      this.wobbleLife = false;
       this.player.x = cell.x;
       this.player.y = cell.y;
 
@@ -263,6 +265,11 @@ export default {
     lifeCss () {
       const l = (this.player.currentLife / this.player.life) * 100;
       return `background-image: linear-gradient(to right, black, black ${l-.01}%, #fff ${l}%, #fff )`
+    }
+  },
+  watch: {
+    "player.currentLife"() {
+      this.wobbleLife = true;
     }
   },
   created () {
