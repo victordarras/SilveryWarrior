@@ -4,18 +4,6 @@ $map-width: 1440px;
 .MapContainer {
   position: relative;
   overflow: hidden;
-  margin-bottom: 1rem;
-  &:after {
-    content:"";
-    position: absolute;
-    /*930x23*/
-    height: 23px;
-    bottom: 0;
-    right: -10px;
-    left: -15px;
-    background: url(../assets/images/horizontal_separator.png) repeat-x top left / contain;
-    transform: rotateX(180deg);
-  }
 }
 
 .MapScroll {

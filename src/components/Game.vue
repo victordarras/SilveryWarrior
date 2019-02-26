@@ -26,7 +26,7 @@
         <Profile
           v-if="currentPage === 'profile'"
         />
-        <Equipments
+        <Inventory
           v-if="currentPage === 'equipments'"
           @equipItem="equipItem"
           @unequipItem="unequipItem"
@@ -37,13 +37,12 @@
         <template v-else-if="player.currentLife > 0 && currentPage === 'map'">
           <Map
             :currentCell="currentCell"
-            :cells="cells"
             :player="player"
             @selectCell="movePlayer"
           />
-          <h1 class="PageTitle">Carte du monde</h1>
-          <h1 class="PageSubTitle">{{ currentCell.kind }}</h1>
           <div class="Content">
+            <h1 class="PageTitle">Carte du monde</h1>
+            <h2 class="PageSubTitle">{{ currentCell.kind }}</h2>
             <Place
               :cell="currentCell"
               @attack="fight"
@@ -81,7 +80,7 @@ import Map from './Map'
 import Place from './Place'
 import Profile from './Profile'
 import Logger from './Logger'
-import Equipments from './Equipments'
+import Inventory from './Inventory'
 import { roll, newUID } from '../helpers'
 import API from "../api"
 
@@ -270,7 +269,7 @@ export default {
     this.login();
   },
   components: {
-    Map, Place, Sidebar, Logger, Profile, Equipments
+    Map, Place, Sidebar, Logger, Profile, Inventory
   }
 }
 </script>

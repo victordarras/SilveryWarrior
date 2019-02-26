@@ -1,0 +1,14 @@
+@import "mixins";
+section {
+  padding: 2vh;
+}
+.Inventory--bottom {
+  position: relative;
+
+  @include drawBorder('top');
+}
+.Inventory--fixed {
+  padding-top: 3rem;
+  overflow-y: auto;
+  height: 72vh;
+}

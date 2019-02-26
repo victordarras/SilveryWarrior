@@ -13,7 +13,7 @@
       <h2>Magasin</h2>
       <p>Bienvenue dans mon humble magasin, que désirez vous acheter ?</p>
 
-      <Inventory
+      <ItemList
         :items="items"
         :canBuy="true"
         @clickItem="clickItem"
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Inventory from "./Inventory"
+import ItemList from "./ItemList"
 import API from "../api"
 
 export default {
@@ -59,7 +59,7 @@ export default {
     })()
   },
   components: {
-    Inventory
+    ItemList
   }
 }
 </script>

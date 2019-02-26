@@ -1,3 +1,5 @@
+@import "mixins";
+
 .Game {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -29,8 +31,10 @@
   }
 }
 .Content {
-  overflow: auto;
+  position: relative;
   min-height: 70vh;
+  padding-top: 1rem;
+  @include drawBorder('top');
 }
 .Center {
   position: absolute;
@@ -41,29 +45,18 @@
   overflow: auto;
 }
 .MenuMobile {
-  display: flex;
   z-index: 1;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  border-top: 1px solid rgba(#000,.3);
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
   background-color: #fff;
   font-size: 0.75em;
   user-select: none;
-
-  &:after {
-    content:"";
-    position: absolute;
-    /*930x23*/
-    height: 23px;
-    top: -18px;
-    right: -10px;
-    left: -15px;
-    background: url(../assets/images/horizontal_separator.png) repeat-x top left / contain;
-    transform: rotateX(180deg);
-    mix-blend-mode: darken;
-  }
+  @include drawBorder('top');
 
   &__link {
     padding: 1em;
