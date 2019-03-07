@@ -51,6 +51,6 @@ npm run back
 - [Enemies inspiration](http://nintendo.wikia.com/wiki/List_of_EarthBound_enemies)
 - [Inventory example](https://codepen.io/MadLittleMods/pen/vmhLF)
 - [How to newtwork?](http://www.plinkojs.com/about)
-- [What's ECS](https://www.reddit.com/r/gamedev/comments/afmi3v/game_objects_creation_incode_or_json/edzxdel/)
+- [What's ECS](https://www.reddit.com/r/gamedev/comments/afmi3v/game_objects_creation_incode_or_json/edzxdel/) OR [This](http://iolivia.me/posts/entity-component-system-explained/)
 - [EventBus](https://alligator.io/vuejs/global-event-bus/) OR Vuex
 - [vue-global-events](https://github.com/shentao/vue-global-events)
