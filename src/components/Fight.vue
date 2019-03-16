@@ -1,7 +1,16 @@
 <template>
   <section class="Fight" :class="{'Enemy__isAttacking': isAttacking}">
     <div class="Fight__arena" >
-      <div class="Fight__player">Player</div>
+      <div class="Fight__player">
+
+        <div
+          class="Enemy"
+        >
+          <img class="Enemy__picture" :src="`/images/mobs/pot.png`" />
+          <div class="Enemy__life" :style="lifeCss(player)"></div>
+          <div class="Enemy__label">{{ player.name }}</div>
+        </div>
+      </div>
 
       <transition
         name="listAppear"
@@ -9,7 +18,6 @@
       >
         <div
           class="Enemy"
-          :key="enemy.id"
           v-if="enemy.currentLife > 0"
         >
           <img class="Enemy__picture" :src="`/images/mobs/${currentMob.picture}`" />
@@ -18,6 +26,7 @@
         </div>
       </transition>
     </div>
+    <h1 class="PageTitle">Combat</h1>
     <div v-if="enemy.currentLife > 0">
       <button @click="$emit('quit')">Fuir</button>
       <button @click="attack">Attaquer</button>
@@ -46,7 +55,7 @@
         this.isAttacking = true
         window.setTimeout(()=>{
           this.isAttacking = false
-        }, 300)
+        }, 1000)
 
       },
       lifeCss () {
@@ -55,6 +64,9 @@
       },
     },
     computed: {
+      player() {
+        return this.$store.getters.getPlayer;
+      },
       mobs() {
         return this.$store.getters.getMobs;
       },
@@ -67,6 +79,11 @@
 
 <style lang="scss" src="../assets/enemies.scss" scoped></style>
 <style lang="scss" scoped>
+  button {
+    display: block;
+    margin: 1vh auto;
+    font-size: 2em;
+  }
   .Fight {
     text-align: center;
     &__arena {
@@ -74,33 +91,48 @@
       align-items: center;
       justify-content: space-around;
       margin-bottom: 5vh;
-      margin-bottom: 5vh;
       background:
         radial-gradient(#FFF, #FFF, #eee),
         transparent url(../assets/images/fight-bg.png) center / cover;
       background-blend-mode: darken, darken;
-      padding: 5rem 1rem 2rem;
+      padding: 4rem 1rem 2rem;
     }
-    &__player {
-      animation: floating 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
-    }
-    &__isAttacking &__player{
-      transform: translateX(100%);
-    }
-    &__isAttacking .Enemy{
-      animation: none;
-      transform: translateX(10%);
-      background: #222
+    &__player img {
+      animation: hanging 1s linear infinite;
     }
   }
+
   .Enemy {
+    background: none !important;
     & /deep/ img {
-      animation: floating 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+      mix-blend-mode: normal !important;
+      animation: hanging 1s linear infinite;
+      animation-delay: 1s;
     }
   }
-  @keyframes floating {
+
+  .Fight__isAttacking {
+    .Fight__player {
+      animation: playerAttack 1000ms linear infinite both;
+    }
+    .Enemy {
+      animation: playerAttack 1000ms linear infinite reverse;
+    }
+  }
+  @keyframes hanging {
+    25% {
+      transform: translateX(-2%);
+    }
     50% {
-      transform: translateX(-3%) skew(2deg);
+      transform: translateY(-2%);
+    }
+    75% {
+      transform: translateX(2%);
+    }
+  }
+  @keyframes playerAttack {
+    50% {
+      transform: translateX(150%) skew(2deg);
     }
   }
 </style>

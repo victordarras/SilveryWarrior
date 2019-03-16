@@ -1,11 +1,16 @@
 @import "mixins";
-section {
-  padding: 2vh;
-}
+
 .Inventory--bottom {
   position: relative;
+  padding-top: 0.5em;
 
   @include drawBorder('top');
+
+  /deep/ .Item {
+    padding: 5px 5px 0 5px;
+    width: 23vw;
+    background: url('../assets/images/item_bg.png') no-repeat top / contain;
+  }
 }
 .Inventory--fixed {
   padding-top: 3rem;

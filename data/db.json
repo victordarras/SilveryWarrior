@@ -4,18 +4,18 @@
       "name": "Victor",
       "id": "vic",
       "level": 1,
-      "currentLife": 44,
+      "currentLife": 51,
       "life": 100,
       "atk": 5,
       "def": 5,
       "spe": 5,
       "x": 5,
-      "y": 13,
-      "exp": 796,
-      "money": 9999991920,
+      "y": 14,
+      "exp": 760,
+      "money": 9999991990,
       "deathCount": 0,
-      "kills": 46,
-      "death": 12,
+      "kills": 53,
+      "death": 13,
       "items": [
         {
           "name": "popo2",
@@ -54,7 +54,7 @@
           "atk": 10,
           "def": 0,
           "spe": 0,
-          "equiped": true
+          "equiped": false
         },
         {
           "name": "libellule",
@@ -146,7 +146,7 @@
           "atk": 10,
           "def": 0,
           "spe": 0,
-          "equiped": false
+          "equiped": true
         },
         {
           "name": "hache1",
@@ -172,7 +172,8 @@
           "equipmentKind": "right",
           "atk": 10,
           "def": 0,
-          "spe": 0
+          "spe": 0,
+          "equiped": true
         },
         {
           "name": "hache5",
@@ -199,7 +200,7 @@
           "atk": 10,
           "def": 0,
           "spe": 0,
-          "equiped": true
+          "equiped": false
         },
         {
           "name": "hache3",
@@ -4198,57 +4199,7 @@
       "kind": "plain",
       "x": 5,
       "y": 13,
-      "enemies": [
-        {
-          "id": "303075632",
-          "cell": "783047042",
-          "createdAt": "2019-03-16T13:44:33.603Z",
-          "currentLife": 100,
-          "uid": "744827653"
-        },
-        {
-          "id": "025719084",
-          "cell": "783047042",
-          "createdAt": "2019-03-16T13:44:34.085Z",
-          "currentLife": 100,
-          "uid": "744827653"
-        },
-        {
-          "id": "896481978",
-          "cell": "783047042",
-          "createdAt": "2019-03-16T14:24:25.874Z",
-          "currentLife": 100,
-          "uid": "853874250"
-        },
-        {
-          "id": "821021540",
-          "cell": "783047042",
-          "createdAt": "2019-03-16T14:24:28.775Z",
-          "currentLife": 100,
-          "uid": "744827653"
-        },
-        {
-          "id": "852066145",
-          "cell": "783047042",
-          "createdAt": "2019-03-16T14:24:31.310Z",
-          "currentLife": 100,
-          "uid": "575288712"
-        },
-        {
-          "id": "089901700",
-          "cell": "783047042",
-          "createdAt": "2019-03-16T14:24:31.464Z",
-          "currentLife": 100,
-          "uid": "575288712"
-        },
-        {
-          "id": "471428571",
-          "cell": "783047042",
-          "createdAt": "2019-03-16T14:24:35.072Z",
-          "currentLife": 29,
-          "uid": "546999198"
-        }
-      ],
+      "enemies": [],
       "players": [],
       "name": ""
     },
@@ -6594,41 +6545,6 @@
       "createdAt": "2019-02-25T20:18:46.310Z",
       "currentLife": 6,
       "uid": "744827653"
-    },
-    {
-      "id": "896481978",
-      "cell": "783047042",
-      "createdAt": "2019-03-16T14:24:25.874Z",
-      "currentLife": 100,
-      "uid": "853874250"
-    },
-    {
-      "id": "821021540",
-      "cell": "783047042",
-      "createdAt": "2019-03-16T14:24:28.775Z",
-      "currentLife": 100,
-      "uid": "744827653"
-    },
-    {
-      "id": "852066145",
-      "cell": "783047042",
-      "createdAt": "2019-03-16T14:24:31.310Z",
-      "currentLife": 28,
-      "uid": "575288712"
-    },
-    {
-      "id": "089901700",
-      "cell": "783047042",
-      "createdAt": "2019-03-16T14:24:31.464Z",
-      "currentLife": 100,
-      "uid": "575288712"
-    },
-    {
-      "id": "471428571",
-      "cell": "783047042",
-      "createdAt": "2019-03-16T14:24:35.072Z",
-      "currentLife": 29,
-      "uid": "546999198"
     }
   ],
   "mobs": [

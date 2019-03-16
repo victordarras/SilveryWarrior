@@ -2,19 +2,21 @@
   margin-top: 2vh;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .Enemy {
   position: relative;
-  min-width: 78px;
-  width: 24vw;
-  max-width: 128px;
-  padding: 0px 2vw 1vh;
+  font-size: 10px;
+  width: 21vw;
+  height: 27vw;
+  padding: 0.25em;
+  margin: 1vw 2vw;
   cursor: url('../assets/images/cursor_2.png'), auto;
   line-height: 1;
   text-align: center;
   font-family: "open-sans", sans-serif;
+  background: url('../assets/images/mob_bg.png') no-repeat center / contain;
   transition: all 0.1s cubic-bezier(0,.8,.6,1);
 
   &:hover {
@@ -28,18 +30,18 @@
   }
 
   &__label {
-    font-size: 0.625em;
+    font-size: 0.625rem;
     font-weight: 600;
   }
 
   &__lifeLabel {
     display: none;
-    font-size: 0.625em;
+    font-size: 0.625rem;
     font-weight: bold;
   }
 
   &__picture {
-
+    mix-blend-mode: darken;
   }
 
   &__life {

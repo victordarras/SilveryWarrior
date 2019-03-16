@@ -1,13 +1,13 @@
 <template>
   <div class="Profile">
+    <h2 class="PageTitle">Fiche du joueur</h2>
     <section>
-      <h2 class="PageTitle">Fiche du joueur</h2>
       <h1>{{ player.name }}</h1>
+      <h3>Niveau {{ player.level }}</h3>
     </section>
 
+    <h2 class="PageTitle">Statistiques</h2>
     <section>
-      <h2 class="PageTitle">Statistiques</h2>
-      <h3>Niveau {{ player.level }}</h3>
       <dl>
         <dt>Money</dt>
         <dd>💰{{ player.money }}</dd>

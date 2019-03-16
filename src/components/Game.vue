@@ -1,7 +1,7 @@
 <template>
   <section id="app" class="Game">
     <form class="Login" @submit.prevent="login()" v-if="!isConnected">
-      <h1>SilverWorld</h1>
+      <h1 class="PageTitle">SilverWorld</h1>
       <label for="uid">Veuillez entrer votre identifiant</label>
       <input type="text" id="uid" v-model="currentPlayerUid">
       <button type="submit" class="button">Connexion</button>
@@ -74,7 +74,6 @@
       </div>
       <nav class="MenuMobile">
         <div class="MenuMobile__link" @click="currentPage = 'map'">MAP</div>
-        <div class="MenuMobile__link" @click="currentPage = 'logs'">LOGS</div>
         <div class="MenuMobile__link" @click="currentPage = 'equipments'">EQUIPMENTS</div>
         <div class="MenuMobile__link" @click="currentPage = 'profile'">PROFILE</div>
       </nav>
@@ -164,7 +163,7 @@ export default {
     useItem(item, Player = this.player) {
       // Items API need Player Object
       if (item.kind !== "consumable") {
-        return this.log(`${item.picture}${item.name} n'est pas un consommage`, "alert")
+        return this.log(`${item.picture}${item.name} n'est pas consommable`, "alert")
       }
 
       item.effects.forEach(effect => eval(effect));

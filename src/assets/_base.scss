@@ -59,7 +59,31 @@ hr {
 }
 .PageTitle {
   font-size: 0.875em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5em;
+
+  &:after,
+  &:before {
+    content: '';
+    height: 24px;
+    width: 24px;
+    background: url(../assets/images/title_head.png) no-repeat center / contain;
+    animation: balance 1.6s ease-in-out infinite;
+  }
 }
+
+@keyframes balance {
+  25% {
+    transform: rotate(-3deg)
+  }
+  75% {
+    transform: rotate(3deg)
+  }
+}
+
 
 .PageSubTitle {
   font-size: 0.75em;

@@ -1,20 +1,18 @@
 .ItemList {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 1rem;
   max-width: 36rem;
-  // max-height: 20rem;
+  padding: 2vw;
   overflow: auto;
 }
 .Item {
   position: relative;
   display: block;
   text-align: left;
-  padding: 3px 4px;
-  margin: 2px;
-  width: 70px;
-  background: url('../assets/images/cursor.png') no-repeat top / contain;
+  width: 22vw;
+  margin: 1vw;
   cursor: url('../assets/images/cursor_2.png'), auto;
 
   &:hover  {transform: scale(1.05);}
