@@ -103,6 +103,10 @@
     }
   }
 
+  &__potion {
+    float: left;
+  }
+
   &__lifeValue {
     mix-blend-mode: difference;
     color: #fff;

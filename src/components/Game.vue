@@ -14,7 +14,12 @@
     <template v-if="isConnected">
 
       <div class="Header">
-        <a class="logout" style="float:right" @click="logout()">logout</a>
+        <a
+          @click="drinkPotion()"
+          class="Header__potion"
+          title="Boire une potion de vie"
+        >{{ potionsCount }} POPOS</a>
+        <a class="Header__logout" style="float:right" @click="logout()">logout</a>
         <div class="Header__life" :style="lifeCss" :class="{'Header__life--wobble': wobbleLife}">
           <span class="Header__lifeValue"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
         </div>
@@ -22,50 +27,53 @@
 
       <div class="Center">
 
-        <Logger v-if="currentPage === 'logs'"/>
-        <Profile
-          v-if="currentPage === 'profile'"
-        />
-        <Inventory
-          v-if="currentPage === 'equipments'"
-          @equipItem="equipItem"
-          @unequipItem="unequipItem"
-          @useItem="useItem"
-          @clickItem="useItem"
-        />
-
-        <template v-else-if="player.currentLife > 0 && currentPage === 'map'">
-          <Map
-            :currentCell="currentCell"
-            :player="player"
-            @selectCell="movePlayer"
-          />
-          <div class="Content">
-            <h1 class="PageTitle">Carte du monde</h1>
-            <h2 class="PageSubTitle">{{ currentCell.kind }}</h2>
-            <Place
-              :cell="currentCell"
-              @attack="fight"
-              @sleep="addLife(player.life)"
-              @clickItem="buyItem"
-            />
-          </div>
-        </template>
-
-        <section v-else-if="player.currentLife <= 0">
+        <section v-if="player.currentLife <= 0">
           <h1>YOU ARE DEAD</h1>
           <button @click="revive()">Revive (XP x 0.875)</button>
         </section>
+
+        <template v-else-if="currentEnemy">
+          <Fight
+            :enemy="currentEnemy"
+            @attack="fight"
+            @quit="currentEnemy = null"
+          />
+          <Logger />
+        </template>
+
+        <template v-else>
+          <Profile
+            v-if="currentPage === 'profile'"
+          />
+          <Inventory
+            v-if="currentPage === 'equipments'"
+            @equipItem="equipItem"
+            @unequipItem="unequipItem"
+            @useItem="useItem"
+            @clickItem="useItem"
+          />
+
+          <template v-else-if="player.currentLife > 0 && currentPage === 'map'">
+            <Map
+              :currentCell="currentCell"
+              :player="player"
+              @selectCell="movePlayer"
+            />
+            <div class="Content">
+              <h1 class="PageTitle">Carte du monde</h1>
+              <h2 class="PageSubTitle">{{ currentCell.kind }}</h2>
+              <Place
+                :cell="currentCell"
+                @choose="selectEnemy"
+                @sleep="addLife(player.life)"
+                @clickItem="buyItem"
+              />
+            </div>
+          </template>
+        </template>
       </div>
       <nav class="MenuMobile">
         <div class="MenuMobile__link" @click="currentPage = 'map'">MAP</div>
-        <!-- <div class="MenuMobile__link">
-          <span
-            @click="drinkPotion()"
-            class="Sidebar__potion"
-            title="Boire une potion de vie"
-          >{{ potionsCount }} POPOS</span>
-        </div> -->
         <div class="MenuMobile__link" @click="currentPage = 'logs'">LOGS</div>
         <div class="MenuMobile__link" @click="currentPage = 'equipments'">EQUIPMENTS</div>
         <div class="MenuMobile__link" @click="currentPage = 'profile'">PROFILE</div>
@@ -81,6 +89,7 @@ import Place from './Place'
 import Profile from './Profile'
 import Logger from './Logger'
 import Inventory from './Inventory'
+import Fight from './Fight'
 import { roll, newUID } from '../helpers'
 import API from "../api"
 
@@ -91,6 +100,7 @@ export default {
       isConnected: false,
       isLoading: true,
       currentPage: 'map',
+      currentEnemy: null,
       wobbleLife: false,
       players: [],
       currentPlayerUid: ""
@@ -181,7 +191,6 @@ export default {
       this.log("Vous perdez un peu d'XP et regagnez tous vos points de vie", "success");
     },
     movePlayer(cell) {
-      this.wobbleLife = false;
       this.player.x = cell.x;
       this.player.y = cell.y;
 
@@ -194,9 +203,12 @@ export default {
       this.player.currentLife -= damage;
       this.log(`Vous êtes attaqué par ${enemy.name} et recevez ${damage} dégats !`, 'warning');
     },
-    fight(enemy, player = this.player) {
+    selectEnemy(enemy) {
+      this.currentEnemy = this.currentCell.enemies.find(mob => mob.id === enemy.id);
+    },
+    fight(enemy = this.currentEnemy, player = this.player) {
       const mob = this.mobs.find(mob => mob.id === enemy.uid);
-      enemy = this.currentCell.enemies.find(mob => mob.id === enemy.id);
+      // enemy = this.currentCell.enemies.find(mob => mob.id === enemy.id);
 
       const playerAtk = player.atk + this.equipments.reduce((acc, item) => acc += item.atk, 0)
       const playerDef = player.def + this.equipments.reduce((acc, item) => acc += item.def, 0)
@@ -270,13 +282,16 @@ export default {
   watch: {
     "player.currentLife"() {
       this.wobbleLife = true;
+      window.setTimeout(() => {
+        this.wobbleLife = false;
+      }, 300)
     }
   },
   created () {
     this.login();
   },
   components: {
-    Map, Place, Sidebar, Logger, Profile, Inventory
+    Map, Place, Sidebar, Logger, Profile, Inventory, Fight
   }
 }
 </script>

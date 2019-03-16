@@ -16,9 +16,8 @@
         <li
           v-for="enemy in currentCellMobs"
           v-if="enemy.currentLife > 0"
-          @click="attack(enemy)"
+          @click="$emit('choose', enemy)"
           class="Enemy"
-          :title="enemyTitle(enemy)"
           :key="enemy.id"
         >
           <img class="Enemy__picture" :src="`/images/mobs/${enemy.picture}`" />
@@ -49,16 +48,12 @@ export default {
       const l = (enemy.currentLife / enemy.life) * 100;
       return `background-image: linear-gradient(to right, black, black ${l-.01}%, #fff ${l}%, #fff )`
     },
-    attack: function(enemyId) {
-      this.$emit('attack', enemyId)
-    },
     sleep: function() {
       this.$emit('sleep')
     },
     clickItem: function(item) {
       this.$emit('clickItem',item)
-    },
-    enemyTitle: (enemy) => `${ enemy.currentLife } / ${ enemy.life }`
+    }
   },
   computed: {
     mobs() {
