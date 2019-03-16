@@ -4,13 +4,13 @@
   margin-bottom: 1vh;
   padding-bottom: 1vh;
   &__buildings {
-    min-height: 13rem;
+    padding-top: 24vw;
     background: url(../assets/images/city.png) no-repeat top center / contain;
     display: flex;
     justify-content: center;
   }
   &__building {
-    flex: 0 0 20%;
+    flex: 0 1 auto;
     display: flex;
     align-items: flex-end;
   }

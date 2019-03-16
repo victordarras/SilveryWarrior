@@ -4,18 +4,18 @@
       "name": "Victor",
       "id": "vic",
       "level": 1,
-      "currentLife": 70,
+      "currentLife": 44,
       "life": 100,
       "atk": 5,
       "def": 5,
       "spe": 5,
       "x": 5,
       "y": 13,
-      "exp": 855,
-      "money": 9999991970,
+      "exp": 796,
+      "money": 9999991920,
       "deathCount": 0,
-      "kills": 41,
-      "death": 11,
+      "kills": 46,
+      "death": 12,
       "items": [
         {
           "name": "popo2",
@@ -55,28 +55,6 @@
           "def": 0,
           "spe": 0,
           "equiped": true
-        },
-        {
-          "name": "carotte",
-          "id": "555064771",
-          "kind": "consumable",
-          "picture": "carotte.png",
-          "price": 50,
-          "stackBy": 16,
-          "effects": [
-            "Player.currentLife += 50"
-          ]
-        },
-        {
-          "name": "carotte",
-          "id": "555064771",
-          "kind": "consumable",
-          "picture": "carotte.png",
-          "price": 50,
-          "stackBy": 16,
-          "effects": [
-            "Player.currentLife += 50"
-          ]
         },
         {
           "name": "libellule",
@@ -374,6 +352,28 @@
           "id": "748030915",
           "kind": "consumable",
           "picture": "popo4.png",
+          "price": 50,
+          "stackBy": 16,
+          "effects": [
+            "Player.currentLife += 50"
+          ]
+        },
+        {
+          "name": "popo",
+          "id": "958853074",
+          "kind": "consumable",
+          "picture": "popo.png",
+          "price": 50,
+          "stackBy": 16,
+          "effects": [
+            "Player.currentLife += 50"
+          ]
+        },
+        {
+          "name": "popo",
+          "id": "958853074",
+          "kind": "consumable",
+          "picture": "popo.png",
           "price": 50,
           "stackBy": 16,
           "effects": [
@@ -4207,30 +4207,9 @@
           "uid": "744827653"
         },
         {
-          "id": "745669955",
-          "cell": "783047042",
-          "createdAt": "2019-03-16T13:44:33.757Z",
-          "currentLife": 100,
-          "uid": "744827653"
-        },
-        {
-          "id": "915814888",
-          "cell": "783047042",
-          "createdAt": "2019-03-16T13:44:33.934Z",
-          "currentLife": 100,
-          "uid": "744827653"
-        },
-        {
           "id": "025719084",
           "cell": "783047042",
           "createdAt": "2019-03-16T13:44:34.085Z",
-          "currentLife": 100,
-          "uid": "744827653"
-        },
-        {
-          "id": "495535441",
-          "cell": "783047042",
-          "createdAt": "2019-03-16T13:44:34.248Z",
           "currentLife": 100,
           "uid": "744827653"
         },
@@ -4263,24 +4242,10 @@
           "uid": "575288712"
         },
         {
-          "id": "074823840",
-          "cell": "783047042",
-          "createdAt": "2019-03-16T14:24:34.910Z",
-          "currentLife": 100,
-          "uid": "546999198"
-        },
-        {
           "id": "471428571",
           "cell": "783047042",
           "createdAt": "2019-03-16T14:24:35.072Z",
-          "currentLife": 100,
-          "uid": "546999198"
-        },
-        {
-          "id": "695444208",
-          "cell": "783047042",
-          "createdAt": "2019-03-16T14:24:35.250Z",
-          "currentLife": 100,
+          "currentLife": 29,
           "uid": "546999198"
         }
       ],
@@ -6648,7 +6613,7 @@
       "id": "852066145",
       "cell": "783047042",
       "createdAt": "2019-03-16T14:24:31.310Z",
-      "currentLife": 100,
+      "currentLife": 28,
       "uid": "575288712"
     },
     {
@@ -6659,24 +6624,10 @@
       "uid": "575288712"
     },
     {
-      "id": "074823840",
-      "cell": "783047042",
-      "createdAt": "2019-03-16T14:24:34.910Z",
-      "currentLife": 100,
-      "uid": "546999198"
-    },
-    {
       "id": "471428571",
       "cell": "783047042",
       "createdAt": "2019-03-16T14:24:35.072Z",
-      "currentLife": 100,
-      "uid": "546999198"
-    },
-    {
-      "id": "695444208",
-      "cell": "783047042",
-      "createdAt": "2019-03-16T14:24:35.250Z",
-      "currentLife": 100,
+      "currentLife": 29,
       "uid": "546999198"
     }
   ],
