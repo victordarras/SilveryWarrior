@@ -52,9 +52,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../assets/variables';
+
   .Profile {
     width: 100%;
-    padding-top: 2rem;
+    padding-top: $headerHeight;
   }
   section {
     padding: 2vh;

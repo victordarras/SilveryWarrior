@@ -1,13 +1,3 @@
-.hasTooltip {
-  position: relative;
-
-  &:hover .Tooltip {
-    transform: skew(2deg) translateX(-50%) translateY(-10px);
-    transition: 0.3s cubic-bezier(1, .02, 1, -0.42);
-    opacity: 1;
-  }
-}
-
 .Tooltip {
   position: absolute;
   bottom: 100%;

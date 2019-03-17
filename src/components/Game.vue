@@ -14,15 +14,12 @@
     <template v-if="isConnected">
 
       <div class="Header">
-        <a
-          @click="drinkPotion()"
-          class="Header__potion"
-          title="Boire une potion de vie"
-        >{{ potionsCount }} POPOS</a>
-        <a class="Header__logout" style="float:right" @click="logout()">logout</a>
-        <div class="Header__life" :style="lifeCss" :class="{'Header__life--wobble': wobbleLife}">
+        <div class="Header__life" :class="{'Header__life--wobble': wobbleLife}">
+          <div class="Header__lifeBar" :style="lifeCss"></div>
           <span class="Header__lifeValue"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
         </div>
+
+        <a class="Header__logout" style="float:right" @click="logout()"></a>
       </div>
 
       <div class="Center">

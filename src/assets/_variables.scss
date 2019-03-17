@@ -8,6 +8,8 @@ $white-overlay: rgba($white, 0.7);
 $map-ratio: 1.5168;
 $map-width: 1440px;
 
+$headerHeight: 4rem;
+
 @mixin sans-serif {
   font-family: sans-serif;
 }

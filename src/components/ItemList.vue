@@ -1,7 +1,7 @@
 <template>
   <div class="ItemList">
     <div
-      class="Item hasTooltip"
+      class="Item"
       v-for="(stack, i) in stackedItems"
       :key="i"
       @click="currentItem = stack[0]"
@@ -10,15 +10,6 @@
       <img class="Item__picture"  :src="`/images/items/${ stack[0].picture }`" />
       <p class="Item__price" v-if="canBuy">{{ stack[0].price }}💰</p>
 
-      <div class="Tooltip">
-        <div class="Tooltip__name">
-          {{ stack[0].name }}
-        </div>
-        <ul class="Tooltip__content">
-          <li v-for="(effect, j) in stack[0].effects" :key="j" :title="effect">
-          </li>
-        </ul>
-      </div>
     </div>
 
     <div class="Details" v-if="currentItem">
@@ -26,7 +17,7 @@
         <img class="Item__picture"  :src="`/images/items/${ currentItem.picture }`" />
         <h3>{{ currentItem.name }}</h3>
         <p>Prix : {{currentItem.price}}</p>
-        <p>Type : {{currentItem.kind}}</p>
+        <p>Type : {{currentItem.kind}} {{currentItem.kind === 'equipment' ? currentItem.equipmentKind : ''}}</p>
         <p class="Item__price" v-if="canBuy">{{ currentItem.price }}💰</p>
         <button @click="clickItem(currentItem)">
           <span v-if="canBuy">Acheter</span>
