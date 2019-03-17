@@ -51,4 +51,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="../assets/inventory.scss" scoped></style>
+<style lang="scss" src="../assets/inventory.scss"></style>

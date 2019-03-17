@@ -104,7 +104,7 @@
 
   .Enemy {
     background: none !important;
-    & /deep/ img {
+    img {
       mix-blend-mode: normal !important;
       animation: hanging 1s linear infinite;
       animation-delay: 1s;
@@ -119,20 +119,5 @@
       animation: playerAttack 1000ms linear infinite reverse;
     }
   }
-  @keyframes hanging {
-    25% {
-      transform: translateX(-2%);
-    }
-    50% {
-      transform: translateY(-2%);
-    }
-    75% {
-      transform: translateX(2%);
-    }
-  }
-  @keyframes playerAttack {
-    50% {
-      transform: translateX(150%) skew(2deg);
-    }
-  }
+
 </style>

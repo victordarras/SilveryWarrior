@@ -1,15 +1,19 @@
 // used by items
 .listAppear-enter-active {
-  transition: all .3s ease;
+  transition: opacity .3s ease, transform .3s ease;
 }
+
 .listAppear-leave-active {
-  transition: all .2s ease;
+  transition: opacity .2s ease, transform .2s ease;
 }
-.listAppear-enter, .listAppear-leave-to{
-  transform-origin: left;
+
+.listAppear-enter,
+.listAppear-leave-to {
   transform: scale(0.97);
+  transform-origin: left;
   opacity: 0;
 }
+
 .listAppear-leave-to {
   transform: translateY(-10%);
 }
@@ -21,13 +25,79 @@
 }
 
 @keyframes appear {
-  from {transform: scale(.5);opacity: 0;}
-  to   {transform: scale(1);opacity: 1;}
+  from {
+    transform: scale(.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes mapAppear {
   from {
-    opacity: 0;
     transform: translateY(5%);
+    opacity: 0;
+  }
+}
+
+@keyframes shake-horizontal {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: translateX(-10px);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: translateX(10px);
+  }
+
+  80% {
+    transform: translateX(8px);
+  }
+
+  90% {
+    transform: translateX(-8px);
+  }
+}
+
+
+@keyframes balance {
+  25% {
+    transform: rotate(-3deg);
+  }
+
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes hanging {
+  25% {
+    transform: translateX(-2%);
+  }
+
+  50% {
+    transform: translateY(-2%);
+  }
+
+  75% {
+    transform: translateX(2%);
+  }
+}
+
+@keyframes playerAttack {
+  50% {
+    transform: translateX(150%) skew(2deg);
   }
 }

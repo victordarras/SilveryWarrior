@@ -1,32 +1,33 @@
+@import 'variables';
+
 .Enemy__list {
-  margin-top: 2vh;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+  margin-top: 2vh;
 }
 
 .Enemy {
+  @include sans-serif;
   position: relative;
-  font-size: 10px;
   width: 21vw;
   height: 27vw;
-  padding: 0.25em;
   margin: 1vw 2vw;
-  cursor: url('../assets/images/cursor_2.png'), auto;
+  padding: 0.25em;
+  transition: transform 0.1s cubic-bezier(0, .8, .6, 1);
+  background: url('../assets/images/mob_bg.png') no-repeat center / contain;
+  font-size: 10px;
   line-height: 1;
   text-align: center;
-  font-family: "open-sans", sans-serif;
-  background: url('../assets/images/mob_bg.png') no-repeat center / contain;
-  transition: all 0.1s cubic-bezier(0,.8,.6,1);
+  cursor: url('../assets/images/cursor_2.png'), auto;
 
   &:hover {
     transform: scale(1.02);
-    transition: all 0.1s cubic-bezier(0,.8,.6,1);
   }
 
   &:active {
+    transform: scale(0.98);
     transition: none;
-    transform: scale(0.98)
   }
 
   &__label {
@@ -46,9 +47,9 @@
 
   &__life {
     width: 66%;
-    margin: 0 auto 2px;
     height: 5px;
-    border: 1px solid #000;
+    margin: 0 auto 2px;
+    border: 1px solid $black;
     border-radius: 5px;
   }
 }

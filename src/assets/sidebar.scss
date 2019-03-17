@@ -1,88 +1,103 @@
-.Sidebar {
-  padding: 20px 40px;
-  position: relative;
-  grid-area: profile;
-  position: sticky;
-  height: 100vh;
-  top: 0;
+@import 'variables';
 
-  &:before {
-    content:"";
+.Sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 20px 40px;
+  grid-area: profile;
+
+  &::before {
     position: absolute;
-    /*33*585*/
-    width: 33px;
     top: 0;
-    bottom: 0;
     right: -10px;
-    background: url(../assets/images/vertical_separator.png) repeat-y top right / contain;
+    bottom: 0;
+    width: 33px;
+    background: url('../assets/images/vertical_separator.png') repeat-y top right / contain;
+    content: '';
   }
 
   &__menu {
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
     align-items: center;
     cursor: url('../assets/images/cursor_2.png'), auto;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 
   &__inventory {
     height: 90px;
-    background: url(../assets/images/profile_inventory.png) no-repeat center / contain;
-    &:hover  {transform: scale(1.05);}
-    &:active {transform: scale(0.95);}
+    background: url('../assets/images/profile_inventory.png') no-repeat center / contain;
+
+    &:hover  {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
   }
+
   &__potion {
     height: 90px;
     padding: 6px 24px;
-    background: url(../assets/images/profile_potion.png) no-repeat center/contain;
+    background: url('../assets/images/profile_potion.png') no-repeat center / contain;
     font-size: 0.625em;
     font-weight: bold;
-    &:hover  {transform: scale(1.05);}
-    &:active {transform: scale(0.95);}
+
+    &:hover  {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
   }
+
   &__money {
-    padding: 32px 14px;
     height: 100px;
+    padding: 32px 14px;
+    background: url('../assets/images/profile_money.png') no-repeat center / contain;
     font-size: 0.875em;
     font-weight: bold;
-    background: url(../assets/images/profile_money.png) no-repeat center / contain;
   }
+
   &__settings {
     height: 70px;
-    background: url(../assets/images/profile_settings.png) no-repeat center / contain;
+    background: url('../assets/images/profile_settings.png') no-repeat center / contain;
   }
 
   &__quest {
     width: 180px;
     height: 100px;
-    background: url(../assets/images/profile_quests.png) no-repeat center / contain;
+    background: url('../assets/images/profile_quests.png') no-repeat center / contain;
   }
 
   &__avatar {
     position: relative;
     width: 200px;
     height: 200px;
-    background: url(../assets/images/profile_avatar.png) no-repeat center / contain;
+    background: url('../assets/images/profile_avatar.png') no-repeat center / contain;
   }
 
   &__life {
+    display: flex;
     position: absolute;
     top: 150px;
-    left: 35px;
     right: 53px;
-    height: 14px;
-    border-radius: 14px;
-    display: flex;
+    left: 35px;
     align-items: center;
     justify-content: center;
+    height: 14px;
+    border-radius: 14px;
   }
 
   &__lifeValue {
-    mix-blend-mode: difference;
-    color: #fff;
+    color: $white;
     font-size: 0.875em;
     vertical-align: top;
+    mix-blend-mode: difference;
   }
 }
 

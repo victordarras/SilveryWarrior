@@ -1,19 +1,22 @@
 .City {
   position: relative;
-  padding: 0;
   margin-bottom: 1vh;
+  padding: 0;
   padding-bottom: 1vh;
+
   &__buildings {
-    padding-top: 24vw;
-    background: url(../assets/images/city.png) no-repeat top center / contain;
     display: flex;
     justify-content: center;
+    padding-top: 24vw;
+    background: url('../assets/images/city.png') no-repeat top center / contain;
   }
+
   &__building {
-    flex: 0 1 auto;
     display: flex;
+    flex: 0 1 auto;
     align-items: flex-end;
   }
+
   &__store {
     padding: 0 2vh;
   }

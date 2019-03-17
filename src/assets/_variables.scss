@@ -1,0 +1,39 @@
+// @import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+$white: #fff;
+$black: #000;
+$dark: $black;
+$white-overlay: rgba($white, 0.7);
+
+$map-ratio: 1.5168;
+$map-width: 1440px;
+
+@mixin sans-serif {
+  font-family: sans-serif;
+}
+
+@mixin serif {
+  font-family: 'Taviraj', 'Merriweather', serif;
+}
+
+@mixin draw-border($dir) {
+
+  &::before {
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 10px;
+    background: url('../assets/images/horizontal_separator.png') repeat-x top left / auto 100%;
+    content: '';
+    z-index: 1;
+    mix-blend-mode: darken;
+
+    @if ($dir == 'bottom') {
+      bottom: -15px;
+    }
+    @if ($dir == 'top') {
+      top: -2px;
+      transform: rotateX(180deg);
+    }
+  }
+}

@@ -1,21 +1,27 @@
+@import 'variables';
+
 .ItemList {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  margin-top: 1rem;
   max-width: 36rem;
+  margin-top: 1rem;
   padding: 2vw;
   overflow: auto;
 }
+
 .Item {
-  position: relative;
   display: block;
-  text-align: left;
+  position: relative;
   width: 22vw;
   margin: 1vw;
+  text-align: left;
   cursor: url('../assets/images/cursor_2.png'), auto;
 
-  &:hover  {transform: scale(1.05);}
+  &:hover  {
+    transform: scale(1.05);
+  }
+
   &:active {
     transform: scale(0.8);
     mix-blend-mode: difference;
@@ -27,26 +33,26 @@
   }
 
   &__picture {
-    object-fit: cover;
     width: 97%;
+    object-fit: cover;
   }
 
   &__count,
   &__price {
+    @include sans-serif;
     position: absolute;
     top: -2%;
     right: -2%;
     margin: 0;
     padding: 0.1em 0.25em;
-    background-color: #FFF;
-    border: 2px solid #000;
-    font-weight: bold;
-    font-family: sans-serif;
+    border: 2px solid $black;
     border-radius: 10%;
-    line-height: 1;
+    background-color: $white;
     font-size: 0.75em;
     font-weight: bold;
+    line-height: 1;
   }
+
   &__price {
     top: auto;
     right: 50%;
@@ -59,23 +65,25 @@
 
 .Details {
   position: fixed;
-  z-index: 100;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(#fff, 0.7);
+  left: 0;
+  background-color: $white-overlay;
   text-align: center;
+  z-index: 100;
+
   img {
     width: 50vw;
     height: auto;
     margin: 4vh auto;
   }
+
   &__content {
     margin: 6vh;
-    background: #fff;
     padding: 2vh;
-    border: 2px solid #000;
+    border: 2px solid $black;
+    background: $white;
     animation: mapAppear 0.16s ease-out;
   }
 }

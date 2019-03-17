@@ -1,19 +1,19 @@
-@import "mixins";
+@import 'variables';
 
 .Inventory--bottom {
+  @include draw-border('top');
+
   position: relative;
   padding-top: 0.5em;
 
-  @include drawBorder('top');
-
-  /deep/ .Item {
-    padding: 5px 5px 0 5px;
-    width: 23vw;
+  .Item {
+    padding: 5px 5px 0;
     background: url('../assets/images/item_bg.png') no-repeat top / contain;
   }
 }
+
 .Inventory--fixed {
+  height: 72vh;
   padding-top: 3rem;
   overflow-y: auto;
-  height: 72vh;
 }
