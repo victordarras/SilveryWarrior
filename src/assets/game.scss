@@ -87,34 +87,6 @@
   align-items: center;
   justify-content: center;
 
-  &__life {
-    margin-top: -8px;
-    width: 119px;
-    height: 65px;
-    background: url('../assets/images/lifebar.png') center / contain;
-    &--wobble {
-      animation: shake-horizontal .3s linear infinite both;
-    }
-  }
-
-  &__lifeBar {
-    width: 98px;
-    height: 9px;
-    margin: 24px 0 0 12px;
-    border-radius: 9px;
-    mix-blend-mode: darken;
-  }
-  &__lifeValue {
-    @include sans-serif;
-    color: $white;
-    font-size: 0.625em;
-    vertical-align: middle;
-    mix-blend-mode: difference;
-    position: relative;
-    top: -15px;
-    left: 36%;
-  }
-
   &__logout {
     position: absolute;
     right: 2vw;

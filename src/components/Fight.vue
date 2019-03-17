@@ -30,25 +30,32 @@
 
     <div class="row">
       <div class="col">
+        <div class="Lifebar">
+          <div class="Lifebar__bar" :style="lifeCss(player)"></div>
+          <span class="Lifebar__value"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
+        </div>
         <h2 class="PageSubTitle">{{ player.name }}</h2>
-        <div class="Player__life" :style="lifeCss(player)"></div>
       </div>
-
+      <div class="col">vs</div>
       <div class="col">
+        <div class="Lifebar">
+          <div class="Lifebar__bar" :style="lifeCss({...enemy, ...currentMob})"></div>
+          <span class="Lifebar__value"><strong>{{ enemy.currentLife }}</strong>/{{ currentMob.life }}</span>
+        </div>
         <h2 class="PageSubTitle">{{ currentMob.name }}</h2>
-        <div class="Enemy__life" :style="lifeCss({...enemy, ...currentMob})"></div>
       </div>
     </div>
     <br>
 
+    <Logger />
+
     <div v-if="enemy.currentLife > 0">
-      <Logger />
-      <button @click="$emit('quit')">Fuir</button>
       <button @click="attack">Attaquer</button>
-      <button @click="attackAnimation">Togl</button>
+      <hr>
+      <button @click="quit">Fuir</button>
     </div>
     <div v-else>
-      <button @click="$emit('quit')">Bien</button>
+      <button @click="quit">Bien</button>
     </div>
   </section>
 </template>
@@ -68,6 +75,10 @@ export default {
     }
   },
   methods: {
+    quit() {
+      this.$emit('quit');
+      this.$store.dispatch('clearLogs');
+    },
     attackAnimation() {
       this.isAttacking = true
       window.setTimeout(()=>{
@@ -107,7 +118,7 @@ export default {
   .row {
     display: flex;
     align-items: center;
-    justify-content: stretch;
+    justify-content: space-between;
     .col {
       flex: 1 0 auto;
     }
@@ -125,6 +136,8 @@ export default {
         transparent url(../assets/images/fight-bg.png) center / cover;
       background-blend-mode: darken, darken;
       padding: 4rem 1rem 2rem;
+      height: 30vh;
+      min-height: 13em;
       animation: fadeTop .3s ease-in;
     }
 
@@ -143,7 +156,22 @@ export default {
   }
 
   .Player, .Enemy {
+    height: 21vw;
     background: none;
+    position: relative;
+
+    &::before {
+      content: '';
+      z-index: 1;
+      bottom: -5%;
+      left: 20%;
+      width: 60%;
+      border-radius: 50%;
+      padding-bottom: 15%;
+      position: absolute;
+      filter: blur(2px);
+      background-color: rgba($black, 0.2);
+    }
   }
 
   .Player__picture,

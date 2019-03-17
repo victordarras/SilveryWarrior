@@ -33,11 +33,14 @@ export default {
   @include sans-serif;
   font-size: 0.75rem;
   padding: 2vh;
-  max-height: 20vh;
+  height: 24vh;
   overflow: auto;
   display: flex;
   flex-flow: column;
-  flex-direction: column-reverse;
+  text-align: left;
+  margin-bottom: 2vh;
+  background-color: #eee;
+  color: #555;
 }
 .log {
   margin: 0 0 0.25em;

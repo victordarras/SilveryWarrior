@@ -14,9 +14,9 @@
     <template v-if="isConnected">
 
       <div class="Header">
-        <div class="Header__life" :class="{'Header__life--wobble': wobbleLife}">
-          <div class="Header__lifeBar" :style="lifeCss"></div>
-          <span class="Header__lifeValue"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
+        <div class="Lifebar" :class="{'Lifebar__life--wobble': wobbleLife}">
+          <div class="Lifebar__bar" :style="lifeCss"></div>
+          <span class="Lifebar__value"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
         </div>
 
         <a class="Header__logout" style="float:right" @click="logout()"></a>

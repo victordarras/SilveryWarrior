@@ -2,41 +2,45 @@
   <section class="mapEditor">
     <h1>Map editor</h1>
     <!-- <button @click="addInfo">Add info</button> -->
-    <Map
-      v-if="currentCell"
-      :cells="cells"
-      :currentCell="currentCell"
-      @selectCell="selectCell"
-    />
-    <section class="Form" v-if="currentCell">
-      <h2>Cell {{ currentCell.name ? currentCell.name : 'unnamed' }} [{{ currentCell.x }};{{ currentCell.y }}]</h2>
-      <button @click="clearEnemies()">Effacer enemies</button>
-      <fieldset>
-        <p>Cell kind: {{ currentCell.kind }}</p>
-        <select v-model="currentCell.kind" @change="updateCell(currentCell)">
-          <option :value="kind" :key="kind" v-for="kind in cellKinds">{{ kind }}</option>
-        </select>
-      </fieldset>
+    <div class="left">
+      <Map
+        v-if="currentCell"
+        :cells="cells"
+        :currentCell="currentCell"
+        @selectCell="selectCell"
+      />
+    </div>
+    <div class="right">
+      <section class="Form" v-if="currentCell">
+        <h2>Cell {{ currentCell.name ? currentCell.name : 'unnamed' }} [{{ currentCell.x }};{{ currentCell.y }}]</h2>
+        <button @click="clearEnemies()">Effacer enemies</button>
+        <fieldset>
+          <p>Cell kind: {{ currentCell.kind }}</p>
+          <select v-model="currentCell.kind" @change="updateCell(currentCell)">
+            <option :value="kind" :key="kind" v-for="kind in cellKinds">{{ kind }}</option>
+          </select>
+        </fieldset>
 
-      <fieldset>
-        <select v-model="selectedMob">
-          <option :value="mob" :key="mob.uid" v-for="mob in mobs">{{ mob.name }}</option>
-        </select>
-        <pre><code>{{ selectedMob }}</code></pre>
-        <button @click="addMob()" type="submit">Add Mob</button>
+        <fieldset>
+          <select v-model="selectedMob">
+            <option :value="mob" :key="mob.uid" v-for="mob in mobs">{{ mob.name }}</option>
+          </select>
+          <button @click="addMob()" type="submit">Add Mob</button>
+          <pre><code>{{ selectedMob }}</code></pre>
 
-        <div v-if="enemies.length > 0" class="enemy-list">
-          <p :key="enemy.id" v-for="enemy in enemies">
-            <pre>{{ enemy }} <button @click="deleteEnemy(enemy)">🗑</button></pre>
-          </p>
-        </div>
-        <p v-else>Aucun enemi</p>
+          <ul v-if="enemies.length > 0" class="enemy-list">
+            <li :key="enemy.id" v-for="enemy in enemies">
+              <button @click="deleteEnemy(enemy)">🗑</button>{{ mobs.find(mob => mob.id === enemy.uid).name }}
+            </li>
+          </ul>
+          <p v-else>Aucun enemi sur cette case</p>
 
-        <Place
-          :cell="currentCell"
-        />
-      </fieldset>
-    </section>
+          <!-- <Place
+            :cell="currentCell"
+          /> -->
+        </fieldset>
+      </section>
+    </div>
   </section>
 </template>
 
@@ -117,18 +121,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  .mapEditor {
-    padding: 0 2em;
-  }
-  .map {
-    float: left;
-    margin-right: 2rem;
-  }
-  .Form {
-    float: left;
-    margin-bottom: 0.5em;
-    border: 1px solid #eee;
-    padding: 0.5em;
-  }
-</style>
+<style lang="scss" src="../assets/admin.scss" scoped></style>

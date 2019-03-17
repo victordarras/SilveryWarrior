@@ -34,6 +34,14 @@ select {
   font-size: 0.875em;
 }
 
+input {
+  appearance: none;
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
 
 h1, h2, h3, h4, h5, h6 {// sass-lint:disable-line single-line-per-selector
   margin: 0.25em 0;
@@ -66,6 +74,10 @@ hr {
   background: url('../assets/images/horizontal_separator.png') repeat-x top left / contain;
 }
 
+table {
+  text-align: left;
+}
+
 .PageTitle,
 .PageSubTitle {
   font-weight: normal;
@@ -94,4 +106,36 @@ hr {
 .PageSubTitle {
   margin: 0 0 1em;
   font-size: 0.75em;
+}
+
+
+.Lifebar {
+  position: relative;
+  margin: -8px auto 0;
+  width: 119px;
+  height: 65px;
+  overflow: hidden;
+  text-align: center;
+  background: url('../assets/images/lifebar.png') center / contain;
+
+  &--wobble {
+    animation: shake-horizontal .3s linear infinite both;
+  }
+
+  &__bar {
+    width: 98px;
+    height: 9px;
+    margin: 24px 0 0 12px;
+    border-radius: 9px;
+    mix-blend-mode: darken;
+  }
+  &__value {
+    @include sans-serif;
+    color: $white;
+    font-size: 0.625em;
+    vertical-align: middle;
+    mix-blend-mode: difference;
+    position: relative;
+    top: -15px;
+  }
 }
