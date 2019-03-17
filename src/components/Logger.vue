@@ -27,17 +27,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/variables';
+
 .logs {
-  grid-area: logs;
-  z-index: 1;
-  font-size: 0.625rem;
-  padding: 10vh 2vh 0;
-  // max-height: 19vh;
+  @include sans-serif;
+  font-size: 0.75rem;
+  padding: 2vh;
+  max-height: 20vh;
   overflow: auto;
   display: flex;
   flex-flow: column;
   flex-direction: column-reverse;
-  font-family: sans-serif;
 }
 .log {
   margin: 0 0 0.25em;

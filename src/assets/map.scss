@@ -19,7 +19,7 @@
   background: url('../assets/images/map_2.png');
   background-size: cover;
   overflow: auto;
-  animation: mapAppear .3s ease-in;
+  animation: fadeBottom .3s ease-in;
   grid-area: table;
 
   &__cells {
@@ -66,7 +66,6 @@
     content: '';
     mix-blend-mode: darken;
     pointer-events: none;
-    // animation: appear 0.16s;
   }
 
   &--reachable:hover {

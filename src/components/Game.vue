@@ -32,14 +32,12 @@
           <button @click="revive()">Revive (XP x 0.875)</button>
         </section>
 
-        <template v-else-if="currentEnemy">
-          <Fight
-            :enemy="currentEnemy"
-            @attack="fight"
-            @quit="currentEnemy = null"
-          />
-          <Logger />
-        </template>
+        <Fight
+          v-else-if="currentEnemy"
+          :enemy="currentEnemy"
+          @attack="fight"
+          @quit="currentEnemy = null"
+        />
 
         <template v-else>
           <Profile
@@ -82,11 +80,9 @@
 </template>
 
 <script>
-import Sidebar from './Sidebar'
 import Map from './Map'
 import Place from './Place'
 import Profile from './Profile'
-import Logger from './Logger'
 import Inventory from './Inventory'
 import Fight from './Fight'
 import { roll, newUID } from '../helpers'
@@ -122,7 +118,6 @@ export default {
 
       this.isConnected = true;
       window.setTimeout(() => {this.isLoading = false}, 1000)
-      this.log("Bonjour, votre aventure commence ici.");
     },
     logout() {
       localStorage.clear();
@@ -290,7 +285,7 @@ export default {
     this.login();
   },
   components: {
-    Map, Place, Sidebar, Logger, Profile, Inventory, Fight
+    Map, Place, Profile, Inventory, Fight
   }
 }
 </script>

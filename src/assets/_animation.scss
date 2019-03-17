@@ -36,9 +36,16 @@
   }
 }
 
-@keyframes mapAppear {
+@keyframes fadeBottom {
   from {
     transform: translateY(5%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeTop {
+  from {
+    transform: translateY(-5%);
     opacity: 0;
   }
 }
@@ -97,7 +104,29 @@
 }
 
 @keyframes playerAttack {
+  20% {
+    transform: translateX(-10%) skew(-2deg);
+  }
   50% {
     transform: translateX(150%) skew(2deg);
+  }
+}
+@keyframes enemyAttack {
+  50% {
+    transform: translateX(50%) skew(-2deg) scale(0.9);
+  }
+}
+
+@keyframes idle {
+  0%,
+  100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+  25%,
+  75% {
+    transform: scale(0.95);
   }
 }
