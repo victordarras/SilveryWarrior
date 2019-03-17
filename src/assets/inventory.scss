@@ -16,4 +16,7 @@
   height: 72vh;
   padding-top: $headerHeight;
   overflow-y: auto;
+  .ItemList {
+    min-height: 70vw;
+  }
 }

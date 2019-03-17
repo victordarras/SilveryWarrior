@@ -2,10 +2,17 @@
   <div class="City">
 
     <div class="City__store" v-if="storeActive">
-      <button style="float:right" @click="storeActive = !storeActive">Sortir</button>
-      <h2>Magasin</h2>
-      <p>Bienvenue dans mon humble magasin, que désirez vous acheter ?</p>
+      <hr>
+      <h2 class="PageSubTitle">Magasin</h2>
+      <h2 class="PageSubTitle">Etale des orfèvres</h2>
 
+      <button style="float:right" @click="storeActive = !storeActive">Sortir</button>
+      <p class="Cite">
+        <strong>Marchand :</strong>
+        Salut voyageur, temps de merde, nan ? Qu’est que je peux faire pour toi ?
+      </p>
+
+      <hr>
       <ItemList
         :items="items"
         :canBuy="true"
@@ -67,3 +74,8 @@ export default {
 </script>
 
 <style lang="scss" src="../assets/city.scss" scoped></style>
+<style scoped>
+  hr {
+    margin: 0 -2vw 1em;
+  }
+</style>

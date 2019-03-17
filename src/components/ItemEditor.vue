@@ -68,6 +68,10 @@
           <input type="text" v-model="currentItem.picture">
         </div>
         <div class="Form__section">
+          <label for="">Price</label>
+          <input type="number" v-model.number="currentItem.price">
+        </div>
+        <div class="Form__section">
           <label for="">Stack By</label>
           <input type="number" v-model.number="currentItem.stackBy">
         </div>

@@ -139,3 +139,14 @@ table {
     top: -15px;
   }
 }
+.Cite {
+  font-size: 0.875rem;
+  font-style: italic;
+
+  strong {
+    @include sans-serif;
+    display: block;
+    font-style: normal;
+    font-size: 0.625em;
+  }
+}

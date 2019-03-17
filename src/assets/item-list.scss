@@ -3,11 +3,12 @@
 .ItemList {
   display: flex;
   flex-flow: row wrap;
+  align-content: flex-start;
   justify-content: flex-start;
   max-width: 36rem;
   margin-top: 1rem;
-  padding: 2vw;
   overflow: auto;
+  background: url('../assets/images/empty_item.png') repeat top left / 25vw 25vw;
 }
 
 .Item {
@@ -41,25 +42,23 @@
   &__price {
     @include sans-serif;
     position: absolute;
-    top: -2%;
-    right: -2%;
+    bottom: -3%;
+    left: 50%;
+    transform: translateX(-50%);
     margin: 0;
-    padding: 0.1em 0.25em;
-    border: 2px solid $black;
+    min-width: 3em;
+    padding: 0.35em 0.25em;
+    text-align: center;
+    background: url('../assets/images/tip.png') no-repeat left / contain;
     border-radius: 10%;
-    background-color: $white;
     font-size: 0.75em;
     font-weight: bold;
     line-height: 1;
   }
 
   &__price {
-    top: auto;
-    right: 50%;
-    bottom: -5%;
-    transform: translateX(50%);
-    font-size: 0.625em;
     white-space: nowrap;
+    min-width: 4em;
   }
 }
 
