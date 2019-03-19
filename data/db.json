@@ -4,30 +4,19 @@
       "name": "Victor",
       "id": "vic",
       "level": 1,
-      "currentLife": 74,
+      "currentLife": 90,
       "life": 100,
       "atk": 5,
       "def": 5,
       "spe": 5,
       "x": 5,
-      "y": 13,
-      "exp": 760,
-      "money": 9999991990,
+      "y": 14,
+      "exp": 780,
+      "money": 9999992010,
       "deathCount": 0,
-      "kills": 53,
+      "kills": 55,
       "death": 13,
       "items": [
-        {
-          "name": "popo2",
-          "id": "630418561",
-          "kind": "consumable",
-          "picture": "popo2.png",
-          "price": 50,
-          "stackBy": 16,
-          "effects": [
-            "Player.currentLife += 50"
-          ]
-        },
         {
           "name": "hache5",
           "id": "416663198",
@@ -4215,20 +4204,6 @@
           "uid": "575288712"
         },
         {
-          "id": "677461545",
-          "cell": "783047042",
-          "createdAt": "2019-03-17T09:03:22.374Z",
-          "currentLife": 100,
-          "uid": "004247759"
-        },
-        {
-          "id": "313531337",
-          "cell": "783047042",
-          "createdAt": "2019-03-17T09:03:22.553Z",
-          "currentLife": 100,
-          "uid": "004247759"
-        },
-        {
           "id": "944730287",
           "cell": "783047042",
           "createdAt": "2019-03-17T09:03:27.415Z",
@@ -6602,20 +6577,6 @@
       "createdAt": "2019-03-17T09:03:17.820Z",
       "currentLife": 100,
       "uid": "575288712"
-    },
-    {
-      "id": "677461545",
-      "cell": "783047042",
-      "createdAt": "2019-03-17T09:03:22.374Z",
-      "currentLife": 100,
-      "uid": "004247759"
-    },
-    {
-      "id": "313531337",
-      "cell": "783047042",
-      "createdAt": "2019-03-17T09:03:22.553Z",
-      "currentLife": 100,
-      "uid": "004247759"
     },
     {
       "id": "944730287",

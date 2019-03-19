@@ -5,7 +5,7 @@
       <table v-if="items.length">
         <thead>
           <tr>
-            <th v-for="key in Object.keys(items[0])">{{ key }}</th>
+            <th v-for="key in Object.keys(items[0])" :key="key">{{ key }}</th>
           </tr>
         </thead>
         <tbody v-for="kind in Object.keys(itemsByKind)" :key="kind">
@@ -16,7 +16,7 @@
             :class="item === currentItem ? 'highlight' : ''"
             :key="item.id"
           >
-            <td v-for="key in Object.keys(item)">
+            <td v-for="key in Object.keys(item)" :key="key.id">
               {{item[key]}}
             </td>
           </tr>

@@ -17,7 +17,7 @@ var store = new Vuex.Store({
     updateCell(state, cell) { state.cells[state.cells.indexOf(cell)] = cell },
     updatePlayer(state, player) { state.player = player },
     addLog(state, log) { state.logs.push(log) },
-    clearLogs(state, log) { state.logs = [] }
+    clearLogs(state) { state.logs = [] }
   },
   actions: {
     loadMobs() {
@@ -43,7 +43,7 @@ var store = new Vuex.Store({
     addLog(context, log) {
       this.commit("addLog", log)
     },
-    clearLogs(context) {
+    clearLogs() {
       this.commit("clearLogs")
     }
   },

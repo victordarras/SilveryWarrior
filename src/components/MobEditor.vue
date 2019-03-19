@@ -15,7 +15,7 @@
             :class="mob === currentMob ? 'highlight' : ''"
             :key="mob.id"
           >
-            <td v-for="key in Object.keys(mob)">
+            <td v-for="key in Object.keys(mob)" :key="key">
               {{mob[key]}}
             </td>
           </tr>
