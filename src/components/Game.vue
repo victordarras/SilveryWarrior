@@ -175,11 +175,7 @@ export default {
       this.log(`Vous achetez ${item.name} pour ${item.price}💰`, "success");
     },
     revive() {
-      this.player.exp = Math.round(this.player.exp *= 0.875);
-      this.player.death += 1;
-      this.player.currentLife = this.player.life;
-      this.savePlayerData();
-      this.log("Vous perdez un peu d'XP et regagnez tous vos points de vie", "success");
+      this.$store.dispatch('revive');
     },
     movePlayer(cell) {
       this.player.x = cell.x;

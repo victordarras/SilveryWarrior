@@ -17,7 +17,12 @@ var store = new Vuex.Store({
     updateCell(state, cell) { state.cells[state.cells.indexOf(cell)] = cell },
     updatePlayer(state, player) { state.player = player },
     addLog(state, log) { state.logs.push(log) },
-    clearLogs(state) { state.logs = [] }
+    clearLogs(state) { state.logs = [] },
+    revive(state) {
+      state.player.exp = Math.round(state.player.exp *= 0.875);
+      state.player.death += 1;
+      state.player.currentLife = state.player.life;
+    }
   },
   actions: {
     loadMobs() {
@@ -35,10 +40,14 @@ var store = new Vuex.Store({
         this.commit("updateCell", cell)
       })
     },
-    updatePlayer(context, player) {
+    updatePlayer(context, player = this.state.player) {
       API.patch('/players/' + player.id, player).then(() => {
         this.commit("updatePlayer", player)
       })
+    },
+    revive(context) {
+      this.commit("revive")
+      this.dispatch("updatePlayer")
     },
     addLog(context, log) {
       this.commit("addLog", log)
