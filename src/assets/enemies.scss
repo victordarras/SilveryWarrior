@@ -1,18 +1,15 @@
 @import 'variables';
 
 .Enemy__list {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(90px,1fr));
   margin-top: 2vh;
+  padding: 10px;
 }
 
 .Enemy {
   @include sans-serif;
   position: relative;
-  width: 21vw;
-  height: 27vw;
-  margin: 1vw 2vw;
   padding: 0.25em;
   transition: transform 0.1s cubic-bezier(0, .8, .6, 1);
   background: url('../assets/images/mob_bg.png') no-repeat center / contain;

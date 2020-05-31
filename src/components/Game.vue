@@ -19,7 +19,7 @@
           <span class="Lifebar__value"><strong>{{ player.currentLife }}</strong>/{{ player.life }}</span>
         </div>
 
-        <a class="Header__logout" style="float:right" @click="logout()"></a>
+        <router-link class="Header__logout" style="float:right" to="/menu"></router-link>
       </div>
 
       <div class="Center">
@@ -115,10 +115,6 @@ export default {
 
       this.isConnected = true;
       window.setTimeout(() => {this.isLoading = false}, 1000)
-    },
-    logout() {
-      localStorage.clear();
-      window.location = "/"
     },
     log(message, kind = "normal") {
       this.$store.dispatch("addLog", {

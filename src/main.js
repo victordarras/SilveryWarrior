@@ -17,6 +17,10 @@ const routes = [
   {
     path: '/',
     component: Game
+  },
+  {
+    path: '/menu',
+    component: App
   }, {
     path: '/mob-editor',
     component: MobEditor
