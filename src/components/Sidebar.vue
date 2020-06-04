@@ -8,11 +8,10 @@
       <a
         class="Sidebar__money"
       >{{ player.money }}</a>
+
+      <router-link class="Sidebar__settings" style="float:right" to="/menu"></router-link>
       <a
-        class="Sidebar__settings"
-      ></a>
-      <a
-        @click="$emit('showProfile')"
+        @click="$emit('changePage','profile')"
         class="Sidebar__inventory"
         title="Voir mon profil"
       ></a>
@@ -25,7 +24,10 @@
 
     <div class="Sidebar__quest"></div>
 
-    <div @click="$emit('logout')" class="button">logout</div>
+    <a @click="$emit('logout')" class="button">logout</a>
+    <a class="button" @click="$emit('changePage','map')">MAP</a>
+    <a class="button" @click="$emit('changePage','equipments')">EQUIPMENTS</a>
+
   </section>
 </template>
 

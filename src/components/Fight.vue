@@ -177,6 +177,7 @@ export default {
   .Player__picture,
   .Enemy__picture {
     @include idle;
+    height: 100%;
     mix-blend-mode: normal !important;
   }
 

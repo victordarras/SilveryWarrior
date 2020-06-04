@@ -4,13 +4,13 @@
       "name": "Victor",
       "id": "vic",
       "level": 1,
-      "currentLife": 65,
+      "currentLife": 39,
       "life": 100,
       "atk": 5,
       "def": 5,
       "spe": 5,
       "x": 5,
-      "y": 14,
+      "y": 13,
       "exp": 729,
       "money": 9999992060,
       "deathCount": 0,
@@ -162,7 +162,7 @@
           "atk": 10,
           "def": 0,
           "spe": 0,
-          "equiped": true
+          "equiped": false
         },
         {
           "name": "hache5",
@@ -286,7 +286,7 @@
           "atk": 10,
           "def": 0,
           "spe": 0,
-          "equiped": false
+          "equiped": true
         },
         {
           "name": "ocarina",
@@ -313,7 +313,7 @@
           "atk": 10,
           "def": 0,
           "spe": 0,
-          "equiped": false
+          "equiped": true
         },
         {
           "name": "popo3",
@@ -376,18 +376,18 @@
       "name": "Joe",
       "id": "Sp1r1tu3l",
       "level": 1,
-      "currentLife": 12,
+      "currentLife": 73,
       "life": 100,
       "atk": 5,
       "def": 5,
       "spe": 5,
       "x": 5,
       "y": 14,
-      "exp": 2356,
+      "exp": 2062,
       "money": 994744,
       "deathCount": 0,
       "kills": 250,
-      "death": 38,
+      "death": 39,
       "items": []
     }
   ],
@@ -6596,7 +6596,7 @@
       "id": "915678197",
       "cell": "783047042",
       "createdAt": "2020-05-31T12:02:09.473Z",
-      "currentLife": 100,
+      "currentLife": 94,
       "uid": "853874250"
     },
     {
@@ -6624,7 +6624,7 @@
       "id": "350038559",
       "cell": "783047042",
       "createdAt": "2020-05-31T12:30:10.547Z",
-      "currentLife": 100,
+      "currentLife": 38,
       "uid": "575288712"
     },
     {

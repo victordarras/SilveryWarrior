@@ -1,10 +1,11 @@
 @import 'variables';
 
 .Enemy__list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(90px,1fr));
   margin-top: 2vh;
   padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(70px, 90px));
+  grid-gap: 10px;
 }
 
 .Enemy {

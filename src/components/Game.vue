@@ -21,6 +21,7 @@
 
         <router-link class="Header__logout" style="float:right" to="/menu"></router-link>
       </div>
+      <Sidebar @changePage="changePage"/>
 
       <div class="Center">
 
@@ -82,6 +83,7 @@ import Place from './Place'
 import Profile from './Profile'
 import Inventory from './Inventory'
 import Fight from './Fight'
+import Sidebar from './Sidebar'
 import { roll, newUID } from '../helpers'
 import API from "../api"
 
@@ -99,6 +101,10 @@ export default {
     }
   },
   methods: {
+    changePage(page) {
+      console.log(page)
+      this.currentPage = page
+    },
     login() {
       if (localStorage.getItem("currentPlayerUid")) {
         this.currentPlayerUid = localStorage.getItem("currentPlayerUid");
@@ -274,7 +280,7 @@ export default {
     this.login();
   },
   components: {
-    Map, Place, Profile, Inventory, Fight
+    Map, Place, Profile, Inventory, Fight, Sidebar
   }
 }
 </script>
