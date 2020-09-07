@@ -45,7 +45,7 @@ var store = new Vuex.Store({
         this.commit("updatePlayer", player)
       })
     },
-    revive(context) {
+    revive() {
       this.commit("revive")
       this.dispatch("updatePlayer")
     },
