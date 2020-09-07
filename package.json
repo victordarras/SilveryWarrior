@@ -11,9 +11,9 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "sass-lint": "sass-lint -v",
-    "back": "json-server --host=$(ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d ' '  -f2) data/db.json",
+    "back": "json-server data/db.json",
     "lint:fix": "sass-lint-auto-fix --config-sass-lint ./.sass-lint.yml",
-    "start": "npm run serve"
+    "start": "npm run back & npm run serve"
   },
   "dependencies": {
     "firebase": "^5.8.0",
